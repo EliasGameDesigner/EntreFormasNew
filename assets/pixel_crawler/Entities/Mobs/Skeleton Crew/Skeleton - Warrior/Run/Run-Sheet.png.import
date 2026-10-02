@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq8wpyw52b0it"
-path="res://.godot/imported/Run-Sheet.png-3c5b1fd14189ac3f6d21c67c3cfc70ab.ctex"
+uid="uid://bffww12hgcnbn"
+path="res://.godot/imported/Run-Sheet.png-93686df9e9413b85e2ca672083bc0087.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Mobs/Skeleton Crew/Skeleton - Warrior/Run/Run-Sheet.png"
-dest_files=["res://.godot/imported/Run-Sheet.png-3c5b1fd14189ac3f6d21c67c3cfc70ab.ctex"]
+dest_files=["res://.godot/imported/Run-Sheet.png-93686df9e9413b85e2ca672083bc0087.ctex"]
 
 [params]
 

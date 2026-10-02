@@ -1,6 +1,6 @@
-﻿[gd_scene format=3 uid="uid://csxk2rx5cnv6l"]
+[gd_scene format=3 uid="uid://csxk2rx5cnv6l"]
 
-[ext_resource type="Texture2D" uid="uid://ce12bwpnqur60" path="res://assets/textures/props/native_rug_16x16-removebg-preview.png" id="1_1qbeg"]
+[ext_resource type="Texture2D" uid="uid://bplqgqo722aic" path="res://assets/textures/props/native_rug_16x16-removebg-preview.png" id="1_1qbeg"]
 
 [node name="Tapete" type="Node2D" unique_id=1846961930]
 

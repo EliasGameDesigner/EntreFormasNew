@@ -7,6 +7,8 @@ enum MachineState { BROKEN, WORKING }
 @export var current_state: MachineState = MachineState.BROKEN
 @export var physical_item_scene: PackedScene 
 @export var production_time: float = 3.0
+@export var repair_ui_scene: PackedScene
+var _repair_ui: MachineRepairUI
 
 @export_group("Configurações de Quebra")
 @export var check_breakage_interval: float = 15.0 
@@ -20,6 +22,8 @@ enum MachineState { BROKEN, WORKING }
 @onready var working_audio: AudioStreamPlayer2D = $WorkingAudioPlayer # NOVO: Referência ao som
 
 func _ready() -> void:
+	if machine_data and not machine_data.can_break:
+		current_state = MachineState.WORKING
 	interactable.interaction_started.connect(_on_interaction_started)
 	
 	production_timer.timeout.connect(_on_production_timer_timeout)
@@ -48,48 +52,16 @@ func _on_interaction_started(_body: Node2D) -> void:
 	interactable.stop_interaction()
 	
 	if current_state == MachineState.BROKEN:
-		return
+		if get_tree().get_first_node_in_group("modal_repair_ui") != null:
+			return
+		if not is_instance_valid(_repair_ui) and repair_ui_scene:
+			_repair_ui = repair_ui_scene.instantiate()
+			add_child(_repair_ui)
+			_repair_ui.repair_completed.connect(repair_machine)
+		if is_instance_valid(_repair_ui):
+			_repair_ui.open_ui(self)
 	elif current_state == MachineState.WORKING:
 		GameUI.show_notification("Máquina funcionando normalmente.")
-
-
-func attempt_repair() -> void:
-	if _can_afford_repair():
-		_consume_repair_resources()
-		repair_machine()
-	else:
-		GameUI.show_notification("Recursos ou saldo insuficientes para consertar!")
-
-
-func _can_afford_repair() -> bool:
-	if InventoryManager.money < machine_data.repair_cash_cost:
-		return false
-		
-	var required_counts: Dictionary = {}
-	for item in machine_data.required_items:
-		if required_counts.has(item):
-			required_counts[item] += 1
-		else:
-			required_counts[item] = 1
-			
-	for item in required_counts:
-		if not InventoryManager.has_item(item, required_counts[item]):
-			return false
-	return true
-
-
-func _consume_repair_resources() -> void:
-	InventoryManager.money -= machine_data.repair_cash_cost
-	
-	var required_counts: Dictionary = {}
-	for item in machine_data.required_items:
-		if required_counts.has(item):
-			required_counts[item] += 1
-		else:
-			required_counts[item] = 1
-			
-	for item in required_counts:
-		InventoryManager.remove_item(item, required_counts[item])
 
 
 func repair_machine() -> void:
@@ -103,7 +75,8 @@ func repair_machine() -> void:
 func start_production() -> void:
 	if machine_data and machine_data.produced_item:
 		production_timer.start()
-		breakage_timer.start() 
+		if machine_data.can_break:
+			breakage_timer.start()
 		
 		# Toca o som de funcionamento em Loop (se já não estiver tocando)
 		if working_audio and not working_audio.playing:
@@ -126,6 +99,8 @@ func _on_breakage_timer_timeout() -> void:
 
 
 func break_machine() -> void:
+	if machine_data == null or not machine_data.can_break or current_state == MachineState.BROKEN:
+		return
 	current_state = MachineState.BROKEN
 	
 	_update_animation() 

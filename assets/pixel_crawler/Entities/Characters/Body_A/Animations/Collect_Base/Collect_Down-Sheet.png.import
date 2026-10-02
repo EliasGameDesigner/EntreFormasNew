@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb56plv5xt2nh"
-path="res://.godot/imported/Collect_Down-Sheet.png-c038b35524aba50129e6d6230f593d57.ctex"
+uid="uid://dc8dtpolh38dg"
+path="res://.godot/imported/Collect_Down-Sheet.png-9849baf9ce0bfa63c183640ac5e928b9.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Characters/Body_A/Animations/Collect_Base/Collect_Down-Sheet.png"
-dest_files=["res://.godot/imported/Collect_Down-Sheet.png-c038b35524aba50129e6d6230f593d57.ctex"]
+dest_files=["res://.godot/imported/Collect_Down-Sheet.png-9849baf9ce0bfa63c183640ac5e928b9.ctex"]
 
 [params]
 

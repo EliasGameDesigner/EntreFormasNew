@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsx1ayuwt4v6g"
-path="res://.godot/imported/Run_Down-Sheet.png-eb6c7b4380e155b95796bf584f0c4a9e.ctex"
+uid="uid://cx06obvcujqtk"
+path="res://.godot/imported/Run_Down-Sheet.png-c5371c614bb9ee58af5176bd6ff340e3.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Characters/Body_A/Animations/Run_Base/Run_Down-Sheet.png"
-dest_files=["res://.godot/imported/Run_Down-Sheet.png-eb6c7b4380e155b95796bf584f0c4a9e.ctex"]
+dest_files=["res://.godot/imported/Run_Down-Sheet.png-c5371c614bb9ee58af5176bd6ff340e3.ctex"]
 
 [params]
 

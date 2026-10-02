@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t2albr0i1oxx"
-path="res://.godot/imported/Wood.png-38bba1d285ae1c065fedd85d4cca2421.ctex"
+uid="uid://bo70uc6xr0qwg"
+path="res://.godot/imported/Wood.png-560407158989ea66046890a2467da816.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Weapons/Wood/Wood.png"
-dest_files=["res://.godot/imported/Wood.png-38bba1d285ae1c065fedd85d4cca2421.ctex"]
+dest_files=["res://.godot/imported/Wood.png-560407158989ea66046890a2467da816.ctex"]
 
 [params]
 

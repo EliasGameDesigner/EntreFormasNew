@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bop2148v8dyvx"
-path="res://.godot/imported/Idle-Sheet.png-2fcdbfd19f4881d315ed6c9ae4e35d53.ctex"
+uid="uid://x0akv3tmltcb"
+path="res://.godot/imported/Idle-Sheet.png-fd4f4a33933cdac4d6430c8fa9c84c74.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Mobs/Orc Crew/Orc - Shaman/Idle/Idle-Sheet.png"
-dest_files=["res://.godot/imported/Idle-Sheet.png-2fcdbfd19f4881d315ed6c9ae4e35d53.ctex"]
+dest_files=["res://.godot/imported/Idle-Sheet.png-fd4f4a33933cdac4d6430c8fa9c84c74.ctex"]
 
 [params]
 

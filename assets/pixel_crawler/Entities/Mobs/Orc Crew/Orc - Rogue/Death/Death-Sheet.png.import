@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjrps5tlrei56"
-path="res://.godot/imported/Death-Sheet.png-9b2029c51d9ff3b16a658031e0f794db.ctex"
+uid="uid://cu2l7gcra6o82"
+path="res://.godot/imported/Death-Sheet.png-43b0d2f4a7e0efb3450e7cfa9a4af69e.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Mobs/Orc Crew/Orc - Rogue/Death/Death-Sheet.png"
-dest_files=["res://.godot/imported/Death-Sheet.png-9b2029c51d9ff3b16a658031e0f794db.ctex"]
+dest_files=["res://.godot/imported/Death-Sheet.png-43b0d2f4a7e0efb3450e7cfa9a4af69e.ctex"]
 
 [params]
 

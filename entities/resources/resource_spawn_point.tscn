@@ -1,6 +1,6 @@
-﻿[gd_scene format=3 uid="uid://b5plldpqugxks"]
+[gd_scene format=3 uid="uid://b5plldpqugxks"]
 
-[ext_resource type="Script" uid="uid://bhvpion46hft1" path="res://entities/resources/resource_spawn_point.gd" id="1_kfi84"]
+[ext_resource type="Script" uid="uid://5ksns1s34cw2" path="res://entities/resources/resource_spawn_point.gd" id="1_kfi84"]
 
 [node name="resource_spawn_point" type="Marker2D" unique_id=169255825]
 script = ExtResource("1_kfi84")

@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu3k58qj0mh3o"
-path="res://.godot/imported/Idle-Sheet.png-7e7b80f3a376c13db4e39819f95015aa.ctex"
+uid="uid://c5atqbqwnyc4e"
+path="res://.godot/imported/Idle-Sheet.png-7b475d9565bc725cfe5d549532d5f525.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Npc's/Rogue/Idle/Idle-Sheet.png"
-dest_files=["res://.godot/imported/Idle-Sheet.png-7e7b80f3a376c13db4e39819f95015aa.ctex"]
+dest_files=["res://.godot/imported/Idle-Sheet.png-7b475d9565bc725cfe5d549532d5f525.ctex"]
 
 [params]
 

@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x4hm28brli2h"
-path="res://.godot/imported/Idle-Sheet.png-970c9675ec8ea6f310a53821618a39f8.ctex"
+uid="uid://du5tm45f6bte7"
+path="res://.godot/imported/Idle-Sheet.png-3b1c711d85c422a52609b66510aa280f.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Mobs/Skeleton Crew/Skeleton - Rogue/Idle/Idle-Sheet.png"
-dest_files=["res://.godot/imported/Idle-Sheet.png-970c9675ec8ea6f310a53821618a39f8.ctex"]
+dest_files=["res://.godot/imported/Idle-Sheet.png-3b1c711d85c422a52609b66510aa280f.ctex"]
 
 [params]
 

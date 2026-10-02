@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu6pgluducbvk"
-path="res://.godot/imported/Run-Sheet.png-1ca39d55abb0c381d1d7ddf86eac4c29.ctex"
+uid="uid://b4ba6uf33vayw"
+path="res://.godot/imported/Run-Sheet.png-d419228222ab96f2b28d213945178c5a.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Mobs/Skeleton Crew/Skeleton - Mage/Run/Run-Sheet.png"
-dest_files=["res://.godot/imported/Run-Sheet.png-1ca39d55abb0c381d1d7ddf86eac4c29.ctex"]
+dest_files=["res://.godot/imported/Run-Sheet.png-d419228222ab96f2b28d213945178c5a.ctex"]
 
 [params]
 

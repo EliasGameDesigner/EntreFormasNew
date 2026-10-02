@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hw3t3nd0mklb"
-path="res://.godot/imported/Death-Sheet.png-50958577db775cf6f27bf510cd210190.ctex"
+uid="uid://cbnsb55lykujq"
+path="res://.godot/imported/Death-Sheet.png-0275b82934d0e8c384e0a7c59d735c95.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Mobs/Skeleton Crew/Skeleton - Mage/Death/Death-Sheet.png"
-dest_files=["res://.godot/imported/Death-Sheet.png-50958577db775cf6f27bf510cd210190.ctex"]
+dest_files=["res://.godot/imported/Death-Sheet.png-0275b82934d0e8c384e0a7c59d735c95.ctex"]
 
 [params]
 

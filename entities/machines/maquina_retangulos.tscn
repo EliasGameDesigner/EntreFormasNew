@@ -1,4 +1,4 @@
-﻿[gd_scene format=3 uid="uid://ddlmlnxaj8jdm"]
+[gd_scene format=3 uid="uid://ddlmlnxaj8jdm"]
 
 [ext_resource type="PackedScene" uid="uid://i6n1ajayqygp" path="res://entities/machines/maquina_generica.tscn" id="1_x0krq"]
 [ext_resource type="Resource" uid="uid://dv5qmbb5xn2be" path="res://data/machines/maquinaRetangulos.tres" id="2_xifov"]

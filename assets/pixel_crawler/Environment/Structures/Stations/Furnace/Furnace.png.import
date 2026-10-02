@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coci63gjjlygn"
-path="res://.godot/imported/Furnace.png-ea1b6eb77a99fcda40f5057d5547130c.ctex"
+uid="uid://ju0uvc4yrink"
+path="res://.godot/imported/Furnace.png-583343b4345b7df19f8b11ed9230bcc7.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Structures/Stations/Furnace/Furnace.png"
-dest_files=["res://.godot/imported/Furnace.png-ea1b6eb77a99fcda40f5057d5547130c.ctex"]
+dest_files=["res://.godot/imported/Furnace.png-583343b4345b7df19f8b11ed9230bcc7.ctex"]
 
 [params]
 

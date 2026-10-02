@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3qrdtbrdj4tj"
-path="res://.godot/imported/Cooker_02.png-c51abec33fa72e4475cf4a4ccaf482a7.ctex"
+uid="uid://cro44h1xshs3c"
+path="res://.godot/imported/Cooker_02.png-8ff116ee80a2769febfbac9f24f9299f.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Structures/Stations/Cooking Station/Cooker/Cooker_02.png"
-dest_files=["res://.godot/imported/Cooker_02.png-c51abec33fa72e4475cf4a4ccaf482a7.ctex"]
+dest_files=["res://.godot/imported/Cooker_02.png-8ff116ee80a2769febfbac9f24f9299f.ctex"]
 
 [params]
 

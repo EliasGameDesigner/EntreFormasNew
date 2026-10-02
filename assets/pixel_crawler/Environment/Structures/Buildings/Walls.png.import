@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx8qhbnlheq85"
-path="res://.godot/imported/Walls.png-b0566f66d0c8b2d2798a9d0b2ef6e554.ctex"
+uid="uid://dqfq0h4oa1208"
+path="res://.godot/imported/Walls.png-c50f78102a9e4d4642d1b9460251c636.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Structures/Buildings/Walls.png"
-dest_files=["res://.godot/imported/Walls.png-b0566f66d0c8b2d2798a9d0b2ef6e554.ctex"]
+dest_files=["res://.godot/imported/Walls.png-c50f78102a9e4d4642d1b9460251c636.ctex"]
 
 [params]
 

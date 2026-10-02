@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcksf40q1fvbr"
-path="res://.godot/imported/Workbench.png-bcb0f91ea0c426611e8aecf461611416.ctex"
+uid="uid://dtkmvsrfsqx85"
+path="res://.godot/imported/Workbench.png-6beb44f3fe430485eb8681ee3730fdaf.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Structures/Stations/Workbench/Workbench.png"
-dest_files=["res://.godot/imported/Workbench.png-bcb0f91ea0c426611e8aecf461611416.ctex"]
+dest_files=["res://.godot/imported/Workbench.png-6beb44f3fe430485eb8681ee3730fdaf.ctex"]
 
 [params]
 

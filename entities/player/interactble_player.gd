@@ -16,6 +16,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if get_tree().get_first_node_in_group("modal_repair_ui") != null:
+		return
 
 		
 	if current_interactable:
@@ -26,6 +28,10 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if get_tree().get_first_node_in_group("modal_repair_ui") != null:
+		velocity = Vector2.ZERO
+		update_animation(Vector2.ZERO)
+		return
 
 		
 	var input_direction = Input.get_vector("left", "right", "up", "down")

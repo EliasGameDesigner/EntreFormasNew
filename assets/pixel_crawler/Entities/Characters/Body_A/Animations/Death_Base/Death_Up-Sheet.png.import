@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt5qcdol3g6xr"
-path="res://.godot/imported/Death_Up-Sheet.png-78277c755b78e0e17a7ca719a8f426c0.ctex"
+uid="uid://beclfagsfwcbx"
+path="res://.godot/imported/Death_Up-Sheet.png-98b5af83828b24782fa192d53939d5cd.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Characters/Body_A/Animations/Death_Base/Death_Up-Sheet.png"
-dest_files=["res://.godot/imported/Death_Up-Sheet.png-78277c755b78e0e17a7ca719a8f426c0.ctex"]
+dest_files=["res://.godot/imported/Death_Up-Sheet.png-98b5af83828b24782fa192d53939d5cd.ctex"]
 
 [params]
 

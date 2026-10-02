@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pepdgx7yvitf"
-path="res://.godot/imported/character_godot_spritesheet-removebg-preview.png-a5a874d7d8d47dedc542912d439c7f9f.ctex"
+uid="uid://bqu533g3mq6so"
+path="res://.godot/imported/character_godot_spritesheet-removebg-preview.png-b4d49f5af0a64bb84dd9fe09822660c9.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/textures/characters/character_godot_spritesheet-removebg-preview.png"
-dest_files=["res://.godot/imported/character_godot_spritesheet-removebg-preview.png-a5a874d7d8d47dedc542912d439c7f9f.ctex"]
+dest_files=["res://.godot/imported/character_godot_spritesheet-removebg-preview.png-b4d49f5af0a64bb84dd9fe09822660c9.ctex"]
 
 [params]
 

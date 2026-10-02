@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkmqw0soc8mqu"
-path="res://.godot/imported/Buraco.png-2c4ae79b12ea4854993ff92c353274df.ctex"
+uid="uid://hc35ephrw8nk"
+path="res://.godot/imported/Buraco.png-9f826a18fd6bec4348bb2dccedde8993.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/textures/environment/Buraco.png"
-dest_files=["res://.godot/imported/Buraco.png-2c4ae79b12ea4854993ff92c353274df.ctex"]
+dest_files=["res://.godot/imported/Buraco.png-9f826a18fd6bec4348bb2dccedde8993.ctex"]
 
 [params]
 

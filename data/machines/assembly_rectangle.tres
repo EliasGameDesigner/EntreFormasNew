@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AssemblyDefinition" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://data/machines/assembly_definition.gd" id="1"]
+[ext_resource type="Script" path="res://data/machines/shape_slot_data.gd" id="2"]
+[ext_resource type="Resource" path="res://data/items/shape_square.tres" id="3"]
+
+[sub_resource type="Resource" id="Slot1"]
+script = ExtResource("2")
+piece = ExtResource("3")
+target_position = Vector2(290, 140)
+spawn_position = Vector2(100, 110)
+
+[sub_resource type="Resource" id="Slot2"]
+script = ExtResource("2")
+piece = ExtResource("3")
+target_position = Vector2(390, 140)
+target_rotation_degrees = 0.0
+spawn_position = Vector2(560, 170)
+
+[resource]
+script = ExtResource("1")
+title = "Retângulo"
+instructions = "Una dois quadrados para formar um retângulo (A = base × altura)."
+slots = Array[ExtResource("2")]([SubResource("Slot1"), SubResource("Slot2")])

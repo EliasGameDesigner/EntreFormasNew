@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c103i82xktgdx"
-path="res://.godot/imported/Death-Sheet.png-33fa1c1efab7fa35b46d4d48ad428b7d.ctex"
+uid="uid://cvb5kvbuh37od"
+path="res://.godot/imported/Death-Sheet.png-a647225efd2c86c0b1a3e60516d7b38d.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Npc's/Rogue/Death/Death-Sheet.png"
-dest_files=["res://.godot/imported/Death-Sheet.png-33fa1c1efab7fa35b46d4d48ad428b7d.ctex"]
+dest_files=["res://.godot/imported/Death-Sheet.png-a647225efd2c86c0b1a3e60516d7b38d.ctex"]
 
 [params]
 

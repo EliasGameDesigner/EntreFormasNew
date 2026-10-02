@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddqvcte0drw6l"
-path="res://.godot/imported/Bone.png-906fad1150193544291da959f60f8e0b.ctex"
+uid="uid://bohbn60h4quwh"
+path="res://.godot/imported/Bone.png-f60238b1d274dcd6b2699bbb247edf06.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Weapons/Bone/Bone.png"
-dest_files=["res://.godot/imported/Bone.png-906fad1150193544291da959f60f8e0b.ctex"]
+dest_files=["res://.godot/imported/Bone.png-f60238b1d274dcd6b2699bbb247edf06.ctex"]
 
 [params]
 

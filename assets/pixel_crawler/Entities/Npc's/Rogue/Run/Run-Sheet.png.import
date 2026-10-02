@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7eqoc1xf6uu0"
-path="res://.godot/imported/Run-Sheet.png-ecfeb95547d74de5b2ef3832a0e54d09.ctex"
+uid="uid://crkv4t41hf3f8"
+path="res://.godot/imported/Run-Sheet.png-b86f738f0b73fad1f0dde3bb9151a379.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Npc's/Rogue/Run/Run-Sheet.png"
-dest_files=["res://.godot/imported/Run-Sheet.png-ecfeb95547d74de5b2ef3832a0e54d09.ctex"]
+dest_files=["res://.godot/imported/Run-Sheet.png-b86f738f0b73fad1f0dde3bb9151a379.ctex"]
 
 [params]
 

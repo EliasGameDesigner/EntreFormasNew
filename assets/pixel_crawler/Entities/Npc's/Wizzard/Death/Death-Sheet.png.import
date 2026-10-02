@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3u20utsjcox6"
-path="res://.godot/imported/Death-Sheet.png-7ec96982491f471a0ac8f068f649e7b4.ctex"
+uid="uid://dr80vycomiqww"
+path="res://.godot/imported/Death-Sheet.png-fc86c16560807845d5747528b11b0351.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Npc's/Wizzard/Death/Death-Sheet.png"
-dest_files=["res://.godot/imported/Death-Sheet.png-7ec96982491f471a0ac8f068f649e7b4.ctex"]
+dest_files=["res://.godot/imported/Death-Sheet.png-fc86c16560807845d5747528b11b0351.ctex"]
 
 [params]
 

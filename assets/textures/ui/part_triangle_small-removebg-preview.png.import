@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b66itvjhm4l4i"
-path="res://.godot/imported/part_triangle_small-removebg-preview.png-97378a93e9e253b12a012c1da035ed28.ctex"
+uid="uid://dhowdodg75n47"
+path="res://.godot/imported/part_triangle_small-removebg-preview.png-c5a3f73bdd9bc410a741a87c55b5ba30.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/textures/ui/part_triangle_small-removebg-preview.png"
-dest_files=["res://.godot/imported/part_triangle_small-removebg-preview.png-97378a93e9e253b12a012c1da035ed28.ctex"]
+dest_files=["res://.godot/imported/part_triangle_small-removebg-preview.png-c5a3f73bdd9bc410a741a87c55b5ba30.ctex"]
 
 [params]
 

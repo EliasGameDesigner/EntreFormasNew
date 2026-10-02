@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce12bwpnqur60"
-path="res://.godot/imported/native_rug_16x16-removebg-preview.png-76a4a6894702e7f2ce3e30d352c0c91b.ctex"
+uid="uid://bplqgqo722aic"
+path="res://.godot/imported/native_rug_16x16-removebg-preview.png-1502cc5add32c5613b871920f9ec2cb9.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/textures/props/native_rug_16x16-removebg-preview.png"
-dest_files=["res://.godot/imported/native_rug_16x16-removebg-preview.png-76a4a6894702e7f2ce3e30d352c0c91b.ctex"]
+dest_files=["res://.godot/imported/native_rug_16x16-removebg-preview.png-1502cc5add32c5613b871920f9ec2cb9.ctex"]
 
 [params]
 

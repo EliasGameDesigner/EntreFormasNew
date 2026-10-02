@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b03x463kc1r2k"
-path="res://.godot/imported/Run-Sheet.png-10e9bf1e57be630fb809d6b6971e6ef7.ctex"
+uid="uid://cut4vg2wbl65"
+path="res://.godot/imported/Run-Sheet.png-5aa0bdac4658c2ed681c22eaacbe2a6b.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Mobs/Orc Crew/Orc/Run/Run-Sheet.png"
-dest_files=["res://.godot/imported/Run-Sheet.png-10e9bf1e57be630fb809d6b6971e6ef7.ctex"]
+dest_files=["res://.godot/imported/Run-Sheet.png-5aa0bdac4658c2ed681c22eaacbe2a6b.ctex"]
 
 [params]
 

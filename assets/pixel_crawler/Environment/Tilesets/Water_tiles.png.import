@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbhw4twuw53vo"
-path="res://.godot/imported/Water_tiles.png-af5a214c13d526a16fd63ff4cda710f6.ctex"
+uid="uid://q1q42qcpmcc0"
+path="res://.godot/imported/Water_tiles.png-0bb452d9c21d09348f5ecfb058008dfa.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Tilesets/Water_tiles.png"
-dest_files=["res://.godot/imported/Water_tiles.png-af5a214c13d526a16fd63ff4cda710f6.ctex"]
+dest_files=["res://.godot/imported/Water_tiles.png-0bb452d9c21d09348f5ecfb058008dfa.ctex"]
 
 [params]
 

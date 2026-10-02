@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqacb3rt1mkrp"
-path="res://.godot/imported/Idle_Down-Sheet.png-236311f979ad5ec98ba6beb749e862df.ctex"
+uid="uid://iftmnphw80e2"
+path="res://.godot/imported/Idle_Down-Sheet.png-89d0ed2445baa6563c5524589232357d.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Characters/Body_A/Animations/Idle_Base/Idle_Down-Sheet.png"
-dest_files=["res://.godot/imported/Idle_Down-Sheet.png-236311f979ad5ec98ba6beb749e862df.ctex"]
+dest_files=["res://.godot/imported/Idle_Down-Sheet.png-89d0ed2445baa6563c5524589232357d.ctex"]
 
 [params]
 

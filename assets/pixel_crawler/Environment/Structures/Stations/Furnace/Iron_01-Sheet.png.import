@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpewrhcocvjlp"
-path="res://.godot/imported/Iron_01-Sheet.png-b0e2cf2896a634896f84bbc1dd777190.ctex"
+uid="uid://cgr2ghe6abyr0"
+path="res://.godot/imported/Iron_01-Sheet.png-a354dbcf73f845da9d142f060e33b85d.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Structures/Stations/Furnace/Iron_01-Sheet.png"
-dest_files=["res://.godot/imported/Iron_01-Sheet.png-b0e2cf2896a634896f84bbc1dd777190.ctex"]
+dest_files=["res://.godot/imported/Iron_01-Sheet.png-a354dbcf73f845da9d142f060e33b85d.ctex"]
 
 [params]
 

@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw3vvhvkd7phg"
-path="res://.godot/imported/Death-Sheet.png-70da20ac249a1296b223d0a659fe4761.ctex"
+uid="uid://mgjsqvgfeauc"
+path="res://.godot/imported/Death-Sheet.png-a89ed21a23f60c09e6c18c0688ec37d0.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Mobs/Orc Crew/Orc - Warrior/Death/Death-Sheet.png"
-dest_files=["res://.godot/imported/Death-Sheet.png-70da20ac249a1296b223d0a659fe4761.ctex"]
+dest_files=["res://.godot/imported/Death-Sheet.png-a89ed21a23f60c09e6c18c0688ec37d0.ctex"]
 
 [params]
 

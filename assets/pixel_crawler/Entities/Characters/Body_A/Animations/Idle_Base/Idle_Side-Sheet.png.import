@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b172ob87fiw6"
-path="res://.godot/imported/Idle_Side-Sheet.png-61f1df4ebaee07f541ad169ef6581961.ctex"
+uid="uid://dxm7ww7dhyrej"
+path="res://.godot/imported/Idle_Side-Sheet.png-a2777390f53162619d8ac8b225bd5185.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Characters/Body_A/Animations/Idle_Base/Idle_Side-Sheet.png"
-dest_files=["res://.godot/imported/Idle_Side-Sheet.png-61f1df4ebaee07f541ad169ef6581961.ctex"]
+dest_files=["res://.godot/imported/Idle_Side-Sheet.png-a2777390f53162619d8ac8b225bd5185.ctex"]
 
 [params]
 

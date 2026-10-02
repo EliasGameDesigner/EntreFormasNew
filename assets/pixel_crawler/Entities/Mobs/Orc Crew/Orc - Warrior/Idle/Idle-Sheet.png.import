@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bga5s1f7e5ivm"
-path="res://.godot/imported/Idle-Sheet.png-26b1ed13d650a420e524334e65426626.ctex"
+uid="uid://ciepsn8s4vkmu"
+path="res://.godot/imported/Idle-Sheet.png-d9163694a7c2083c78d825ceb07af98b.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Mobs/Orc Crew/Orc - Warrior/Idle/Idle-Sheet.png"
-dest_files=["res://.godot/imported/Idle-Sheet.png-26b1ed13d650a420e524334e65426626.ctex"]
+dest_files=["res://.godot/imported/Idle-Sheet.png-d9163694a7c2083c78d825ceb07af98b.ctex"]
 
 [params]
 

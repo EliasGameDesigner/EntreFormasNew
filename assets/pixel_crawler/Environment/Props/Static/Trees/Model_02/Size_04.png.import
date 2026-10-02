@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db78bvv0lx3v6"
-path="res://.godot/imported/Size_04.png-e2f32e5a0989c83eb32ded92d75da1e9.ctex"
+uid="uid://cjxckawrrpf07"
+path="res://.godot/imported/Size_04.png-14c1c9b6eaf7dc050e06f8d54c64fa7a.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Props/Static/Trees/Model_02/Size_04.png"
-dest_files=["res://.godot/imported/Size_04.png-e2f32e5a0989c83eb32ded92d75da1e9.ctex"]
+dest_files=["res://.godot/imported/Size_04.png-14c1c9b6eaf7dc050e06f8d54c64fa7a.ctex"]
 
 [params]
 

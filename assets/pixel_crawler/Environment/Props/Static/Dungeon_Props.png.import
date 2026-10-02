@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djy2xfkj7daqo"
-path="res://.godot/imported/Dungeon_Props.png-7bcff3741d7b87ad8f8346e326a18954.ctex"
+uid="uid://r5cs7p8mkpq4"
+path="res://.godot/imported/Dungeon_Props.png-5694b8cfd9f84981b1b4cc8128d01a96.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Props/Static/Dungeon_Props.png"
-dest_files=["res://.godot/imported/Dungeon_Props.png-7bcff3741d7b87ad8f8346e326a18954.ctex"]
+dest_files=["res://.godot/imported/Dungeon_Props.png-5694b8cfd9f84981b1b4cc8128d01a96.ctex"]
 
 [params]
 

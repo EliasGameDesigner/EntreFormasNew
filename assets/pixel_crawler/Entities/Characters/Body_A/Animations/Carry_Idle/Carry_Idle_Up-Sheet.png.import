@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0n2yo5vf265e"
-path="res://.godot/imported/Carry_Idle_Up-Sheet.png-a1191a03a4e6246eb91a7477d5255257.ctex"
+uid="uid://c42ccs25nko5v"
+path="res://.godot/imported/Carry_Idle_Up-Sheet.png-529e2e623e6adacddce0300651851703.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Characters/Body_A/Animations/Carry_Idle/Carry_Idle_Up-Sheet.png"
-dest_files=["res://.godot/imported/Carry_Idle_Up-Sheet.png-a1191a03a4e6246eb91a7477d5255257.ctex"]
+dest_files=["res://.godot/imported/Carry_Idle_Up-Sheet.png-529e2e623e6adacddce0300651851703.ctex"]
 
 [params]
 

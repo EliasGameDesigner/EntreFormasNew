@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8hre1fjvvc26"
-path="res://.godot/imported/machine_godot_spritesheet-removebg-preview.png-e445bc9b8aa835ce208344aa6176479c.ctex"
+uid="uid://n7q0yb2r68fl"
+path="res://.godot/imported/machine_godot_spritesheet-removebg-preview.png-c9a9151e864ed9469337821aa6117013.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/textures/machines/machine_godot_spritesheet-removebg-preview.png"
-dest_files=["res://.godot/imported/machine_godot_spritesheet-removebg-preview.png-e445bc9b8aa835ce208344aa6176479c.ctex"]
+dest_files=["res://.godot/imported/machine_godot_spritesheet-removebg-preview.png-c9a9151e864ed9469337821aa6117013.ctex"]
 
 [params]
 

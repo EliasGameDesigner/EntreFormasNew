@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cal80rp43plgs"
-path="res://.godot/imported/Shadows.png-48d31898db2736039b50bb5849f3d9da.ctex"
+uid="uid://cvdedfot4y8fi"
+path="res://.godot/imported/Shadows.png-0a4e90d59c6f87c0790eb863ac48e139.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Props/Static/Shadows.png"
-dest_files=["res://.godot/imported/Shadows.png-48d31898db2736039b50bb5849f3d9da.ctex"]
+dest_files=["res://.godot/imported/Shadows.png-0a4e90d59c6f87c0790eb863ac48e139.ctex"]
 
 [params]
 

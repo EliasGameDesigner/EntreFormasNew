@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8l1hb1n3xcb8"
-path="res://.godot/imported/Bricks_03-Sheet.png-1d6d70f722724d6bde8638c947ce7f6c.ctex"
+uid="uid://b6swl5k5s2meh"
+path="res://.godot/imported/Bricks_03-Sheet.png-e73ea29900728ff127d7452a271f76bd.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Structures/Stations/Furnace/Bricks_03-Sheet.png"
-dest_files=["res://.godot/imported/Bricks_03-Sheet.png-1d6d70f722724d6bde8638c947ce7f6c.ctex"]
+dest_files=["res://.godot/imported/Bricks_03-Sheet.png-e73ea29900728ff127d7452a271f76bd.ctex"]
 
 [params]
 

@@ -1,8 +1,7 @@
-﻿[gd_scene format=3 uid="uid://bhgl8h6f3en3g"]
+[gd_scene format=3 uid="uid://bhgl8h6f3en3g"]
 
 [ext_resource type="Script" uid="uid://cuv6tbll1deno" path="res://ui/machine_repair/machine_repair_ui.gd" id="1_g631o"]
-[ext_resource type="Texture2D" uid="uid://c13a8oy1ptx1f" path="res://assets/textures/ui/button_repair_small-removebg-preview.png" id="2_83muf"]
-[ext_resource type="Script" path="res://ui/machine_repair/shape_assembly_board.gd" id="3_board"]
+[ext_resource type="PackedScene" path="res://ui/machine_repair/shape_assembly_board.tscn" id="3_board"]
 
 [node name="UiRepararMaquina" type="CanvasLayer"]
 layer = 30
@@ -29,13 +28,13 @@ color = Color(0.03, 0.04, 0.07, 0.72)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.38
+anchor_top = 0.0
 anchor_right = 0.5
-anchor_bottom = 0.38
+anchor_bottom = 0.0
 offset_left = -380.0
-offset_top = -215.0
+offset_top = 16.0
 offset_right = 380.0
-offset_bottom = 195.0
+offset_bottom = 490.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -81,10 +80,10 @@ horizontal_alignment = 1
 [node name="AssemblyBoardCenter" type="CenterContainer" parent="Control/MainPanel/MarginContainer/VBoxContainer/BlueprintContainer"]
 layout_mode = 2
 
-[node name="ShapeAssemblyBoard" type="Control" parent="Control/MainPanel/MarginContainer/VBoxContainer/BlueprintContainer/AssemblyBoardCenter"]
-custom_minimum_size = Vector2(460, 210)
+[node name="ShapeAssemblyBoard" parent="Control/MainPanel/MarginContainer/VBoxContainer/BlueprintContainer/AssemblyBoardCenter" instance=ExtResource("3_board")]
+custom_minimum_size = Vector2(680, 280)
 layout_mode = 2
-script = ExtResource("3_board")
+populate_on_ready = false
 
 [node name="ActionContainer" type="VBoxContainer" parent="Control/MainPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -102,13 +101,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Custo Adicional: $0"
 horizontal_alignment = 1
-
-[node name="RepairButton" type="Button" parent="Control/MainPanel/MarginContainer/VBoxContainer/ActionContainer"]
-custom_minimum_size = Vector2(280, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 14
-text = "✨ CONSERTAR MÁQUINA ✨"
 
 [node name="BottomInventoryPanel" type="PanelContainer" parent="Control"]
 layout_mode = 1
@@ -139,7 +131,7 @@ theme_override_constants/separation = 6
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85, 0.92, 1, 1)
 theme_override_font_sizes/font_size = 12
-text = "📦 SEU INVENTÁRIO — Arraste as peças até a mesa de montagem acima ou clique sobre elas para encaixar:"
+text = "📦 SEU INVENTÁRIO — Arraste as peças até a mesa de montagem acima ou clique para retirar; depois posicione e gire com R:"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/BottomInventoryPanel/MarginContainer/VBoxContainer"]

@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qemj2uaiwbe5"
-path="res://.godot/imported/Hit_Down-Sheet.png-910126d5f8e225a7cf28d6ba899fee44.ctex"
+uid="uid://cgtyfotell8ry"
+path="res://.godot/imported/Hit_Down-Sheet.png-c04ba2308b69b1479852943a0b63ea0d.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Characters/Body_A/Animations/Hit_Base/Hit_Down-Sheet.png"
-dest_files=["res://.godot/imported/Hit_Down-Sheet.png-910126d5f8e225a7cf28d6ba899fee44.ctex"]
+dest_files=["res://.godot/imported/Hit_Down-Sheet.png-c04ba2308b69b1479852943a0b63ea0d.ctex"]
 
 [params]
 

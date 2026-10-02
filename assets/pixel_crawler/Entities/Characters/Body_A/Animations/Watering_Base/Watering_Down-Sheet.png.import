@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c52r36s5cav2h"
-path="res://.godot/imported/Watering_Down-Sheet.png-1fed6ba1abb9e530d096d73c6d79d3a5.ctex"
+uid="uid://cl287xvin16f8"
+path="res://.godot/imported/Watering_Down-Sheet.png-d5c6c7a0948224931ebfca5f8a0a2526.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Characters/Body_A/Animations/Watering_Base/Watering_Down-Sheet.png"
-dest_files=["res://.godot/imported/Watering_Down-Sheet.png-1fed6ba1abb9e530d096d73c6d79d3a5.ctex"]
+dest_files=["res://.godot/imported/Watering_Down-Sheet.png-d5c6c7a0948224931ebfca5f8a0a2526.ctex"]
 
 [params]
 

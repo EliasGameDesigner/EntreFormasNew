@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt7beo4056lt7"
-path="res://.godot/imported/Alchemy_Table_01-Sheet.png-3f922c5c4651217d3eb28dbaa318f458.ctex"
+uid="uid://dwa5vv0kte8hp"
+path="res://.godot/imported/Alchemy_Table_01-Sheet.png-f88179ada64d48e76dbe554d671036be.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Structures/Stations/Alchemy/Alchemy_Table_01-Sheet.png"
-dest_files=["res://.godot/imported/Alchemy_Table_01-Sheet.png-3f922c5c4651217d3eb28dbaa318f458.ctex"]
+dest_files=["res://.godot/imported/Alchemy_Table_01-Sheet.png-f88179ada64d48e76dbe554d671036be.ctex"]
 
 [params]
 

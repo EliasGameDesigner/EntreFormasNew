@@ -1,10 +1,9 @@
-﻿[gd_resource type="Resource" script_class="MachineData" format=3 uid="uid://dv5qmbb5xn2be"]
+[gd_resource type="Resource" script_class="MachineData" format=3 uid="uid://dv5qmbb5xn2be"]
 
-[ext_resource type="Script" uid="uid://dcgmc1lmiax5g" path="res://data/items/item_data.gd" id="1_cjh38"]
 [ext_resource type="Resource" uid="uid://d38ijgrynw4b" path="res://data/items/itemRetangulo.tres" id="1_jbtqf"]
 [ext_resource type="Script" uid="uid://c4ktufjeq5rsn" path="res://data/machines/machine_data.gd" id="2_jbtqf"]
-[ext_resource type="Texture2D" uid="uid://cugxryim4fri3" path="res://assets/textures/ui/slot_rectangle_small-removebg-preview.png" id="2_x2q80"]
-[ext_resource type="Resource" uid="uid://c2eos4qwghfkv" path="res://data/items/itemQuadrado.tres" id="4_x2q80"]
+
+[ext_resource type="Resource" path="res://data/machines/assembly_rectangle.tres" id="5_assembly"]
 
 [resource]
 script = ExtResource("2_jbtqf")
@@ -12,6 +11,6 @@ machine_name = "Maquina de Retangulos"
 cost = 200
 repair_cash_cost = 0
 produced_item = ExtResource("1_jbtqf")
-required_items = Array[ExtResource("1_cjh38")]([ExtResource("4_x2q80"), ExtResource("4_x2q80")])
-repair_image = ExtResource("2_x2q80")
 metadata/_custom_type_script = "uid://c4ktufjeq5rsn"
+
+repair_assembly = ExtResource("5_assembly")

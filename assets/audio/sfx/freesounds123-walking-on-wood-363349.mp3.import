@@ -1,14 +1,14 @@
-﻿[remap]
+[remap]
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://dne5vvgufy4rx"
-path="res://.godot/imported/freesounds123-walking-on-wood-363349.mp3-de68df60c271e394c465be8085dae95f.mp3str"
+uid="uid://dfg4r6iq5r5k0"
+path="res://.godot/imported/freesounds123-walking-on-wood-363349.mp3-fe444a1e1732fd122b5dc2a8950a50e8.mp3str"
 
 [deps]
 
 source_file="res://assets/audio/sfx/freesounds123-walking-on-wood-363349.mp3"
-dest_files=["res://.godot/imported/freesounds123-walking-on-wood-363349.mp3-de68df60c271e394c465be8085dae95f.mp3str"]
+dest_files=["res://.godot/imported/freesounds123-walking-on-wood-363349.mp3-fe444a1e1732fd122b5dc2a8950a50e8.mp3str"]
 
 [params]
 

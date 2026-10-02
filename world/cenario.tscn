@@ -1,14 +1,14 @@
-﻿[gd_scene format=4 uid="uid://bjmjpkifoap2r"]
+[gd_scene format=4 uid="uid://bjmjpkifoap2r"]
 
 [ext_resource type="Script" uid="uid://0wxc2ls4wyjt" path="res://world/tocarMusica.gd" id="1_5krud"]
 [ext_resource type="PackedScene" uid="uid://dhgkvfnf4m00e" path="res://entities/player/player.tscn" id="1_xwuul"]
 [ext_resource type="PackedScene" uid="uid://c63tnb17ty6dm" path="res://entities/machines/maquina_triangulos.tscn" id="5_0nnsg"]
 [ext_resource type="PackedScene" uid="uid://ddlmlnxaj8jdm" path="res://entities/machines/maquina_retangulos.tscn" id="6_0nnsg"]
-[ext_resource type="Texture2D" uid="uid://bx8qhbnlheq85" path="res://assets/pixel_crawler/Environment/Structures/Buildings/Walls.png" id="7_d7kam"]
-[ext_resource type="Texture2D" uid="uid://cjjygs2s35seo" path="res://assets/pixel_crawler/Environment/Props/Static/Trees/Model_01/Size_02.png" id="7_mqnm2"]
+[ext_resource type="Texture2D" uid="uid://dqfq0h4oa1208" path="res://assets/pixel_crawler/Environment/Structures/Buildings/Walls.png" id="7_d7kam"]
+[ext_resource type="Texture2D" uid="uid://coat8fau1ejoi" path="res://assets/pixel_crawler/Environment/Props/Static/Trees/Model_01/Size_02.png" id="7_mqnm2"]
 [ext_resource type="PackedScene" uid="uid://c0mdlghv5mibg" path="res://entities/props/shop_node.tscn" id="7_vkdxw"]
 [ext_resource type="PackedScene" uid="uid://br7hxrvmkn8uc" path="res://entities/resources/recurso_Arvore.tscn" id="8_1tdcj"]
-[ext_resource type="Texture2D" uid="uid://dh6o2mdds5nm" path="res://assets/pixel_crawler/Environment/Structures/Buildings/Floors.png" id="8_j14hu"]
+[ext_resource type="Texture2D" uid="uid://m5ky7pli6dml" path="res://assets/pixel_crawler/Environment/Structures/Buildings/Floors.png" id="8_j14hu"]
 [ext_resource type="PackedScene" uid="uid://df26w8ak65t36" path="res://entities/tasks/tarefa_generica.tscn" id="8_mqnm2"]
 [ext_resource type="Resource" uid="uid://d38ijgrynw4b" path="res://data/items/itemRetangulo.tres" id="9_1tdcj"]
 [ext_resource type="PackedScene" uid="uid://b5plldpqugxks" path="res://entities/resources/resource_spawn_point.tscn" id="9_d7kam"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://drnrdu1hmmcme" path="res://entities/machines/maquina_quadrados.tscn" id="10_1tdcj"]
 [ext_resource type="PackedScene" uid="uid://dicxn7w6tp8m4" path="res://entities/tasks/tarefa_conserta_buraco.tscn" id="14_ecuka"]
 [ext_resource type="PackedScene" uid="uid://csxk2rx5cnv6l" path="res://entities/props/Tapete.tscn" id="15_mitsp"]
-[ext_resource type="AudioStream" uid="uid://dut7kdbkdyrr2" path="res://assets/audio/music/ncone-soft-piano-loop-192098.mp3" id="17_sp72b"]
+[ext_resource type="AudioStream" uid="uid://bspvu5fy41j7w" path="res://assets/audio/music/ncone-soft-piano-loop-192098.mp3" id="17_sp72b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j14hu"]
 texture = ExtResource("7_d7kam")
@@ -1047,7 +1047,7 @@ sources/0 = SubResource("TileSetAtlasSource_j14hu")
 sources/1 = SubResource("TileSetAtlasSource_ecuka")
 metadata/_better_terrain = {
 &"decoration": ["Decoration", Color(0.4117647, 0.4117647, 0.4117647, 1), 3, [], {
-&"path": "res://addons/better-terrain/icons/Decoration.svg"
+&"path": ""
 }],
 &"terrains": [["test", Color(0.7027022, 0.36219537, 0.07587201, 1), 0, [], {
 &"path": ""

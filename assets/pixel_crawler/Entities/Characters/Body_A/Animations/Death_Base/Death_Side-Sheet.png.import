@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjp55uisirjft"
-path="res://.godot/imported/Death_Side-Sheet.png-189c719f042b0ee3ebd288d41c2ac5ad.ctex"
+uid="uid://l8je78cjgy6a"
+path="res://.godot/imported/Death_Side-Sheet.png-d11b1d2413fe4e5ada70adaa96016499.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Characters/Body_A/Animations/Death_Base/Death_Side-Sheet.png"
-dest_files=["res://.godot/imported/Death_Side-Sheet.png-189c719f042b0ee3ebd288d41c2ac5ad.ctex"]
+dest_files=["res://.godot/imported/Death_Side-Sheet.png-d11b1d2413fe4e5ada70adaa96016499.ctex"]
 
 [params]
 

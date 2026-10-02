@@ -1,14 +1,14 @@
-﻿[remap]
+[remap]
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://dut7kdbkdyrr2"
-path="res://.godot/imported/ncone-soft-piano-loop-192098.mp3-8e4cc48de0f60e001fe954fb4cdeee16.mp3str"
+uid="uid://bspvu5fy41j7w"
+path="res://.godot/imported/ncone-soft-piano-loop-192098.mp3-377f090ac5fecb52874d767c1b30457d.mp3str"
 
 [deps]
 
 source_file="res://assets/audio/music/ncone-soft-piano-loop-192098.mp3"
-dest_files=["res://.godot/imported/ncone-soft-piano-loop-192098.mp3-8e4cc48de0f60e001fe954fb4cdeee16.mp3str"]
+dest_files=["res://.godot/imported/ncone-soft-piano-loop-192098.mp3-377f090ac5fecb52874d767c1b30457d.mp3str"]
 
 [params]
 

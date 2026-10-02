@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtj5i3yucr7th"
-path="res://.godot/imported/Death-Sheet.png-c878515aa47d879faaeab0506a886468.ctex"
+uid="uid://e6sp2588y7jj"
+path="res://.godot/imported/Death-Sheet.png-8d5ca54c0d9006bc4454ff5c364166e5.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Mobs/Skeleton Crew/Skeleton - Rogue/Death/Death-Sheet.png"
-dest_files=["res://.godot/imported/Death-Sheet.png-c878515aa47d879faaeab0506a886468.ctex"]
+dest_files=["res://.godot/imported/Death-Sheet.png-8d5ca54c0d9006bc4454ff5c364166e5.ctex"]
 
 [params]
 

@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv6pi51gqi178"
-path="res://.godot/imported/Roofs.png-072381beb5867fbf9eccf46e1f8b85b2.ctex"
+uid="uid://dnp10csgeo00c"
+path="res://.godot/imported/Roofs.png-a4831e980cd6e9fefd2882b1efc26a79.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Structures/Buildings/Roofs.png"
-dest_files=["res://.godot/imported/Roofs.png-072381beb5867fbf9eccf46e1f8b85b2.ctex"]
+dest_files=["res://.godot/imported/Roofs.png-a4831e980cd6e9fefd2882b1efc26a79.ctex"]
 
 [params]
 

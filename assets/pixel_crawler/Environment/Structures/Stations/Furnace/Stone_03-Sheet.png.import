@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7twxlhbsbpd3"
-path="res://.godot/imported/Stone_03-Sheet.png-a3d60266018ebc8f1e968eae7a46a0d9.ctex"
+uid="uid://c7ujhccxwn6oc"
+path="res://.godot/imported/Stone_03-Sheet.png-492d8244d6ea0d419d9f45d88c743c53.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Structures/Stations/Furnace/Stone_03-Sheet.png"
-dest_files=["res://.godot/imported/Stone_03-Sheet.png-a3d60266018ebc8f1e968eae7a46a0d9.ctex"]
+dest_files=["res://.godot/imported/Stone_03-Sheet.png-492d8244d6ea0d419d9f45d88c743c53.ctex"]
 
 [params]
 

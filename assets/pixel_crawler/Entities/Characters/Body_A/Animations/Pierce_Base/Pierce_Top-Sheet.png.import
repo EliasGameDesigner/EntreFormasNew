@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cafe3iwuyb2uk"
-path="res://.godot/imported/Pierce_Top-Sheet.png-f91696cd6135fe82ec5b48b848049e72.ctex"
+uid="uid://d2r4oqckyaeyn"
+path="res://.godot/imported/Pierce_Top-Sheet.png-779369672171549ce698f15b9e096ca9.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Characters/Body_A/Animations/Pierce_Base/Pierce_Top-Sheet.png"
-dest_files=["res://.godot/imported/Pierce_Top-Sheet.png-f91696cd6135fe82ec5b48b848049e72.ctex"]
+dest_files=["res://.godot/imported/Pierce_Top-Sheet.png-779369672171549ce698f15b9e096ca9.ctex"]
 
 [params]
 

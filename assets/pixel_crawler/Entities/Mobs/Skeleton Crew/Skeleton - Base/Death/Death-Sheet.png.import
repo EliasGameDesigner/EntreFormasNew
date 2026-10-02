@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwx6qp4cjpgt7"
-path="res://.godot/imported/Death-Sheet.png-1fa2ff798db4fd0a900d423eca532ded.ctex"
+uid="uid://g64or0xeetj1"
+path="res://.godot/imported/Death-Sheet.png-cf72e15c048b8207b9e3f8a7c1f945ec.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Mobs/Skeleton Crew/Skeleton - Base/Death/Death-Sheet.png"
-dest_files=["res://.godot/imported/Death-Sheet.png-1fa2ff798db4fd0a900d423eca532ded.ctex"]
+dest_files=["res://.godot/imported/Death-Sheet.png-cf72e15c048b8207b9e3f8a7c1f945ec.ctex"]
 
 [params]
 

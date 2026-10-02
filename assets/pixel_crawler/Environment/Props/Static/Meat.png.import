@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxj6k43boupjd"
-path="res://.godot/imported/Meat.png-91242c40e76cbe8da3e06ebe1cd48b6a.ctex"
+uid="uid://du4owenymusws"
+path="res://.godot/imported/Meat.png-5eb46d28d8cef452fe098c476d4eaaea.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Props/Static/Meat.png"
-dest_files=["res://.godot/imported/Meat.png-91242c40e76cbe8da3e06ebe1cd48b6a.ctex"]
+dest_files=["res://.godot/imported/Meat.png-5eb46d28d8cef452fe098c476d4eaaea.ctex"]
 
 [params]
 

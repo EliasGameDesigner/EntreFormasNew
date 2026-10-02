@@ -1,6 +1,6 @@
-﻿[gd_scene format=3 uid="uid://dpwnd6ynb1hgm"]
+[gd_scene format=3 uid="uid://dpwnd6ynb1hgm"]
 
-[ext_resource type="Script" uid="uid://dy60bwyixwr54" path="res://ui/hud/game_ui.gd" id="1_25t0u"]
+[ext_resource type="Script" uid="uid://c088jkf02ceil" path="res://ui/hud/game_ui.gd" id="1_25t0u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_25t0u"]
 font_color = Color(1, 1, 0, 1)

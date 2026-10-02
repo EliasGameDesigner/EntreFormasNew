@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hm30s6kggm6w"
-path="res://.godot/imported/Resources.png-7bfd0163e7bd66ef723ed4eccbaec324.ctex"
+uid="uid://xe8qrpkc327"
+path="res://.godot/imported/Resources.png-ad22d41901d60bc5d21f9d3ccedb0fe3.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Props/Static/Resources.png"
-dest_files=["res://.godot/imported/Resources.png-7bfd0163e7bd66ef723ed4eccbaec324.ctex"]
+dest_files=["res://.godot/imported/Resources.png-ad22d41901d60bc5d21f9d3ccedb0fe3.ctex"]
 
 [params]
 

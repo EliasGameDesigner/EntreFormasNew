@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0g05uqigv5a0"
-path="res://.godot/imported/part_square_small-removebg-preview.png-755b7137ae38c21416300d0345ea47b2.ctex"
+uid="uid://2avslt5ef6du"
+path="res://.godot/imported/part_square_small-removebg-preview.png-f1637c1c0eda03d6e232ca352dc7d208.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/textures/ui/part_square_small-removebg-preview.png"
-dest_files=["res://.godot/imported/part_square_small-removebg-preview.png-755b7137ae38c21416300d0345ea47b2.ctex"]
+dest_files=["res://.godot/imported/part_square_small-removebg-preview.png-f1637c1c0eda03d6e232ca352dc7d208.ctex"]
 
 [params]
 

@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgrs3lmwcq3yf"
-path="res://.godot/imported/Pan_05-Sheet.png-f51e102db61220463753e9695a7e1816.ctex"
+uid="uid://caylg04sec30p"
+path="res://.godot/imported/Pan_05-Sheet.png-77db312f25d78579845bc4d675d8028a.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Props/Animated/Pan_05-Sheet.png"
-dest_files=["res://.godot/imported/Pan_05-Sheet.png-f51e102db61220463753e9695a7e1816.ctex"]
+dest_files=["res://.godot/imported/Pan_05-Sheet.png-77db312f25d78579845bc4d675d8028a.ctex"]
 
 [params]
 

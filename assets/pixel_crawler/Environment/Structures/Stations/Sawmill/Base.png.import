@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2vv6lwsrp02m"
-path="res://.godot/imported/Base.png-4c8b8fab83019b34d8b97e87de38d64d.ctex"
+uid="uid://bn1cm10ylceal"
+path="res://.godot/imported/Base.png-de1cfbec26a012e16b829f9331c44554.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Structures/Stations/Sawmill/Base.png"
-dest_files=["res://.godot/imported/Base.png-4c8b8fab83019b34d8b97e87de38d64d.ctex"]
+dest_files=["res://.godot/imported/Base.png-de1cfbec26a012e16b829f9331c44554.ctex"]
 
 [params]
 

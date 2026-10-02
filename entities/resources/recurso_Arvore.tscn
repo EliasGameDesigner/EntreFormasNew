@@ -1,7 +1,7 @@
-﻿[gd_scene format=3 uid="uid://br7hxrvmkn8uc"]
+[gd_scene format=3 uid="uid://br7hxrvmkn8uc"]
 
 [ext_resource type="PackedScene" uid="uid://83cu4rcse4ux" path="res://entities/resources/recurso_generico.tscn" id="1_noi7v"]
-[ext_resource type="Texture2D" uid="uid://cjjygs2s35seo" path="res://assets/pixel_crawler/Environment/Props/Static/Trees/Model_01/Size_02.png" id="2_ahs0t"]
+[ext_resource type="Texture2D" uid="uid://coat8fau1ejoi" path="res://assets/pixel_crawler/Environment/Props/Static/Trees/Model_01/Size_02.png" id="2_ahs0t"]
 [ext_resource type="Resource" uid="uid://duka0dspu1td2" path="res://data/items/itemMadeira.tres" id="2_l3os4"]
 
 [node name="recurso_Arvore" unique_id=387422816 instance=ExtResource("1_noi7v")]

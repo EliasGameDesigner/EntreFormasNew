@@ -7,5 +7,5 @@ class_name MachineData
 @export var produced_item: ItemData
 
 @export_group("Requisitos de Conserto")
-@export var required_items: Array[ItemData] 
-@export var repair_image: Texture2D 
+@export var can_break: bool = true
+@export var repair_assembly: AssemblyDefinition

@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eovif63h4j8k"
-path="res://.godot/imported/chao.png-173ea8d7013c1564b2ea7e4b055b2ab5.ctex"
+uid="uid://bvakugkjvljvc"
+path="res://.godot/imported/chao.png-cdad37547731f3c640e8329baf8065b4.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/textures/environment/chao.png"
-dest_files=["res://.godot/imported/chao.png-173ea8d7013c1564b2ea7e4b055b2ab5.ctex"]
+dest_files=["res://.godot/imported/chao.png-cdad37547731f3c640e8329baf8065b4.ctex"]
 
 [params]
 

@@ -1,14 +1,14 @@
-﻿[remap]
+[remap]
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://blsijytfhs8di"
-path="res://.godot/imported/daviddumaisaudio-large-steampunk-factory-machine-188048.mp3-e0a7cda6d824a8904c1452c866dea1cf.mp3str"
+uid="uid://cs4g6htiumvk4"
+path="res://.godot/imported/daviddumaisaudio-large-steampunk-factory-machine-188048.mp3-6c12420e2d26f6abddc7bc7137e41b95.mp3str"
 
 [deps]
 
 source_file="res://assets/audio/sfx/daviddumaisaudio-large-steampunk-factory-machine-188048.mp3"
-dest_files=["res://.godot/imported/daviddumaisaudio-large-steampunk-factory-machine-188048.mp3-e0a7cda6d824a8904c1452c866dea1cf.mp3str"]
+dest_files=["res://.godot/imported/daviddumaisaudio-large-steampunk-factory-machine-188048.mp3-6c12420e2d26f6abddc7bc7137e41b95.mp3str"]
 
 [params]
 

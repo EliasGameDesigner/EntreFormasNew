@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vjv6bn7srqtb"
-path="res://.godot/imported/Butchery_03.png-c9ffb5f8ebb8a4f6fb01e8087c751c2d.ctex"
+uid="uid://cc6t2vtubgram"
+path="res://.godot/imported/Butchery_03.png-01e27a2ce88ae5154cefa80af83b5834.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Structures/Stations/Cooking Station/Butchery/Butchery_03.png"
-dest_files=["res://.godot/imported/Butchery_03.png-c9ffb5f8ebb8a4f6fb01e8087c751c2d.ctex"]
+dest_files=["res://.godot/imported/Butchery_03.png-01e27a2ce88ae5154cefa80af83b5834.ctex"]
 
 [params]
 

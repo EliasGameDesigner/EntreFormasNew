@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cugxryim4fri3"
-path="res://.godot/imported/slot_rectangle_small-removebg-preview.png-6a065a5d525e3c85cab41f15d40fd794.ctex"
+uid="uid://cbu77p0akahuw"
+path="res://.godot/imported/slot_rectangle_small-removebg-preview.png-93ad5a084ec783634e898f1bf0e9dcd9.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/textures/ui/slot_rectangle_small-removebg-preview.png"
-dest_files=["res://.godot/imported/slot_rectangle_small-removebg-preview.png-6a065a5d525e3c85cab41f15d40fd794.ctex"]
+dest_files=["res://.godot/imported/slot_rectangle_small-removebg-preview.png-93ad5a084ec783634e898f1bf0e9dcd9.ctex"]
 
 [params]
 

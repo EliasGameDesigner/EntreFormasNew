@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkjhk1ohlgumi"
-path="res://.godot/imported/Fire_01-Sheet.png-01135c0fd2ca56bd19e6eef5e125de0f.ctex"
+uid="uid://bfa8g3xvtn25m"
+path="res://.godot/imported/Fire_01-Sheet.png-6d6d026cae7829a82c26f528ad42b028.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Structures/Stations/Bonfire/Fire_01-Sheet.png"
-dest_files=["res://.godot/imported/Fire_01-Sheet.png-01135c0fd2ca56bd19e6eef5e125de0f.ctex"]
+dest_files=["res://.godot/imported/Fire_01-Sheet.png-6d6d026cae7829a82c26f528ad42b028.ctex"]
 
 [params]
 

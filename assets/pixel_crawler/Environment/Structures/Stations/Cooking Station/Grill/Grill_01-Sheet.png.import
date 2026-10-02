@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn0t4pr8bmldr"
-path="res://.godot/imported/Grill_01-Sheet.png-6907ba0e658ca29491e2e4298e64efb6.ctex"
+uid="uid://dkd0coxytp8rj"
+path="res://.godot/imported/Grill_01-Sheet.png-d0e1f0d06aab1a3b1a45773fb3159b56.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Structures/Stations/Cooking Station/Grill/Grill_01-Sheet.png"
-dest_files=["res://.godot/imported/Grill_01-Sheet.png-6907ba0e658ca29491e2e4298e64efb6.ctex"]
+dest_files=["res://.godot/imported/Grill_01-Sheet.png-d0e1f0d06aab1a3b1a45773fb3159b56.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
-﻿[gd_scene format=3 uid="uid://c0mdlghv5mibg"]
+[gd_scene format=3 uid="uid://c0mdlghv5mibg"]
 
 [ext_resource type="Script" uid="uid://dbixjmu0clq5g" path="res://entities/props/shop_node.gd" id="1_sv6rs"]
-[ext_resource type="Texture2D" uid="uid://3mhlwly7cq4m" path="res://assets/textures/props/shop.png" id="2_7pafm"]
+[ext_resource type="Texture2D" uid="uid://bun8v8y7pda0q" path="res://assets/textures/props/shop.png" id="2_7pafm"]
 [ext_resource type="PackedScene" uid="uid://53s4fwn442hh" path="res://core/interaction/interactable.tscn" id="2_g3vqj"]
 
 [node name="shop_node" type="Node2D" unique_id=415301599]

@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5dsmj38t8mx0"
-path="res://.godot/imported/2DControlsToolkit.png-fe7ced7d6825678a9edf171864e87b56.ctex"
+uid="uid://b4o5tk27of4hh"
+path="res://.godot/imported/2DControlsToolkit.png-3b7dc98ebdfdfcbf364971e200920e1c.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/textures/ui/2DControlsToolkit.png"
-dest_files=["res://.godot/imported/2DControlsToolkit.png-fe7ced7d6825678a9edf171864e87b56.ctex"]
+dest_files=["res://.godot/imported/2DControlsToolkit.png-3b7dc98ebdfdfcbf364971e200920e1c.ctex"]
 
 [params]
 

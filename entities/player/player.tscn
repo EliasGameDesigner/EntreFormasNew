@@ -1,10 +1,10 @@
-﻿[gd_scene format=3 uid="uid://dhgkvfnf4m00e"]
+[gd_scene format=3 uid="uid://dhgkvfnf4m00e"]
 
-[ext_resource type="Script" uid="uid://cpb22qiplm808" path="res://entities/player/interactble_player.gd" id="1_1k5v0"]
-[ext_resource type="Texture2D" uid="uid://e3bih2qsnnij" path="res://icon.svg" id="1_61obc"]
+[ext_resource type="Script" uid="uid://dc7kyy8gq2gmx" path="res://entities/player/interactble_player.gd" id="1_1k5v0"]
+[ext_resource type="Texture2D" uid="uid://d3gdjprjj6rat" path="res://icon.svg" id="1_61obc"]
 [ext_resource type="Script" uid="uid://cjm7t170vvwf" path="res://addons/2d_controls_toolkit/TopDownControler2D.gd" id="2_61obc"]
-[ext_resource type="Texture2D" uid="uid://pepdgx7yvitf" path="res://assets/textures/characters/character_godot_spritesheet-removebg-preview.png" id="4_hqtel"]
-[ext_resource type="AudioStream" uid="uid://dne5vvgufy4rx" path="res://assets/audio/sfx/freesounds123-walking-on-wood-363349.mp3" id="5_sweqy"]
+[ext_resource type="Texture2D" uid="uid://bqu533g3mq6so" path="res://assets/textures/characters/character_godot_spritesheet-removebg-preview.png" id="4_hqtel"]
+[ext_resource type="AudioStream" uid="uid://dfg4r6iq5r5k0" path="res://assets/audio/sfx/freesounds123-walking-on-wood-363349.mp3" id="5_sweqy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_61obc"]
 radius = 69.050705

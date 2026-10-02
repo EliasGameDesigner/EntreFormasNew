@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw7hgjqreikvt"
-path="res://.godot/imported/Death-Sheet.png-ebbe01cbe8066506567206fc30a6cd3e.ctex"
+uid="uid://bnxcwj6eywra4"
+path="res://.godot/imported/Death-Sheet.png-f85470718e7516aac20c2c84c8f1f6e0.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Npc's/Knight/Death/Death-Sheet.png"
-dest_files=["res://.godot/imported/Death-Sheet.png-ebbe01cbe8066506567206fc30a6cd3e.ctex"]
+dest_files=["res://.godot/imported/Death-Sheet.png-f85470718e7516aac20c2c84c8f1f6e0.ctex"]
 
 [params]
 

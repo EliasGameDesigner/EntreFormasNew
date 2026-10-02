@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb2s0lwwhic2h"
-path="res://.godot/imported/Farm.png-76b94d1afaa314fc1cc335b986b20d87.ctex"
+uid="uid://dl2jwtjq6iyw4"
+path="res://.godot/imported/Farm.png-90f87fbfd8700372f37a72559f832e41.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Props/Static/Farm.png"
-dest_files=["res://.godot/imported/Farm.png-76b94d1afaa314fc1cc335b986b20d87.ctex"]
+dest_files=["res://.godot/imported/Farm.png-90f87fbfd8700372f37a72559f832e41.ctex"]
 
 [params]
 

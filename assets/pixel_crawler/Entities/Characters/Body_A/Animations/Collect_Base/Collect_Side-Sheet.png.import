@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1owwdaprncu0"
-path="res://.godot/imported/Collect_Side-Sheet.png-d19efda2a0e87b7c2ce2f2384f9d32ec.ctex"
+uid="uid://qgvbdkwvwpm0"
+path="res://.godot/imported/Collect_Side-Sheet.png-8a0434f103a43476aabaea1386dce5d4.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Characters/Body_A/Animations/Collect_Base/Collect_Side-Sheet.png"
-dest_files=["res://.godot/imported/Collect_Side-Sheet.png-d19efda2a0e87b7c2ce2f2384f9d32ec.ctex"]
+dest_files=["res://.godot/imported/Collect_Side-Sheet.png-8a0434f103a43476aabaea1386dce5d4.ctex"]
 
 [params]
 

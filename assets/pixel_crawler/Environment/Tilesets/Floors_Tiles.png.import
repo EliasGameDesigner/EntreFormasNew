@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjfbhd1asruhj"
-path="res://.godot/imported/Floors_Tiles.png-08c41f70f5030d965b059342f2c09a41.ctex"
+uid="uid://dro6fp60i17im"
+path="res://.godot/imported/Floors_Tiles.png-fb5ae3aad2b2642eb31b8d21ca2fa684.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Tilesets/Floors_Tiles.png"
-dest_files=["res://.godot/imported/Floors_Tiles.png-08c41f70f5030d965b059342f2c09a41.ctex"]
+dest_files=["res://.godot/imported/Floors_Tiles.png-fb5ae3aad2b2642eb31b8d21ca2fa684.ctex"]
 
 [params]
 

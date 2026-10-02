@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c88eh235x57vj"
-path="res://.godot/imported/Carry_Walk_Down-Sheet.png-64aed402303d76a72a33c9938a6723d8.ctex"
+uid="uid://s3c7esdhwnqb"
+path="res://.godot/imported/Carry_Walk_Down-Sheet.png-7552456d979923556ee24c48634d30ee.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Characters/Body_A/Animations/Carry_Walk/Carry_Walk_Down-Sheet.png"
-dest_files=["res://.godot/imported/Carry_Walk_Down-Sheet.png-64aed402303d76a72a33c9938a6723d8.ctex"]
+dest_files=["res://.godot/imported/Carry_Walk_Down-Sheet.png-7552456d979923556ee24c48634d30ee.ctex"]
 
 [params]
 

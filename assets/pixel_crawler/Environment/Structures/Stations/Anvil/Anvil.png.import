@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxo0l5lntepgn"
-path="res://.godot/imported/Anvil.png-c72b325804d9c753d59b741dcd90203b.ctex"
+uid="uid://cujwgmjd8cjg"
+path="res://.godot/imported/Anvil.png-8a79b4ee89a78f30af30d84a193b81f7.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Environment/Structures/Stations/Anvil/Anvil.png"
-dest_files=["res://.godot/imported/Anvil.png-c72b325804d9c753d59b741dcd90203b.ctex"]
+dest_files=["res://.godot/imported/Anvil.png-8a79b4ee89a78f30af30d84a193b81f7.ctex"]
 
 [params]
 

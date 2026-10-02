@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfah7kq47fpci"
-path="res://.godot/imported/Idle-Sheet.png-661461211973525668c1b5e184173258.ctex"
+uid="uid://bscmvup47hqdv"
+path="res://.godot/imported/Idle-Sheet.png-303b464f5b6dfdebb2beb754113ef51b.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Npc's/Wizzard/Idle/Idle-Sheet.png"
-dest_files=["res://.godot/imported/Idle-Sheet.png-661461211973525668c1b5e184173258.ctex"]
+dest_files=["res://.godot/imported/Idle-Sheet.png-303b464f5b6dfdebb2beb754113ef51b.ctex"]
 
 [params]
 

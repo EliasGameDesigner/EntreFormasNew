@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0i2ixmgjf2b0"
-path="res://.godot/imported/Slice_Down-Sheet.png-89dbbedd5ffd85c0248a5c9ab886304a.ctex"
+uid="uid://bc0srs1ij1oxo"
+path="res://.godot/imported/Slice_Down-Sheet.png-7cf1c00a59a21e353338abb9786e68bb.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Characters/Body_A/Animations/Slice_Base/Slice_Down-Sheet.png"
-dest_files=["res://.godot/imported/Slice_Down-Sheet.png-89dbbedd5ffd85c0248a5c9ab886304a.ctex"]
+dest_files=["res://.godot/imported/Slice_Down-Sheet.png-7cf1c00a59a21e353338abb9786e68bb.ctex"]
 
 [params]
 

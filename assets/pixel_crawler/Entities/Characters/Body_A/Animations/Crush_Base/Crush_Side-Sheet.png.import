@@ -1,9 +1,9 @@
-﻿[remap]
+[remap]
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp4nmjt0c4ubh"
-path="res://.godot/imported/Crush_Side-Sheet.png-ec9f0ee63fb59f8b98f67b2ea3133b24.ctex"
+uid="uid://b0araotibk2oa"
+path="res://.godot/imported/Crush_Side-Sheet.png-32422358a51c625d9980c4d6458eba09.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/pixel_crawler/Entities/Characters/Body_A/Animations/Crush_Base/Crush_Side-Sheet.png"
-dest_files=["res://.godot/imported/Crush_Side-Sheet.png-ec9f0ee63fb59f8b98f67b2ea3133b24.ctex"]
+dest_files=["res://.godot/imported/Crush_Side-Sheet.png-32422358a51c625d9980c4d6458eba09.ctex"]
 
 [params]
 
