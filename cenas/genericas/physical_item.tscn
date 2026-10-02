@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://crawi5llfeyw7"]
+
+[ext_resource type="Script" uid="uid://dt7spopdb12qw" path="res://physical_item.gd" id="1_ney11"]
+[ext_resource type="AudioStream" uid="uid://cokqkqxq0f224" path="res://Audios/litupsubway-key-collect-sfx-522219.mp3" id="2_45swf"]
+[ext_resource type="PackedScene" uid="uid://53s4fwn442hh" path="res://cenas/genericas/interactable.tscn" id="2_tn3im"]
+
+[node name="Physical_item" type="Node2D" unique_id=676187386]
+script = ExtResource("1_ney11")
+pickup_sound = ExtResource("2_45swf")
+
+[node name="Interactable" parent="." unique_id=1123059262 instance=ExtResource("2_tn3im")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=521828761]
+
+[editable path="Interactable"]

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c0mdlghv5mibg"]
+
+[ext_resource type="Script" uid="uid://dbixjmu0clq5g" path="res://sistemas/shop_node.gd" id="1_sv6rs"]
+[ext_resource type="Texture2D" uid="uid://3mhlwly7cq4m" path="res://shop.png" id="2_7pafm"]
+[ext_resource type="PackedScene" uid="uid://53s4fwn442hh" path="res://cenas/genericas/interactable.tscn" id="2_g3vqj"]
+
+[node name="shop_node" type="Node2D" unique_id=415301599]
+script = ExtResource("1_sv6rs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1647022934]
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("2_7pafm")
+
+[node name="Interactable" parent="." unique_id=1123059262 instance=ExtResource("2_g3vqj")]

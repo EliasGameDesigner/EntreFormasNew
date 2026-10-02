@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://csxk2rx5cnv6l"]
+
+[ext_resource type="Texture2D" uid="uid://ce12bwpnqur60" path="res://Assets2D/native_rug_16x16-removebg-preview.png" id="1_1qbeg"]
+
+[node name="Tapete" type="Node2D" unique_id=1846961930]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1817758019]
+position = Vector2(1.5258789e-05, 1.5258789e-05)
+scale = Vector2(0.292, 0.292)
+texture = ExtResource("1_1qbeg")

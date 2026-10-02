@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MachineData" format=3 uid="uid://b76tfrqdhmu85"]
+
+[ext_resource type="Resource" uid="uid://bsuvkaf75qyjw" path="res://resources/itens/itemTriangulo.tres" id="1_c3b1j"]
+[ext_resource type="Script" uid="uid://dcgmc1lmiax5g" path="res://sistemas/item_data.gd" id="1_rmpnx"]
+[ext_resource type="Script" uid="uid://c4ktufjeq5rsn" path="res://sistemas/maquinaSistema/machine_data.gd" id="2_2sxv1"]
+[ext_resource type="Texture2D" uid="uid://doi8e20r3epmg" path="res://Assets2D/slot_triangle_small-removebg-preview.png" id="2_c3b1j"]
+
+[resource]
+script = ExtResource("2_2sxv1")
+machine_name = "maquina De Triangulos"
+cost = 0
+repair_cash_cost = 0
+produced_item = ExtResource("1_c3b1j")
+repair_image = ExtResource("2_c3b1j")
+metadata/_custom_type_script = "uid://c4ktufjeq5rsn"

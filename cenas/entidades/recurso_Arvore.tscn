@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://br7hxrvmkn8uc"]
+
+[ext_resource type="PackedScene" uid="uid://83cu4rcse4ux" path="res://cenas/genericas/recurso_generico.tscn" id="1_noi7v"]
+[ext_resource type="Texture2D" uid="uid://cjjygs2s35seo" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Environment/Props/Static/Trees/Model_01/Size_02.png" id="2_ahs0t"]
+[ext_resource type="Resource" uid="uid://duka0dspu1td2" path="res://resources/itens/itemMadeira.tres" id="2_l3os4"]
+
+[node name="recurso_Arvore" unique_id=387422816 instance=ExtResource("1_noi7v")]
+item_to_give = ExtResource("2_l3os4")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1773108727]
+position = Vector2(0.235, -41.425)
+scale = Vector2(3.06, 3.06)
+texture = ExtResource("2_ahs0t")
+region_enabled = true
+region_rect = Rect2(32, -1, 34, 67)

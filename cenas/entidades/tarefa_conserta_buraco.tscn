@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dicxn7w6tp8m4"]
+
+[ext_resource type="PackedScene" uid="uid://df26w8ak65t36" path="res://cenas/genericas/tarefa_generica.tscn" id="1_43b5d"]
+[ext_resource type="Texture2D" uid="uid://bkmqw0soc8mqu" path="res://images/Buraco.png" id="2_8tiyc"]
+[ext_resource type="Resource" uid="uid://duka0dspu1td2" path="res://resources/itens/itemMadeira.tres" id="2_f2ajb"]
+
+[node name="tarefa_ConsertaBuraco" unique_id=138376016 instance=ExtResource("1_43b5d")]
+required_item = ExtResource("2_f2ajb")
+required_amount = 3
+
+[node name="Sprite2D" parent="." index="0" unique_id=1939787521]
+texture = ExtResource("2_8tiyc")
+region_enabled = true
+region_rect = Rect2(9, 11, 132, 124)

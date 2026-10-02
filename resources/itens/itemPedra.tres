@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dhkbjciw5llhe"]
+
+[ext_resource type="Script" uid="uid://dcgmc1lmiax5g" path="res://sistemas/item_data.gd" id="1_sr7cg"]
+
+[resource]
+script = ExtResource("1_sr7cg")
+item_name = "Pedra"
+price = 5
+metadata/_custom_type_script = "uid://dcgmc1lmiax5g"

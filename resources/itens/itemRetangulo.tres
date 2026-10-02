@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d38ijgrynw4b"]
+
+[ext_resource type="Script" uid="uid://dcgmc1lmiax5g" path="res://sistemas/item_data.gd" id="1_lvkg5"]
+[ext_resource type="Texture2D" uid="uid://cfl3or2vko2e1" path="res://Assets2D/part_rectangle_small-removebg-preview.png" id="1_s45kr"]
+
+[resource]
+script = ExtResource("1_lvkg5")
+item_name = "Retangulo"
+icon = ExtResource("1_s45kr")
+price = 50
+metadata/_custom_type_script = "uid://dcgmc1lmiax5g"

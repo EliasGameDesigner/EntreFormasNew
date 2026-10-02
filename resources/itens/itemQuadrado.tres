@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c2eos4qwghfkv"]
+
+[ext_resource type="Texture2D" uid="uid://c0g05uqigv5a0" path="res://Assets2D/part_square_small-removebg-preview.png" id="1_o40x8"]
+[ext_resource type="Script" uid="uid://dcgmc1lmiax5g" path="res://sistemas/item_data.gd" id="1_xfb1n"]
+
+[resource]
+script = ExtResource("1_xfb1n")
+item_name = "Quadrado"
+icon = ExtResource("1_o40x8")
+price = 25
+metadata/_custom_type_script = "uid://dcgmc1lmiax5g"

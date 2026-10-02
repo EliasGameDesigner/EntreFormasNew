@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://i6n1ajayqygp"]
+
+[ext_resource type="Script" uid="uid://d0waghxe8brjj" path="res://sistemas/machine_node.gd" id="1_1vlbx"]
+[ext_resource type="Script" uid="uid://cu30uee16scgs" path="res://sistemas/Interagir/interactable.gd" id="2_dfeg2"]
+[ext_resource type="PackedScene" uid="uid://crawi5llfeyw7" path="res://cenas/genericas/physical_item.tscn" id="2_jmajm"]
+[ext_resource type="Texture2D" uid="uid://0rgmp082aa51" path="res://Assets2D/Assembling_machine_1_entity.png" id="4_jmajm"]
+[ext_resource type="Texture2D" uid="uid://b8hre1fjvvc26" path="res://Assets2D/machine_godot_spritesheet-removebg-preview.png" id="6_e7kqx"]
+[ext_resource type="AudioStream" uid="uid://blsijytfhs8di" path="res://Audios/daviddumaisaudio-large-steampunk-factory-machine-188048.mp3" id="6_gnfwq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bdoga"]
+radius = 48.04165
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnfwq"]
+atlas = ExtResource("6_e7kqx")
+region = Rect2(332, 244, 166, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17uu8"]
+atlas = ExtResource("6_e7kqx")
+region = Rect2(166, 244, 166, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_843e0"]
+atlas = ExtResource("6_e7kqx")
+region = Rect2(0, 244, 166, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6yyf"]
+atlas = ExtResource("6_e7kqx")
+region = Rect2(332, 244, 166, 242)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c3tbn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnfwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17uu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_843e0")
+}],
+"loop": 1,
+"name": &"funcionando",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6yyf")
+}],
+"loop": 1,
+"name": &"quebrada",
+"speed": 5.0
+}]
+
+[node name="MaquinaGenerica" type="Node2D" unique_id=1602997167]
+script = ExtResource("1_1vlbx")
+physical_item_scene = ExtResource("2_jmajm")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1385517164]
+script = ExtResource("2_dfeg2")
+metadata/_custom_type_script = "uid://cu30uee16scgs"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=382991738]
+shape = SubResource("CircleShape2D_bdoga")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1364508202]
+visible = false
+texture = ExtResource("4_jmajm")
+region_enabled = true
+region_rect = Rect2(81, 67, 137, 165)
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1908141500]
+position = Vector2(0, 192)
+
+[node name="ProductionTimer" type="Timer" parent="." unique_id=2013538282]
+
+[node name="BreakageTimer" type="Timer" parent="." unique_id=44498076]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1211985203]
+position = Vector2(-9.536743e-07, 0)
+scale = Vector2(0.8433735, 0.84337354)
+sprite_frames = SubResource("SpriteFrames_c3tbn")
+animation = &"funcionando"
+
+[node name="WorkingAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=379733210]
+stream = ExtResource("6_gnfwq")
+max_distance = 577.0

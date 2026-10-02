@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://df26w8ak65t36"]
+
+[ext_resource type="Script" uid="uid://dyqt2g5reokpk" path="res://sistemas/task_node.gd" id="1_a1g6r"]
+[ext_resource type="Script" uid="uid://cu30uee16scgs" path="res://sistemas/Interagir/interactable.gd" id="2_wp4ji"]
+[ext_resource type="Texture2D" uid="uid://e3bih2qsnnij" path="res://icon.svg" id="2_wsk15"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_larod"]
+radius = 48.04165
+
+[node name="tarefa_generica" type="Node2D" unique_id=138376016]
+script = ExtResource("1_a1g6r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1939787521]
+texture = ExtResource("2_wsk15")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=2070366091]
+script = ExtResource("2_wp4ji")
+metadata/_custom_type_script = "uid://cu30uee16scgs"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1936124246]
+shape = SubResource("CircleShape2D_larod")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=443698264]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -68.0
+offset_top = 48.0
+offset_right = 68.0
+offset_bottom = 75.0
+grow_horizontal = 2
+size_flags_horizontal = 4

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://83cu4rcse4ux"]
+
+[ext_resource type="Script" uid="uid://bcfaobqdt2gg0" path="res://sistemas/resource_gather_node.gd" id="1_vjlox"]
+[ext_resource type="Script" uid="uid://cu30uee16scgs" path="res://sistemas/Interagir/interactable.gd" id="2_un8e6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f1ik3"]
+radius = 48.04165
+
+[node name="RecursoGenerico" type="Node2D" unique_id=387422816]
+script = ExtResource("1_vjlox")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1773108727]
+
+[node name="Interactable" type="Area2D" parent="." unique_id=933153338]
+script = ExtResource("2_un8e6")
+metadata/_custom_type_script = "uid://cu30uee16scgs"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=75506836]
+shape = SubResource("CircleShape2D_f1ik3")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=924406810]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -68.0
+offset_top = 59.0
+offset_right = 68.0
+offset_bottom = 86.0
+grow_horizontal = 2
+size_flags_horizontal = 4

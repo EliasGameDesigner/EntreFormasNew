@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bsuvkaf75qyjw"]
+
+[ext_resource type="Script" uid="uid://dcgmc1lmiax5g" path="res://sistemas/item_data.gd" id="1_an2ii"]
+[ext_resource type="Texture2D" uid="uid://b66itvjhm4l4i" path="res://Assets2D/part_triangle_small-removebg-preview.png" id="1_boueg"]
+
+[resource]
+script = ExtResource("1_an2ii")
+item_name = "Triangulo"
+icon = ExtResource("1_boueg")
+metadata/_custom_type_script = "uid://dcgmc1lmiax5g"

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://drnrdu1hmmcme"]
+
+[ext_resource type="PackedScene" uid="uid://i6n1ajayqygp" path="res://cenas/genericas/maquina_generica.tscn" id="1_kounx"]
+[ext_resource type="Resource" uid="uid://rsoakdlmns1x" path="res://resources/maquinas/maquinaQuadrados.tres" id="2_7kgbg"]
+
+[node name="Maquina_quadrados" unique_id=1602997167 instance=ExtResource("1_kounx")]
+machine_data = ExtResource("2_7kgbg")
+production_time = 7.0

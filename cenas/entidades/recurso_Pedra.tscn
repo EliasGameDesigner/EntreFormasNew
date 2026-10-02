@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cj55gatw0rgff"]
+
+[ext_resource type="PackedScene" uid="uid://83cu4rcse4ux" path="res://cenas/genericas/recurso_generico.tscn" id="1_2tcu1"]
+[ext_resource type="Resource" uid="uid://dhkbjciw5llhe" path="res://resources/itens/itemPedra.tres" id="2_63srd"]
+[ext_resource type="Texture2D" uid="uid://gyfl677tjvse" path="res://Pixel Crawler - Free Pack 2.0.4/Pixel Crawler - Free Pack/Environment/Props/Static/Rocks.png" id="3_hn6j8"]
+
+[node name="recurso_Pedra" unique_id=387422816 instance=ExtResource("1_2tcu1")]
+item_to_give = ExtResource("2_63srd")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1773108727]
+position = Vector2(4, -24)
+scale = Vector2(3.16, 3.16)
+texture = ExtResource("3_hn6j8")
+region_enabled = true
+region_rect = Rect2(97, 17, 33, 47)

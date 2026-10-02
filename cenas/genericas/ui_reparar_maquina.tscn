@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://bhgl8h6f3en3g"]
+
+[ext_resource type="Script" uid="uid://cuv6tbll1deno" path="res://sistemas/maquinaSistema/machine_repair_ui.gd" id="1_g631o"]
+[ext_resource type="Texture2D" uid="uid://c13a8oy1ptx1f" path="res://Assets2D/button_repair_small-removebg-preview.png" id="2_83muf"]
+[ext_resource type="Script" path="res://sistemas/maquinaSistema/shape_assembly_board.gd" id="3_board"]
+
+[node name="UiRepararMaquina" type="CanvasLayer"]
+layer = 30
+script = ExtResource("1_g631o")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DimBackground" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0.04, 0.07, 0.72)
+
+[node name="MainPanel" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.38
+anchor_right = 0.5
+anchor_bottom = 0.38
+offset_left = -380.0
+offset_top = -215.0
+offset_right = 380.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MainPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MainPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="HBoxContainer" parent="Control/MainPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Control/MainPanel/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.5, 1)
+theme_override_font_sizes/font_size = 18
+text = "🔧 REPARAR MÁQUINA"
+
+[node name="Spacer" type="Control" parent="Control/MainPanel/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseButton" type="Button" parent="Control/MainPanel/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+text = " ✖ Fechar "
+
+[node name="BlueprintContainer" type="VBoxContainer" parent="Control/MainPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="FormulaLabel" type="Label" parent="Control/MainPanel/MarginContainer/VBoxContainer/BlueprintContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "Fórmula e Instruções de Montagem Geométrica"
+horizontal_alignment = 1
+
+[node name="AssemblyBoardCenter" type="CenterContainer" parent="Control/MainPanel/MarginContainer/VBoxContainer/BlueprintContainer"]
+layout_mode = 2
+
+[node name="ShapeAssemblyBoard" type="Control" parent="Control/MainPanel/MarginContainer/VBoxContainer/BlueprintContainer/AssemblyBoardCenter"]
+custom_minimum_size = Vector2(460, 210)
+layout_mode = 2
+script = ExtResource("3_board")
+
+[node name="ActionContainer" type="VBoxContainer" parent="Control/MainPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 6
+
+[node name="StatusLabel" type="Label" parent="Control/MainPanel/MarginContainer/VBoxContainer/ActionContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Peças Encaixadas: 0 / 2"
+horizontal_alignment = 1
+
+[node name="CostLabel" type="Label" parent="Control/MainPanel/MarginContainer/VBoxContainer/ActionContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Custo Adicional: $0"
+horizontal_alignment = 1
+
+[node name="RepairButton" type="Button" parent="Control/MainPanel/MarginContainer/VBoxContainer/ActionContainer"]
+custom_minimum_size = Vector2(280, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 14
+text = "✨ CONSERTAR MÁQUINA ✨"
+
+[node name="BottomInventoryPanel" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -460.0
+offset_top = -142.0
+offset_right = 460.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/BottomInventoryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/BottomInventoryPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HeaderLabel" type="Label" parent="Control/BottomInventoryPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.92, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "📦 SEU INVENTÁRIO — Arraste as peças até a mesa de montagem acima ou clique sobre elas para encaixar:"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/BottomInventoryPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 1
+vertical_scroll_mode = 0
+
+[node name="InventoryHBox" type="HBoxContainer" parent="Control/BottomInventoryPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+theme_override_constants/separation = 10
+
+[node name="EmptyLabel" type="Label" parent="Control/BottomInventoryPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.65, 0.7, 0.8, 1)
+theme_override_font_sizes/font_size = 12
+text = "Você não possui nenhuma peça ou recurso no momento."
+horizontal_alignment = 1
