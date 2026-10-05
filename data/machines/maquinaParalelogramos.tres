@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MachineData" format=3]
+[ext_resource type="Script" path="res://data/machines/machine_data.gd" id="1"]
+[ext_resource type="Resource" path="res://data/items/itemParalelogramo.tres" id="2"]
+[ext_resource type="Resource" path="res://data/machines/assembly_parallelogram.tres" id="3"]
+[ext_resource type="Resource" path="res://data/machines/production_parallelogram.tres" id="4"]
+[resource]
+script = ExtResource("1")
+machine_name = "Máquina de Paralelogramos"
+cost = 300
+repair_cash_cost = 0
+produced_item = ExtResource("2")
+repair_assembly = ExtResource("3")
+production_recipe = ExtResource("4")

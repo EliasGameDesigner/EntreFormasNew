@@ -18,6 +18,13 @@
 [ext_resource type="PackedScene" uid="uid://csxk2rx5cnv6l" path="res://entities/props/Tapete.tscn" id="15_mitsp"]
 [ext_resource type="AudioStream" uid="uid://bspvu5fy41j7w" path="res://assets/audio/music/ncone-soft-piano-loop-192098.mp3" id="17_sp72b"]
 
+[ext_resource type="PackedScene" path="res://entities/machines/machine_purchase_point.tscn" id="purchase_point"]
+[ext_resource type="PackedScene" path="res://entities/machines/maquina_paralelogramos.tscn" id="parallelogram_scene"]
+[ext_resource type="PackedScene" path="res://entities/machines/maquina_trapezios.tscn" id="trapezoid_scene"]
+[ext_resource type="Resource" path="res://data/machines/maquinaParalelogramos.tres" id="parallelogram_data"]
+[ext_resource type="Resource" path="res://data/machines/maquinaTrapezios.tres" id="trapezoid_data"]
+[ext_resource type="Resource" path="res://data/machines/maquinaRetangulos.tres" id="rectangle_data"]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j14hu"]
 texture = ExtResource("7_d7kam")
 1:0/0 = 0
@@ -1312,3 +1319,15 @@ gravity_scale = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4" unique_id=1992408217]
 position = Vector2(0, -158.0127)
 shape = SubResource("RectangleShape2D_c3tbn")
+
+[node name="CompraParalelogramos" parent="." instance=ExtResource("purchase_point")]
+position = Vector2(1450, -1060)
+machine_scene = ExtResource("parallelogram_scene")
+machine_data = ExtResource("parallelogram_data")
+unlock_after_repair = ExtResource("rectangle_data")
+
+[node name="CompraTrapezios" parent="." instance=ExtResource("purchase_point")]
+position = Vector2(2056, -1060)
+machine_scene = ExtResource("trapezoid_scene")
+machine_data = ExtResource("trapezoid_data")
+unlock_after_repair = ExtResource("parallelogram_data")

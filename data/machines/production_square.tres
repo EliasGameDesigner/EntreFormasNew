@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ProductionRecipe" format=3]
+[ext_resource type="Script" path="res://data/machines/production_recipe.gd" id="1"]
+[ext_resource type="Script" path="res://data/items/item_data.gd" id="2"]
+[ext_resource type="Resource" path="res://data/items/itemTriangulo.tres" id="item0"]
+[resource]
+script = ExtResource("1")
+materials = Array[ExtResource("2")]([ExtResource("item0"), ExtResource("item0")])

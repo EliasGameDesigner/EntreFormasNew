@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="AssemblyDefinition" format=3]
+[ext_resource type="Script" path="res://data/machines/assembly_definition.gd" id="1"]
+[ext_resource type="Script" path="res://data/machines/shape_slot_data.gd" id="2"]
+[ext_resource type="Resource" path="res://data/items/shape_triangle.tres" id="triangle"]
+[ext_resource type="Resource" path="res://data/items/shape_square.tres" id="square"]
+
+[sub_resource type="Resource" id="Slot0"]
+script = ExtResource("2")
+piece = ExtResource("square")
+target_position = Vector2(340, 140)
+target_rotation_degrees = 0.0
+spawn_position = Vector2(590, 65)
+
+[sub_resource type="Resource" id="Slot1"]
+script = ExtResource("2")
+piece = ExtResource("triangle")
+target_position = Vector2(240, 160)
+target_rotation_degrees = 180.0
+spawn_position = Vector2(90, 70)
+
+[sub_resource type="Resource" id="Slot2"]
+script = ExtResource("2")
+piece = ExtResource("triangle")
+target_position = Vector2(440, 160)
+target_rotation_degrees = 270.0
+spawn_position = Vector2(580, 200)
+
+[resource]
+script = ExtResource("1")
+title = "Trapézio"
+instructions = "Una um quadrado e dois triângulos para formar um trapézio (A = (B + b) × h / 2)."
+slots = Array[ExtResource("2")]([SubResource("Slot0"), SubResource("Slot1"), SubResource("Slot2")])

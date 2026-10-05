@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="AssemblyDefinition" format=3]
+[ext_resource type="Script" path="res://data/machines/assembly_definition.gd" id="1"]
+[ext_resource type="Script" path="res://data/machines/shape_slot_data.gd" id="2"]
+[ext_resource type="Resource" path="res://data/items/shape_triangle.tres" id="triangle"]
+
+
+[sub_resource type="Resource" id="Slot0"]
+script = ExtResource("2")
+piece = ExtResource("triangle")
+target_position = Vector2(380, 120)
+target_rotation_degrees = 0.0
+spawn_position = Vector2(90, 90)
+
+[sub_resource type="Resource" id="Slot1"]
+script = ExtResource("2")
+piece = ExtResource("triangle")
+target_position = Vector2(300, 160)
+target_rotation_degrees = 180.0
+spawn_position = Vector2(580, 180)
+
+[resource]
+script = ExtResource("1")
+title = "Paralelogramo"
+instructions = "Una dois triângulos retângulos para formar um paralelogramo (A = base × altura)."
+slots = Array[ExtResource("2")]([SubResource("Slot0"), SubResource("Slot1")])

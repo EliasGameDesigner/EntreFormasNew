@@ -5,6 +5,8 @@
 
 [ext_resource type="Resource" path="res://data/machines/assembly_square.tres" id="5_assembly"]
 
+[ext_resource type="Resource" path="res://data/machines/production_square.tres" id="6_production"]
+
 [resource]
 script = ExtResource("2_ustjb")
 machine_name = "Maquina De Quadrados"
@@ -14,3 +16,5 @@ produced_item = ExtResource("1_ustjb")
 metadata/_custom_type_script = "uid://c4ktufjeq5rsn"
 
 repair_assembly = ExtResource("5_assembly")
+
+production_recipe = ExtResource("6_production")
