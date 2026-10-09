@@ -2,27 +2,26 @@ extends Node2D
 class_name PhysicalItem
 
 @export var item_data: ItemData
-@export var pickup_sound: AudioStream # Arraste seu arquivo .wav ou .ogg aqui pelo Inspector
+@export var pickup_sound: AudioStream
+@export_range(8.0, 160.0) var pickup_radius: float = 64.0
+var _collected: bool = false
 
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var interactable: Interactable = $Interactable
+@onready var pickup_area: Area2D = $PickupArea
 
 func _ready() -> void:
-	if item_data and sprite:
-		sprite.texture = item_data.icon
-		
-	interactable.interaction_started.connect(_on_interaction_started)
-
-
-func _on_interaction_started(_body: Node2D) -> void:
-	interactable.stop_interaction()
-	
 	if item_data:
-		InventoryManager.add_item(item_data, 1)
-		GameUI.show_notification("Coletou: 1x " + item_data.item_name)
-		
-		# Toca o som globalmente antes de destruir o objeto
-		if pickup_sound:
-			AudioManager.play_sfx(pickup_sound)
-		
+		sprite.texture = item_data.icon
+	var circle := CircleShape2D.new()
+	circle.radius = pickup_radius
+	$PickupArea/CollisionShape2D.shape = circle
+	pickup_area.body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body: Node2D) -> void:
+	if not body.is_in_group("player") or _collected or item_data == null:
+		return
+	_collected = true
+	InventoryManager.add_item(item_data)
+	if pickup_sound:
+		AudioManager.play_sfx(pickup_sound)
 	queue_free()

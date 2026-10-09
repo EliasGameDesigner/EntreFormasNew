@@ -1,29 +1,34 @@
 extends Node2D
 
-## F6: reproducible repair sandbox. Inventory seeding is exclusive to this example.
-var square: MachineNode
-var rectangle: MachineNode
+## F6: repair sandbox. Inventory seeding happens only in this example.
+@export_enum("Quadrado", "Retângulo", "Paralelogramo", "Trapézio") var initial_machine: int = 3
+const SCENES = [
+	"res://entities/machines/maquina_quadrados.tscn",
+	"res://entities/machines/maquina_retangulos.tscn",
+	"res://entities/machines/maquina_paralelogramos.tscn",
+	"res://entities/machines/maquina_trapezios.tscn",
+]
 
 func _ready() -> void:
-	square = load("res://entities/machines/maquina_quadrados.tscn").instantiate()
-	rectangle = load("res://entities/machines/maquina_retangulos.tscn").instantiate()
-	add_child(square)
-	add_child(rectangle)
-	square.position = Vector2(400, 330)
-	rectangle.position = Vector2(750, 330)
-	square.breakage_chance = 0.0
-	rectangle.breakage_chance = 0.0
 	var canvas := CanvasLayer.new()
 	add_child(canvas)
-	var toolbar := HBoxContainer.new()
-	toolbar.position = Vector2(260, 20)
+	var toolbar := GridContainer.new()
+	toolbar.columns = 2
+	toolbar.position = Vector2(220, 20)
 	canvas.add_child(toolbar)
-	for machine in [square, rectangle]:
+	var machines: Array[MachineNode] = []
+	for i in range(SCENES.size()):
+		var machine: MachineNode = load(SCENES[i]).instantiate()
+		machine.position = Vector2(220 + i * 230, 350)
+		machine.breakage_chance = 0.0
+		add_child(machine)
+		machines.append(machine)
 		var button := Button.new()
-		button.text = "Quebrar / reparar: " + machine.machine_data.machine_name
+		button.text = "Reparar: " + machine.machine_data.repair_assembly.title
+		button.custom_minimum_size = Vector2(330, 36)
 		button.pressed.connect(_open_repair.bind(machine))
 		toolbar.add_child(button)
-	_open_repair(square)
+	_open_repair(machines[clampi(initial_machine, 0, machines.size() - 1)])
 
 func _open_repair(machine: MachineNode) -> void:
 	if get_tree().get_first_node_in_group("modal_repair_ui"):

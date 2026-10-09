@@ -1,0 +1,9 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://entities/machines/maquina_generica.tscn" id="1"]
+[ext_resource type="Resource" path="res://data/machines/maquinaTrapezios.tres" id="2"]
+
+[node name="MaquinaTrapezios" instance=ExtResource("1")]
+machine_data = ExtResource("2")
+production_time = 18.0
+check_breakage_interval = 30.0
+breakage_chance = 0.1

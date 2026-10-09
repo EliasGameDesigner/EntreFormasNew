@@ -5,6 +5,7 @@ class_name MachineData
 @export var cost: int = 100 # Custo em dinheiro para comprar/construir
 @export var repair_cash_cost: int = 50 
 @export var produced_item: ItemData
+@export var production_recipe: ProductionRecipe
 
 @export_group("Requisitos de Conserto")
 @export var can_break: bool = true

@@ -3,9 +3,12 @@
 ## Como testar
 
 Abra `examples/shape_assembly_demo.tscn` no Godot e execute com F6.
-A demonstração abre o reparo do quadrado e fornece somente os itens necessários.
-Depois de concluir ou fechar, os botões superiores permitem testar novamente o quadrado ou o retângulo.
+A demonstração abre o reparo do trapézio e fornece somente os itens necessários.
+Depois de concluir ou fechar, os botões superiores permitem testar quadrado, retângulo, paralelogramo e trapézio.
 Esse fornecimento de itens existe apenas no exemplo: no cenário principal, use os itens produzidos/coletados normalmente.
+
+Para compra, desbloqueio, consumo opcional por ciclo e coleta automática, consulte
+[a documentação das máquinas](../../entities/machines/README.md).
 
 - Mouse1 no inventário: retira uma peça para a mesa; também é possível arrastá-la do inventário.
 - Mouse1 sobre a geometria na mesa: pegar, arrastar e soltar.

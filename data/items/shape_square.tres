@@ -7,6 +7,6 @@
 [resource]
 script = ExtResource("1")
 shape_id = &"square"
-polygon = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
+polygon = PackedVector2Array(-60, -60, 60, -60, 60, 60, -60, 60)
 icon = ExtResource("3")
 inventory_item = ExtResource("2")

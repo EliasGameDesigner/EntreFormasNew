@@ -7,13 +7,13 @@
 [sub_resource type="Resource" id="Slot1"]
 script = ExtResource("2")
 piece = ExtResource("3")
-target_position = Vector2(290, 140)
+target_position = Vector2(280, 140)
 spawn_position = Vector2(100, 110)
 
 [sub_resource type="Resource" id="Slot2"]
 script = ExtResource("2")
 piece = ExtResource("3")
-target_position = Vector2(390, 140)
+target_position = Vector2(400, 140)
 target_rotation_degrees = 0.0
 spawn_position = Vector2(560, 170)
 
