@@ -2,11 +2,13 @@ extends CanvasLayer
 class_name MachineRepairUI
 
 signal repair_completed
+signal production_completed
 const SFX_SNAP = preload("res://assets/audio/sfx/litupsubway-key-collect-sfx-522219.mp3")
 var current_machine: MachineNode
 ## Items are reserved when supplied, refunded on cancel, consumed only on success.
 var _reserved: Dictionary = {}
 var _finishing: bool = false
+var _production_mode: bool = false
 
 @onready var machine_title_label: Label = $Control/MainPanel/MarginContainer/VBoxContainer/Header/TitleLabel
 @onready var close_button: Button = $Control/MainPanel/MarginContainer/VBoxContainer/Header/CloseButton
@@ -28,10 +30,13 @@ func _ready() -> void:
 	InventoryManager.inventory_changed.connect(_refresh_inventory)
 	InventoryManager.money_changed.connect(_on_money_changed)
 
-func open_ui(machine: MachineNode) -> void:
-	if visible or machine.machine_data == null or not machine.machine_data.can_break:
+func open_ui(machine: MachineNode, for_production: bool = false) -> void:
+	if visible or machine.machine_data == null:
 		return
-	if machine.current_state != MachineNode.MachineState.BROKEN:
+	if for_production:
+		if not machine.manual_production or not machine.manual_available or machine.current_state != MachineNode.MachineState.WORKING:
+			return
+	elif not machine.machine_data.can_break or machine.current_state != MachineNode.MachineState.BROKEN:
 		return
 	var recipe := machine.machine_data.repair_assembly
 	if recipe == null or not recipe.is_valid():
@@ -41,13 +46,34 @@ func open_ui(machine: MachineNode) -> void:
 		if slot.piece.inventory_item == null:
 			GameUI.show_notification("Configure o item de inventário das peças desta máquina.")
 			return
+	# Reserve the complete recipe atomically before opening a production board.
+	if for_production:
+		var requirements: Dictionary = {}
+		for slot in recipe.slots:
+			var item := slot.piece.inventory_item
+			requirements[item] = requirements.get(item, 0) + 1
+		if not InventoryManager.take_items(requirements):
+			var materials: PackedStringArray = []
+			for item in requirements:
+				materials.append("%d × %s" % [requirements[item], item.item_name])
+			GameUI.show_notification("Produza e colete: " + ", ".join(materials) + ".")
+			return
+	_production_mode = for_production
 	current_machine = machine
 	_finishing = false
-	assembly_board.setup(recipe, false)
-	machine_title_label.text = machine.machine_data.machine_name
+	assembly_board.setup(recipe, for_production)
+	if for_production:
+		for piece in assembly_board.pieces:
+			_reserved[piece] = piece.definition.inventory_item
+	machine_title_label.text = ("PRODUZIR 1 • " if for_production else "REPARAR • ") + machine.machine_data.machine_name
 	formula_label.text = recipe.instructions + "\nMouse1: arrastar | R: girar enquanto segura | Esc: cancelar"
 	add_to_group("modal_repair_ui")
 	show()
+	$Control/BottomInventoryPanel.visible = not for_production
+	# Leave the top clock and side stock/order cards visible in service mode.
+	var service_layout := for_production and get_tree().get_first_node_in_group("first_cycle") != null
+	$Control/MainPanel.offset_top = 110.0 if service_layout else 16.0
+	$Control/MainPanel.offset_bottom = 584.0 if service_layout else 490.0
 	_refresh_inventory()
 	_update_status()
 
@@ -77,7 +103,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _refresh_inventory() -> void:
-	if not visible or _finishing or assembly_board.definition == null:
+	if not visible or _finishing or _production_mode or assembly_board.definition == null:
 		return
 	for child in inventory_items_container.get_children():
 		inventory_items_container.remove_child(child)
@@ -138,7 +164,7 @@ func _update_status() -> void:
 	if not is_instance_valid(current_machine) or _finishing:
 		return
 	status_label.text = "Encaixes: %d / %d" % [assembly_board.get_filled_count(), assembly_board.get_required_count()]
-	var cost := current_machine.machine_data.repair_cash_cost
+	var cost := 0 if _production_mode else current_machine.machine_data.repair_cash_cost
 	cost_label.text = "Custo: $%d | Saldo: $%d" % [cost, InventoryManager.money]
 	cost_label.visible = cost > 0
 	if assembly_board.completed and InventoryManager.money < cost:
@@ -156,12 +182,12 @@ func _on_assembly_completed() -> void:
 func _finish_repair() -> void:
 	if _finishing or not visible or not is_instance_valid(current_machine):
 		return
-	if current_machine.current_state != MachineNode.MachineState.BROKEN:
+	if (_production_mode and (not current_machine.manual_available or current_machine.current_state != MachineNode.MachineState.WORKING)) or (not _production_mode and current_machine.current_state != MachineNode.MachineState.BROKEN):
 		close_ui()
 		return
 	if not assembly_board.is_fully_assembled():
 		return
-	var cost := current_machine.machine_data.repair_cash_cost
+	var cost := 0 if _production_mode else current_machine.machine_data.repair_cash_cost
 	if InventoryManager.money < cost:
 		_update_status()
 		return
@@ -170,7 +196,10 @@ func _finish_repair() -> void:
 	for piece in _reserved.keys():
 		if is_instance_valid(piece) and piece.slot != null:
 			_reserved.erase(piece)
-	repair_completed.emit()
+	if _production_mode:
+		production_completed.emit()
+	else:
+		repair_completed.emit()
 	close_ui()
 
 func _setup_panel_styles() -> void:

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FaculProjetoCodex"
-run/main_scene="res://world/cenario.tscn"
+run/main_scene="res://world/first_cycle.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -25,6 +25,7 @@ AudioManager="*uid://bsoylpfnj4i7t"
 [display]
 
 window/size/viewport_height=720
+window/size/mode=3
 window/size/window_width_override=1152
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
