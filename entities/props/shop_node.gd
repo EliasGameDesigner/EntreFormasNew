@@ -1,6 +1,8 @@
 extends Node2D
 class_name ShopNode
 
+@export var order_counter: bool = false
+
 @onready var interactable: Interactable = $Interactable
 
 func _ready() -> void:
@@ -8,6 +10,11 @@ func _ready() -> void:
 
 func _on_interaction_started(_body: Node2D) -> void:
 	interactable.stop_interaction()
+	if order_counter:
+		var service := get_tree().get_first_node_in_group("first_cycle")
+		if service:
+			service.deliver_order()
+		return
 	sell_all_inventory()
 
 func sell_all_inventory() -> void:

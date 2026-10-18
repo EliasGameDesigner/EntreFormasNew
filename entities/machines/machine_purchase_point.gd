@@ -5,6 +5,8 @@ signal machine_purchased(machine: MachineNode)
 @export var machine_scene: PackedScene
 @export var machine_data: MachineData
 @export var unlock_after_repair: MachineData
+## In service mode this station waits for a later cycle, not a repair/purchase.
+@export var progression_locked: bool = false
 var purchased_machine: MachineNode
 var purchased: bool = false
 var _refresh_elapsed: float = 0.0
@@ -27,6 +29,8 @@ func _process(delta: float) -> void:
 		refresh_display()
 
 func is_unlocked() -> bool:
+	if progression_locked:
+		return false
 	if unlock_after_repair == null:
 		return true
 	for node in get_tree().get_nodes_in_group("machines"):
@@ -42,7 +46,9 @@ func refresh_display() -> void:
 	if purchased or machine_data == null:
 		return
 	var instruction := "Mouse1: comprar por $%d" % machine_data.cost
-	if not is_unlocked():
+	if progression_locked:
+		instruction = "Disponível em um próximo ciclo"
+	elif not is_unlocked():
 		instruction = "Bloqueada: conserte\n" + unlock_after_repair.machine_name
 	elif InventoryManager.money < machine_data.cost:
 		instruction = "Compra: $%d • Saldo: $%d" % [machine_data.cost, InventoryManager.money]
@@ -53,6 +59,9 @@ func _on_interaction_started(_body: Node2D) -> void:
 	try_purchase()
 
 func try_purchase() -> bool:
+	if progression_locked:
+		GameUI.show_notification("Esta máquina será liberada em um próximo ciclo.")
+		return false
 	if purchased or machine_data == null or machine_scene == null:
 		return false
 	if get_tree().get_first_node_in_group("modal_repair_ui") != null:

@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://world/cenario.tscn" id="map"]
+[ext_resource type="Script" path="res://world/first_cycle_room.gd" id="room"]
+[ext_resource type="Script" path="res://core/first_cycle.gd" id="cycle"]
+[ext_resource type="Script" path="res://ui/hud/first_cycle_hud.gd" id="hud"]
+[ext_resource type="Texture2D" path="res://assets/textures/characters/character_godot_spritesheet-removebg-preview.png" id="customer"]
+[ext_resource type="PackedScene" path="res://entities/props/mold_workbench.tscn" id="workbench"]
+[ext_resource type="Script" path="res://entities/player/carried_mold.gd" id="carried"]
+
+[sub_resource type="AtlasTexture" id="CustomerTexture"]
+atlas = ExtResource("customer")
+region = Rect2(0, 0, 62, 250)
+
+[node name="Cenario" instance=ExtResource("map")]
+script = ExtResource("room")
+
+[node name="CharacterBody2D" parent="." index="0"]
+z_index = 5
+position = Vector2(1632, -1170)
+speed = 300.0
+
+[node name="TopDownControler2D" parent="CharacterBody2D" index="0"]
+process_mode = 4
+Active = false
+Handle_Camera = false
+
+[node name="CollisionShape2D" parent="CharacterBody2D" index="1"]
+scale = Vector2(0.45, 0.45)
+
+[node name="InteractionRange" parent="CharacterBody2D" index="3"]
+scale = Vector2(0.65, 0.65)
+
+[node name="InteractionLabel" parent="CharacterBody2D" index="4"]
+offset_left = -75.0
+offset_top = 65.0
+offset_right = 75.0
+offset_bottom = 90.0
+horizontal_alignment = 1
+
+[node name="FollowCamera" type="Camera2D" parent="CharacterBody2D"]
+offset = Vector2(0, -70)
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+
+[node name="CarriedMold" type="Node2D" parent="CharacterBody2D" node_paths=PackedStringArray("workbench")]
+position = Vector2(32, 20)
+z_index = 1
+script = ExtResource("carried")
+workbench = NodePath("../../MoldWorkbench")
+
+[node name="MaquinaGenerica" parent="." index="1"]
+z_index = 2
+scale = Vector2(0.8, 0.8)
+current_state = 1
+manual_production = true
+requires_mold = true
+manual_available = false
+
+[node name="MaquinaGenerica2" parent="." index="2"]
+z_index = 2
+scale = Vector2(0.8, 0.8)
+current_state = 1
+manual_production = true
+requires_mold = true
+manual_available = false
+
+[node name="shop_node" parent="." index="3"]
+z_index = 2
+order_counter = true
+
+[node name="Maquina_quadrados" parent="." index="6"]
+z_index = 2
+scale = Vector2(0.8, 0.8)
+current_state = 1
+manual_production = true
+requires_mold = true
+manual_available = false
+
+[node name="CompraParalelogramos" parent="."]
+scale = Vector2(0.8, 0.8)
+progression_locked = true
+
+[node name="CompraTrapezios" parent="."]
+scale = Vector2(0.8, 0.8)
+progression_locked = true
+
+[node name="CounterLabel" type="Label" parent="."]
+offset_left = 2312.0
+offset_top = -1226.0
+offset_right = 2632.0
+offset_bottom = -1176.0
+text = "BALCÃO DE PEDIDOS
+Mouse1: entregar"
+horizontal_alignment = 1
+mouse_filter = 2
+
+[node name="Customer" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(2472, -1086)
+texture = SubResource("CustomerTexture")
+
+[node name="MoldWorkbench" parent="." instance=ExtResource("workbench")]
+position = Vector2(1110, -1120)
+z_index = 2
+mold_mode = 1
+
+[node name="FirstCycle" type="Node" parent="." node_paths=PackedStringArray("triangle_machine", "square_machine", "mold_workbench")]
+script = ExtResource("cycle")
+triangle_machine = NodePath("../MaquinaGenerica")
+square_machine = NodePath("../Maquina_quadrados")
+mold_workbench = NodePath("../MoldWorkbench")
+triangle_patience = 50.0
+square_patience = 110.0
+
+[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("cycle")]
+script = ExtResource("hud")
+cycle = NodePath("../FirstCycle")

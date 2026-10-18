@@ -15,15 +15,16 @@ func _ready() -> void:
 		interaction_label.hide()
 
 
-func _process(_delta: float) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if get_tree().get_first_node_in_group("modal_repair_ui") != null:
 		return
 
 		
 	if current_interactable:
-		if Input.is_action_just_pressed("interact"):
+		if event.is_action_pressed("interact") and not event.is_echo():
 			current_interactable.start_interaction(self)
-		elif Input.is_action_just_released("interact"):
+			get_viewport().set_input_as_handled()
+		elif event.is_action_released("interact"):
 			current_interactable.stop_interaction()
 
 
