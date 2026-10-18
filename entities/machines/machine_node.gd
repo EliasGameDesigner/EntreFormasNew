@@ -39,6 +39,11 @@ var _mold_cycle_active: bool = false
 
 func _ready() -> void:
 	add_to_group("machines")
+	if machine_data and machine_data.visual_frames:
+		animated_sprite.sprite_frames = machine_data.visual_frames
+		animated_sprite.scale = Vector2.ONE * machine_data.visual_scale
+		animated_sprite.position = machine_data.visual_offset
+		animated_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	if machine_data and not machine_data.can_break:
 		current_state = MachineState.WORKING
 	interactable.interaction_started.connect(_on_interaction_started)
@@ -59,7 +64,15 @@ func _exit_tree() -> void:
 
 func _update_animation() -> void:
 	if animated_sprite:
-		animated_sprite.play("funcionando" if current_state == MachineState.WORKING else "quebrada")
+		if current_state == MachineState.BROKEN:
+			animated_sprite.play("quebrada")
+		elif _cycle_active or _mold_cycle_active:
+			animated_sprite.play("funcionando")
+		elif animated_sprite.sprite_frames.has_animation("idle"):
+			animated_sprite.play("idle")
+		else:
+			animated_sprite.play("funcionando")
+			animated_sprite.pause()
 
 func _update_status() -> void:
 	if not is_instance_valid(status_label) or machine_data == null:
@@ -110,7 +123,7 @@ func repair_machine() -> void:
 
 func start_production() -> void:
 	if manual_production:
-		animated_sprite.pause()
+		_update_animation()
 		return
 	if current_state != MachineState.WORKING or machine_data == null or machine_data.produced_item == null or physical_item_scene == null:
 		return
@@ -151,7 +164,7 @@ func _wait_for_materials() -> void:
 	_reserving = false
 	if working_audio:
 		working_audio.stop()
-	animated_sprite.pause()
+	_update_animation()
 	_update_status()
 
 func _refund_cycle() -> void:
@@ -162,8 +175,6 @@ func _refund_cycle() -> void:
 
 func stop_production() -> void:
 	_mold_cycle_active = false
-	if manual_production:
-		animated_sprite.pause()
 	if is_instance_valid(_repair_ui) and manual_production:
 		_repair_ui.close_ui()
 	_production_enabled = false
@@ -173,6 +184,7 @@ func stop_production() -> void:
 	if working_audio:
 		working_audio.stop()
 	_refund_cycle()
+	_update_animation()
 	_update_status()
 
 func _on_breakage_timer_timeout() -> void:
@@ -194,7 +206,7 @@ func _on_production_timer_timeout() -> void:
 		if _mold_cycle_active:
 			_mold_cycle_active = false
 			production_timer.stop()
-			animated_sprite.pause()
+			_update_animation()
 			working_audio.stop()
 			if manual_available and current_state == MachineState.WORKING:
 				_spawn_output()

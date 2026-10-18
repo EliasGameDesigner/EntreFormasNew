@@ -5,6 +5,8 @@ class_name ShapePieceData
 @export var shape_id: StringName
 @export var polygon: PackedVector2Array
 @export var icon: Texture2D
+## Artwork follows the polygon silhouette, rather than acting as a small emblem.
+@export var full_shape_art: bool = false
 @export var color: Color = Color(0.78, 0.55, 0.26)
 @export_range(1.0, 180.0) var rotation_step_degrees: float = 90.0
 @export var can_rotate: bool = true

@@ -3,8 +3,13 @@
 [ext_resource type="Resource" path="res://data/items/itemParalelogramo.tres" id="2"]
 [ext_resource type="Resource" path="res://data/machines/assembly_parallelogram.tres" id="3"]
 [ext_resource type="Resource" path="res://data/machines/production_parallelogram.tres" id="4"]
+[ext_resource type="SpriteFrames" path="res://data/machines/visuals/parallelogram_frames.tres" id="visuals"]
+
 [resource]
 script = ExtResource("1")
+visual_frames = ExtResource("visuals")
+visual_scale = 0.415913
+visual_offset = Vector2(0, -37.251356)
 machine_name = "Máquina de Paralelogramos"
 cost = 300
 repair_cash_cost = 0

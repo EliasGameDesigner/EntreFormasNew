@@ -1,0 +1,33 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/machines/redesign/square.png" id="1"]
+
+[sub_resource type="AtlasTexture" id="frame_0"]
+atlas = ExtResource("1")
+region = Rect2(74, 111, 552, 483)
+margin = Rect2(78, 197, 148, 217)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="frame_1"]
+atlas = ExtResource("1")
+region = Rect2(642, 40, 537, 554)
+margin = Rect2(81.5, 126, 163, 146)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="frame_2"]
+atlas = ExtResource("1")
+region = Rect2(73, 608, 553, 569)
+margin = Rect2(77, 111, 147, 131)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="frame_3"]
+atlas = ExtResource("1")
+region = Rect2(642, 691, 540, 486)
+margin = Rect2(82, 194, 160, 214)
+filter_clip = true
+
+[resource]
+animations = [{"name": &"idle", "speed": 1.0, "loop": false, "frames": [{"duration": 1.0, "texture": SubResource("frame_0")}]},
+{"name": &"funcionando", "speed": 3.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("frame_1")}, {"duration": 1.0, "texture": SubResource("frame_2")}]},
+{"name": &"quebrada", "speed": 1.0, "loop": false, "frames": [{"duration": 1.0, "texture": SubResource("frame_3")}]}]
+

@@ -15,6 +15,7 @@ var shape_buttons: Dictionary = {}
 func _ready() -> void:
 	layer = 30
 	var root := Control.new()
+	root.theme = preload("res://ui/machine_repair/workbench_theme.gd").create()
 	add_child(root)
 	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var shade := ColorRect.new()
@@ -29,10 +30,13 @@ func _ready() -> void:
 	panel.offset_top = 110
 	panel.offset_bottom = 610
 	var style := StyleBoxFlat.new()
-	style.bg_color = Color("141e2b")
-	style.border_color = Color("74cbd5")
-	style.set_border_width_all(2)
-	style.set_corner_radius_all(10)
+	style.bg_color = Color("42301f")
+	style.border_color = Color("ad8950")
+	style.set_border_width_all(4)
+	style.set_corner_radius_all(3)
+	style.shadow_color = Color(0, 0, 0, 0.65)
+	style.shadow_size = 12
+	style.shadow_offset = Vector2(0, 6)
 	style.set_content_margin_all(18)
 	panel.add_theme_stylebox_override("panel", style)
 	var box := VBoxContainer.new()
@@ -48,6 +52,12 @@ func _ready() -> void:
 	close_button.text = "Fechar"
 	close_button.pressed.connect(close_ui)
 	header.add_child(close_button)
+	var divider := HSeparator.new()
+	var line := StyleBoxLine.new()
+	line.color = Color("ad8950")
+	line.thickness = 2
+	divider.add_theme_stylebox_override("separator", line)
+	box.add_child(divider)
 	instructions = Label.new()
 	instructions.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	instructions.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -58,6 +68,11 @@ func _ready() -> void:
 	for shape in workbench.PRODUCTS:
 		var button := Button.new()
 		button.custom_minimum_size = Vector2(190, 50)
+		if shape == &"triangle" or shape == &"square":
+			button.icon = preload("res://data/items/triangle_mold_texture.tres") if shape == &"triangle" else preload("res://data/items/square_mold_texture.tres")
+			button.expand_icon = true
+			button.add_theme_constant_override("icon_max_width", 32)
+			button.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		button.pressed.connect(func(): workbench.begin_mold(shape))
 		choices.add_child(button)
 		shape_buttons[shape] = button
@@ -68,6 +83,7 @@ func _ready() -> void:
 	var center := CenterContainer.new()
 	box.add_child(center)
 	board = ShapeAssemblyBoard.new()
+	board.workshop_style = true
 	center.add_child(board)
 	board.assembly_completed.connect(func(): workbench.complete_step.call_deferred())
 	board.board_changed.connect(_refresh_progress)
@@ -110,7 +126,7 @@ func show_step(recipe: AssemblyDefinition, index: int, total: int) -> void:
 
 func _refresh_progress() -> void:
 	if is_instance_valid(status) and board.definition != null:
-		status.text = "Encaixes: %d/%d • O prazo do pedido continua correndo." % [board.get_filled_count(), board.get_required_count()]
+		status.text = "Encaixes: %d/%d • Arraste as peças de metal para as cavidades.\nO prazo do pedido continua correndo." % [board.get_filled_count(), board.get_required_count()]
 
 func close_ui() -> void:
 	workbench.cancel_assembly()

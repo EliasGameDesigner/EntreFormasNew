@@ -12,6 +12,10 @@ var _collected: bool = false
 func _ready() -> void:
 	if item_data:
 		sprite.texture = item_data.icon
+		if item_data.icon != null and item_data.world_icon_size > 0.0:
+			var dimensions := item_data.icon.get_size()
+			sprite.scale = Vector2.ONE * item_data.world_icon_size / maxf(dimensions.x, dimensions.y)
+			sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	var circle := CircleShape2D.new()
 	circle.radius = pickup_radius
 	$PickupArea/CollisionShape2D.shape = circle

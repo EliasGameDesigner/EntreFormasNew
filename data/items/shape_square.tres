@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" path="res://data/items/shape_piece_data.gd" id="1"]
 [ext_resource type="Resource" path="res://data/items/itemQuadrado.tres" id="2"]
-[ext_resource type="Texture2D" path="res://assets/textures/ui/part_square_small-removebg-preview.png" id="3"]
+[ext_resource type="Texture2D" path="res://data/items/square_part_texture.tres" id="3"]
 
 [resource]
 script = ExtResource("1")
 shape_id = &"square"
 polygon = PackedVector2Array(-60, -60, 60, -60, 60, 60, -60, 60)
 icon = ExtResource("3")
+full_shape_art = true
 inventory_item = ExtResource("2")

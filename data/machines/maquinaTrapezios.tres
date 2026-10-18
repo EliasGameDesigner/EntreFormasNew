@@ -3,8 +3,13 @@
 [ext_resource type="Resource" path="res://data/items/itemTrapezio.tres" id="2"]
 [ext_resource type="Resource" path="res://data/machines/assembly_trapezoid.tres" id="3"]
 [ext_resource type="Resource" path="res://data/machines/production_trapezoid.tres" id="4"]
+[ext_resource type="SpriteFrames" path="res://data/machines/visuals/trapezoid_frames.tres" id="visuals"]
+
 [resource]
 script = ExtResource("1")
+visual_frames = ExtResource("visuals")
+visual_scale = 0.415800
+visual_offset = Vector2(0, -37.214137)
 machine_name = "Máquina de Trapézios"
 cost = 500
 repair_cash_cost = 0

@@ -7,9 +7,12 @@ extends CharacterBody2D
 @onready var footstep_player: AudioStreamPlayer = $FootstepPlayer # NOVO: Referência ao áudio de passos
 
 var current_interactable: Interactable = null
+var facing := Vector2.DOWN
 
 
 func _ready() -> void:
+	# Per-player material: idle breathing must not affect other instances.
+	animated_sprite.material = animated_sprite.material.duplicate()
 	if interaction_label:
 		interaction_label.text = "[Mouse 1] Interagir"
 		interaction_label.hide()
@@ -42,25 +45,33 @@ func _physics_process(_delta: float) -> void:
 
 
 func update_animation(direction: Vector2) -> void:
-	if direction == Vector2.ZERO:
-		animated_sprite.play("idle")
-		# Se parou de andar, para o som de passos
-		if footstep_player.playing:
-			footstep_player.stop()
-		return
-
-	# Se está andando e o som não está tocando, começa a tocar
-	if not footstep_player.playing:
+	var moving := direction != Vector2.ZERO
+	if moving:
+		facing = Vector2(signf(direction.x), 0) if abs(direction.x) > abs(direction.y) else Vector2(0, signf(direction.y))
+	var mold := get_node_or_null("CarriedMold")
+	var carrying: bool = mold != null and mold.visible
+	var animation_name := "Carry" if carrying else "Walk"
+	if facing.x != 0:
+		animation_name += "_Right"
+	elif facing.y < 0:
+		animation_name += "_Back"
+	animated_sprite.flip_h = facing.x < 0
+	# Both atlases render at the same world size; side frames have twice the resolution.
+	var sprite_scale := 0.2 if facing.x != 0 else (0.43 if carrying and facing.y < 0 else 0.4)
+	if not moving:
+		sprite_scale = 0.19
+	animated_sprite.scale = Vector2.ONE * sprite_scale
+	animated_sprite.position.y = 36.0 - (210.0 if facing.x != 0 or not moving else 100.0) * sprite_scale
+	animated_sprite.material.set_shader_parameter("idle_breathing", not moving)
+	if not moving:
+		animation_name += "_Idle"
+	animated_sprite.play(animation_name)
+	if mold != null:
+		mold.update_pose(facing)
+	if moving and not footstep_player.playing:
 		footstep_player.play()
-
-	if abs(direction.x) > abs(direction.y):
-		animated_sprite.play("Walk_Right")
-		animated_sprite.flip_h = direction.x < 0
-	else:
-		if direction.y > 0:
-			animated_sprite.play("Walk") 
-		else:
-			animated_sprite.play("Walk_Back") 
+	elif not moving and footstep_player.playing:
+		footstep_player.stop()
 
 
 func _on_interaction_range_area_entered(area: Area2D) -> void:

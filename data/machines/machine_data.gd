@@ -7,6 +7,11 @@ class_name MachineData
 @export var produced_item: ItemData
 @export var production_recipe: ProductionRecipe
 
+@export_group("Aparência")
+@export var visual_frames: SpriteFrames
+@export var visual_scale: float = 1.0
+@export var visual_offset: Vector2 = Vector2.ZERO
+
 @export_group("Requisitos de Conserto")
 @export var can_break: bool = true
 @export var repair_assembly: AssemblyDefinition

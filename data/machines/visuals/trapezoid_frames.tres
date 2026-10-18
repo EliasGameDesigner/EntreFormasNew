@@ -1,0 +1,33 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/machines/redesign/trapezoid.png" id="1"]
+
+[sub_resource type="AtlasTexture" id="frame_0"]
+atlas = ExtResource("1")
+region = Rect2(74, 113, 544, 481)
+margin = Rect2(84, 199, 156, 219)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="frame_1"]
+atlas = ExtResource("1")
+region = Rect2(655, 43, 536, 551)
+margin = Rect2(90.5, 129, 164, 149)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="frame_2"]
+atlas = ExtResource("1")
+region = Rect2(70, 601, 548, 577)
+margin = Rect2(80, 103, 152, 123)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="frame_3"]
+atlas = ExtResource("1")
+region = Rect2(655, 693, 536, 484)
+margin = Rect2(91, 196, 164, 216)
+filter_clip = true
+
+[resource]
+animations = [{"name": &"idle", "speed": 1.0, "loop": false, "frames": [{"duration": 1.0, "texture": SubResource("frame_0")}]},
+{"name": &"funcionando", "speed": 3.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("frame_1")}, {"duration": 1.0, "texture": SubResource("frame_2")}]},
+{"name": &"quebrada", "speed": 1.0, "loop": false, "frames": [{"duration": 1.0, "texture": SubResource("frame_3")}]}]
+

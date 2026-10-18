@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" path="res://data/items/shape_piece_data.gd" id="1"]
 [ext_resource type="Resource" path="res://data/items/itemTriangulo.tres" id="2"]
-[ext_resource type="Texture2D" path="res://assets/textures/ui/part_triangle_small-removebg-preview.png" id="3"]
+[ext_resource type="Texture2D" path="res://data/items/triangle_part_texture.tres" id="3"]
 
 [resource]
 script = ExtResource("1")
 shape_id = &"triangle"
 polygon = PackedVector2Array(-40, -40, -40, 80, 80, -40)
 icon = ExtResource("3")
+full_shape_art = true
 inventory_item = ExtResource("2")
