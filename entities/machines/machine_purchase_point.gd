@@ -15,6 +15,13 @@ var _refresh_elapsed: float = 0.0
 @onready var label: Label = $Label
 
 func _ready() -> void:
+	if machine_data and machine_data.visual_frames:
+		var preview: Sprite2D = $Preview
+		preview.region_enabled = false
+		preview.texture = machine_data.visual_frames.get_frame_texture("idle", 0)
+		preview.scale = Vector2.ONE * machine_data.visual_scale
+		preview.position = machine_data.visual_offset
+		preview.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	interactable.interaction_started.connect(_on_interaction_started)
 	InventoryManager.money_changed.connect(_on_money_changed)
 	refresh_display()

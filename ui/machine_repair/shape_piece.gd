@@ -15,6 +15,23 @@ func rotate_step() -> void:
 func _draw() -> void:
 	if definition == null:
 		return
+	if definition.full_shape_art and definition.icon:
+		texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		var bounds := Rect2(definition.polygon[0], Vector2.ZERO)
+		for point in definition.polygon:
+			bounds = bounds.expand(point)
+		# Map the image onto the actual snap/hit polygon, including its diagonal.
+		# Atlas UVs must refer to the source texture, not the cropped resource.
+		var source: Texture2D = definition.icon
+		var region := Rect2(Vector2.ZERO, source.get_size())
+		if source is AtlasTexture:
+			region = source.region
+			source = source.atlas
+		var uv := PackedVector2Array()
+		for point in definition.polygon:
+			uv.append((region.position + (point - bounds.position) / bounds.size * region.size) / source.get_size())
+		draw_polygon(definition.polygon, PackedColorArray([Color.WHITE]), uv, source)
+		return
 	draw_colored_polygon(definition.polygon, definition.color)
 	var outline := definition.polygon.duplicate()
 	outline.append(outline[0])

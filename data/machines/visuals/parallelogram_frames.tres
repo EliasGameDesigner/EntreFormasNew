@@ -1,0 +1,33 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/machines/redesign/parallelogram.png" id="1"]
+
+[sub_resource type="AtlasTexture" id="frame_0"]
+atlas = ExtResource("1")
+region = Rect2(71, 119, 553, 471)
+margin = Rect2(87.5, 209, 147, 229)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="frame_1"]
+atlas = ExtResource("1")
+region = Rect2(646, 66, 554, 524)
+margin = Rect2(87.5, 156, 146, 176)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="frame_2"]
+atlas = ExtResource("1")
+region = Rect2(71, 614, 555, 561)
+margin = Rect2(87.5, 119, 145, 139)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="frame_3"]
+atlas = ExtResource("1")
+region = Rect2(646, 702, 554, 472)
+margin = Rect2(87.5, 208, 146, 228)
+filter_clip = true
+
+[resource]
+animations = [{"name": &"idle", "speed": 1.0, "loop": false, "frames": [{"duration": 1.0, "texture": SubResource("frame_0")}]},
+{"name": &"funcionando", "speed": 3.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("frame_1")}, {"duration": 1.0, "texture": SubResource("frame_2")}]},
+{"name": &"quebrada", "speed": 1.0, "loop": false, "frames": [{"duration": 1.0, "texture": SubResource("frame_3")}]}]
+

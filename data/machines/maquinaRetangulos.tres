@@ -7,8 +7,13 @@
 
 [ext_resource type="Resource" path="res://data/machines/production_rectangle.tres" id="6_production"]
 
+[ext_resource type="SpriteFrames" path="res://data/machines/visuals/rectangle_frames.tres" id="visuals"]
+
 [resource]
 script = ExtResource("2_jbtqf")
+visual_frames = ExtResource("visuals")
+visual_scale = 0.407801
+visual_offset = Vector2(0, -34.574468)
 machine_name = "Maquina de Retangulos"
 cost = 200
 repair_cash_cost = 0

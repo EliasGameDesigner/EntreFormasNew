@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/items/concepts/triangle_mold_v2.png" id="1"]
+
+[resource]
+atlas = ExtResource("1")
+region = Rect2(320, 349, 615, 620)
+filter_clip = true

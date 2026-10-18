@@ -3,8 +3,13 @@
 [ext_resource type="Resource" uid="uid://bsuvkaf75qyjw" path="res://data/items/itemTriangulo.tres" id="1_c3b1j"]
 [ext_resource type="Script" uid="uid://c4ktufjeq5rsn" path="res://data/machines/machine_data.gd" id="2_2sxv1"]
 
+[ext_resource type="SpriteFrames" path="res://data/machines/visuals/triangle_frames.tres" id="visuals"]
+
 [resource]
 script = ExtResource("2_2sxv1")
+visual_frames = ExtResource("visuals")
+visual_scale = 0.399202
+visual_offset = Vector2(0, -31.736527)
 machine_name = "maquina De Triangulos"
 cost = 0
 repair_cash_cost = 0

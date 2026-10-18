@@ -9,6 +9,7 @@ signal supply_requested(piece: ShapePieceData, at_position: Vector2)
 
 @export var definition: AssemblyDefinition
 @export var populate_on_ready: bool = true
+var workshop_style: bool = false
 var slots: Array[ShapeSlot] = []
 var pieces: Array[ShapePiece] = []
 var completed: bool = false
@@ -40,6 +41,7 @@ func setup(recipe: AssemblyDefinition, supply_pieces: bool = true) -> bool:
 	custom_minimum_size = recipe.board_size
 	for entry in recipe.slots:
 		var slot := ShapeSlot.new()
+		slot.workshop_style = workshop_style
 		slot.definition = entry
 		slot.position = entry.target_position
 		slot.rotation_degrees = entry.target_rotation_degrees
@@ -183,5 +185,18 @@ func _notification(what: int) -> void:
 		end_drag(_drag_origin - _grab_offset)
 
 func _draw() -> void:
+	if workshop_style:
+		draw_rect(Rect2(Vector2.ZERO, size), Color("513b27"))
+		for y in range(0, int(size.y), 48):
+			draw_rect(Rect2(4, y + 2, size.x - 8, 44), Color("59432e") if y % 96 == 0 else Color("624930"))
+			draw_line(Vector2(4, y + 46), Vector2(size.x - 4, y + 46), Color("30251b"), 2)
+			for x in range(24, int(size.x) - 24, 80):
+				draw_line(Vector2(x, y + 20), Vector2(x + 42, y + 20), Color("503a27"), 1)
+		draw_rect(Rect2(2, 2, size.x - 4, size.y - 4), Color("292d2a"), false, 8)
+		draw_rect(Rect2(Vector2.ZERO, size), Color("b49458"), false, 2)
+		for corner in [Vector2(10, 10), Vector2(size.x - 10, 10), Vector2(10, size.y - 10), size - Vector2(10, 10)]:
+			draw_circle(corner, 4, Color("bd9858"))
+			draw_line(corner - Vector2(2, 0), corner + Vector2(2, 0), Color("51412b"), 1)
+		return
 	draw_rect(Rect2(Vector2.ZERO, size), Color(0.05, 0.08, 0.13))
 	draw_rect(Rect2(Vector2.ZERO, size), Color(0.3, 0.5, 0.65), false, 2.0)

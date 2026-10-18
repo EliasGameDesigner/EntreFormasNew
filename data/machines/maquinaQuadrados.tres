@@ -7,8 +7,13 @@
 
 [ext_resource type="Resource" path="res://data/machines/production_square.tres" id="6_production"]
 
+[ext_resource type="SpriteFrames" path="res://data/machines/visuals/square_frames.tres" id="visuals"]
+
 [resource]
 script = ExtResource("2_ustjb")
+visual_frames = ExtResource("visuals")
+visual_scale = 0.414079
+visual_offset = Vector2(0, -36.645963)
 machine_name = "Maquina De Quadrados"
 cost = 0
 repair_cash_cost = 0
