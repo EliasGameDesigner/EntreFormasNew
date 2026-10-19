@@ -1,38 +1,36 @@
-name: Release Godot 4.7 Mono
+name: Release Godot 4.7
 
 on:
   push:
     tags:
-      - "v*" # Só vai rodar quando você enviar uma tag que comece com 'v' (ex: v1.0.0)
+      - "v*"
 
 jobs:
   export:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Permissão necessária para o GitHub criar a aba de Release
+      contents: write
     steps:
       - name: Baixar o código-fonte
         uses: actions/checkout@v4
         with:
           lfs: true
 
-      - name: Configurar o .NET (Para compilar o C#)
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.0.x'
-
-      - name: Exportar o Jogo via Godot 4.7 Mono
+      - name: Exportar o Jogo via Godot 4.7 (Standard)
         uses: firebelley/godot-export@v6.0.0
         with:
-          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.7-stable/Godot_v4.7-stable_mono_linux_x86_64.zip
-          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.7-stable/Godot_v4.7-stable_mono_export_templates.tpz
+          # Versão Standard (sem _mono): ignora o arquivo .cs do Dialogue Manager e não pede .sln
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.7-stable/Godot_v4.7-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.7-stable/Godot_v4.7-stable_export_templates.tpz
           relative_project_path: ./
           archive_output: true
+          # Força a salvar o zip exatamente nesta pasta para a Release encontrar:
+          base_dir: /home/runner/.local/share/godot/builds
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Criar Release no GitHub
         uses: softprops/action-gh-release@v2
         with:
-          files: /home/runner/.local/share/godot/builds/*
+          files: /home/runner/.local/share/godot/builds/**/*.zip
           generate_release_notes: true
