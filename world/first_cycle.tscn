@@ -1,118 +1,136 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene format=3 uid="uid://0m40l6vkkxgs"]
 
-[ext_resource type="PackedScene" path="res://world/cenario.tscn" id="map"]
-[ext_resource type="Script" path="res://world/first_cycle_room.gd" id="room"]
-[ext_resource type="Script" path="res://core/first_cycle.gd" id="cycle"]
-[ext_resource type="Script" path="res://ui/hud/first_cycle_hud.gd" id="hud"]
-[ext_resource type="Texture2D" path="res://assets/textures/characters/character_godot_spritesheet-removebg-preview.png" id="customer"]
+[ext_resource type="Script" uid="uid://qouol4rc64k8" path="res://entities/player/carried_mold.gd" id="carried"]
+[ext_resource type="Script" uid="uid://0hi73kfg1cub" path="res://entities/props/customer_sprite.gd" id="customer"]
+[ext_resource type="Script" uid="uid://bi321futkedio" path="res://core/first_cycle.gd" id="cycle"]
+[ext_resource type="Script" uid="uid://bth3oj7l8vxt7" path="res://ui/hud/first_cycle_hud.gd" id="hud"]
+[ext_resource type="PackedScene" path="res://world/factory_layout.tscn" id="layout"]
+[ext_resource type="PackedScene" uid="uid://bjmjpkifoap2r" path="res://world/cenario.tscn" id="map"]
+[ext_resource type="Script" uid="uid://b711la72le5nv" path="res://world/first_cycle_room.gd" id="room"]
 [ext_resource type="PackedScene" path="res://entities/props/mold_workbench.tscn" id="workbench"]
-[ext_resource type="Script" path="res://entities/player/carried_mold.gd" id="carried"]
 
-[sub_resource type="AtlasTexture" id="CustomerTexture"]
-atlas = ExtResource("customer")
-region = Rect2(0, 0, 62, 250)
-
-[node name="Cenario" instance=ExtResource("map")]
+[node name="Cenario" unique_id=22987688 instance=ExtResource("map")]
 script = ExtResource("room")
 
-[node name="CharacterBody2D" parent="." index="0"]
+[node name="CharacterBody2D" parent="." index="0" unique_id=1110913538]
 z_index = 5
-position = Vector2(1632, -1170)
+position = Vector2(1552, -1072)
 speed = 300.0
 
-[node name="TopDownControler2D" parent="CharacterBody2D" index="0"]
-process_mode = 4
-Active = false
-Handle_Camera = false
-
-[node name="CollisionShape2D" parent="CharacterBody2D" index="1"]
-scale = Vector2(0.45, 0.45)
-
-[node name="InteractionRange" parent="CharacterBody2D" index="3"]
-scale = Vector2(0.65, 0.65)
-
-[node name="InteractionLabel" parent="CharacterBody2D" index="4"]
-offset_left = -75.0
-offset_top = 65.0
-offset_right = 75.0
-offset_bottom = 90.0
-horizontal_alignment = 1
-
-[node name="FollowCamera" type="Camera2D" parent="CharacterBody2D"]
+[node name="FollowCamera" type="Camera2D" parent="CharacterBody2D" index="7" unique_id=450868858]
 offset = Vector2(0, -70)
+limit_left = 960
+limit_top = -1792
+limit_right = 2784
+limit_bottom = -512
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
-[node name="CarriedMold" type="Node2D" parent="CharacterBody2D" node_paths=PackedStringArray("workbench")]
-position = Vector2(32, 20)
+[node name="CarriedMold" type="Node2D" parent="CharacterBody2D" index="8" unique_id=1577193518 node_paths=PackedStringArray("workbench")]
 z_index = 1
+position = Vector2(32, 20)
 script = ExtResource("carried")
 workbench = NodePath("../../MoldWorkbench")
 
-[node name="MaquinaGenerica" parent="." index="1"]
+[node name="MaquinaGenerica" parent="." index="1" unique_id=1602997167]
 z_index = 2
+position = Vector2(1344, -1472)
+scale = Vector2(0.8, 0.8)
+manual_production = true
+manual_available = false
+requires_mold = true
+
+[node name="MaquinaGenerica2" parent="." index="2" unique_id=288937371]
+z_index = 2
+position = Vector2(1264, -768)
 scale = Vector2(0.8, 0.8)
 current_state = 1
 manual_production = true
-requires_mold = true
 manual_available = false
-
-[node name="MaquinaGenerica2" parent="." index="2"]
-z_index = 2
-scale = Vector2(0.8, 0.8)
-current_state = 1
-manual_production = true
 requires_mold = true
-manual_available = false
 
-[node name="shop_node" parent="." index="3"]
+[node name="shop_node" parent="." index="3" unique_id=415301599]
 z_index = 2
+position = Vector2(2458, -1087)
 order_counter = true
 
-[node name="Maquina_quadrados" parent="." index="6"]
+[node name="TileMapLayer" parent="." index="5" unique_id=1189991083]
+visible = false
+collision_enabled = false
+
+[node name="Maquina_quadrados" parent="." index="6" unique_id=796009665]
 z_index = 2
+position = Vector2(1792, -1472)
 scale = Vector2(0.8, 0.8)
 current_state = 1
 manual_production = true
-requires_mold = true
 manual_available = false
+requires_mold = true
 
-[node name="CompraParalelogramos" parent="."]
+[node name="Tapete" parent="." index="53" unique_id=1846961930]
+position = Vector2(1344, -1320)
+
+[node name="Tapete2" parent="." index="54" unique_id=1145490569]
+position = Vector2(1792, -1320)
+
+[node name="Tapete3" parent="." index="55" unique_id=1077016723]
+visible = false
+
+[node name="RigidBody2D" parent="." index="56" unique_id=2088902530]
+collision_layer = 0
+collision_mask = 0
+
+[node name="RigidBody2D2" parent="." index="57" unique_id=2087798361]
+collision_layer = 0
+collision_mask = 0
+
+[node name="RigidBody2D3" parent="." index="58" unique_id=204454792]
+collision_layer = 0
+collision_mask = 0
+
+[node name="RigidBody2D4" parent="." index="59" unique_id=1992623290]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CompraParalelogramos" parent="." index="60"]
+position = Vector2(1584, -768)
 scale = Vector2(0.8, 0.8)
 progression_locked = true
 
-[node name="CompraTrapezios" parent="."]
+[node name="CompraTrapezios" parent="." index="61"]
+position = Vector2(1904, -768)
 scale = Vector2(0.8, 0.8)
 progression_locked = true
 
-[node name="CounterLabel" type="Label" parent="."]
-offset_left = 2312.0
-offset_top = -1226.0
-offset_right = 2632.0
-offset_bottom = -1176.0
+[node name="CounterLabel" type="Label" parent="." index="62" unique_id=1866269004]
+offset_left = 2298.0
+offset_top = -1267.0
+offset_right = 2618.0
+offset_bottom = -1217.0
 text = "BALCÃO DE PEDIDOS
 Mouse1: entregar"
 horizontal_alignment = 1
-mouse_filter = 2
 
-[node name="Customer" type="Sprite2D" parent="."]
-z_index = 3
-position = Vector2(2472, -1086)
-texture = SubResource("CustomerTexture")
+[node name="Customer" type="Sprite2D" parent="." index="63" unique_id=801095029]
+z_index = 1
+position = Vector2(2458, -1152)
+script = ExtResource("customer")
 
-[node name="MoldWorkbench" parent="." instance=ExtResource("workbench")]
-position = Vector2(1110, -1120)
+[node name="MoldWorkbench" parent="." index="64" unique_id=690611500 instance=ExtResource("workbench")]
 z_index = 2
-mold_mode = 1
+position = Vector2(1568, -1248)
 
-[node name="FirstCycle" type="Node" parent="." node_paths=PackedStringArray("triangle_machine", "square_machine", "mold_workbench")]
+[node name="FirstCycle" type="Node" parent="." index="65" unique_id=1399711941 node_paths=PackedStringArray("triangle_machine", "square_machine", "mold_workbench")]
 script = ExtResource("cycle")
+triangle_patience = 50.0
+square_patience = 110.0
 triangle_machine = NodePath("../MaquinaGenerica")
 square_machine = NodePath("../Maquina_quadrados")
 mold_workbench = NodePath("../MoldWorkbench")
-triangle_patience = 50.0
-square_patience = 110.0
 
-[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("cycle")]
+[node name="HUD" type="CanvasLayer" parent="." index="66" unique_id=1858142295 node_paths=PackedStringArray("cycle")]
 script = ExtResource("hud")
 cycle = NodePath("../FirstCycle")
+
+[node name="FactoryLayout" parent="." index="67" unique_id=1741749843 instance=ExtResource("layout")]
+texture_filter = 1

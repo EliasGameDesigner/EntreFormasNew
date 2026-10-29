@@ -1,0 +1,47 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://daf4gv6j2r0ek"]
+
+[ext_resource type="Texture2D" uid="uid://bde75aww1eirv" path="res://assets/textures/characters/customers/farmer_walk.png" id="1"]
+
+[sub_resource type="AtlasTexture" id="Frame0"]
+atlas = ExtResource("1")
+region = Rect2(95, 112, 364, 614)
+margin = Rect2(39, 0, 43, 0)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame1"]
+atlas = ExtResource("1")
+region = Rect2(626, 112, 263, 614)
+margin = Rect2(72.5, 0, 144, 0)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame2"]
+atlas = ExtResource("1")
+region = Rect2(1062, 112, 362, 614)
+margin = Rect2(34, 0, 45, 0)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame3"]
+atlas = ExtResource("1")
+region = Rect2(1574, 112, 314, 614)
+margin = Rect2(62, 0, 93, 0)
+filter_clip = true
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Frame0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame3")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 10.0
+}]
