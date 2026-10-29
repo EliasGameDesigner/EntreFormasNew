@@ -1,0 +1,47 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://coaqv40qn4y3l"]
+
+[ext_resource type="Texture2D" uid="uid://djkl0dww40ag6" path="res://assets/textures/characters/customers/merchant_walk.png" id="1"]
+
+[sub_resource type="AtlasTexture" id="Frame0"]
+atlas = ExtResource("1")
+region = Rect2(119, 65, 325, 602)
+margin = Rect2(8, 1, 12, 1)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame1"]
+atlas = ExtResource("1")
+region = Rect2(684, 64, 276, 603)
+margin = Rect2(31, 0, 61, 0)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame2"]
+atlas = ExtResource("1")
+region = Rect2(1205, 65, 314, 602)
+margin = Rect2(9, 1, 23, 1)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame3"]
+atlas = ExtResource("1")
+region = Rect2(1767, 65, 275, 602)
+margin = Rect2(31.5, 1, 62, 1)
+filter_clip = true
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Frame0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame3")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 10.0
+}]

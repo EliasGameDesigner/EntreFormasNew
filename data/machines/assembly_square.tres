@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="AssemblyDefinition" load_steps=6 format=3]
+[gd_resource type="Resource" script_class="AssemblyDefinition" format=3 uid="uid://ci4c3mxfuy67f"]
 
-[ext_resource type="Script" path="res://data/machines/assembly_definition.gd" id="1"]
-[ext_resource type="Script" path="res://data/machines/shape_slot_data.gd" id="2"]
+[ext_resource type="Script" uid="uid://dtl1u3ywjlbdp" path="res://data/machines/assembly_definition.gd" id="1"]
+[ext_resource type="Script" uid="uid://b2sxir1rwv4rb" path="res://data/machines/shape_slot_data.gd" id="2"]
 [ext_resource type="Resource" path="res://data/items/shape_triangle.tres" id="3"]
 
 [sub_resource type="Resource" id="Slot1"]

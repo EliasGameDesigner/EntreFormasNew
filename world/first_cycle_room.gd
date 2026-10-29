@@ -14,6 +14,8 @@ func _ready() -> void:
 		if child is MachinePurchasePoint or child is TaskNode or child is ResourceSpawnPoint:
 			child.process_mode = Node.PROCESS_MODE_DISABLED
 			_disable_interactions(child)
+			if child is TaskNode or child is ResourceSpawnPoint:
+				child.hide()
 			if child is MachinePurchasePoint:
 				child.label.text = child.machine_data.machine_name + "\nDisponível em um próximo ciclo"
 	$MaquinaGenerica2.status_label.text = "Máquina de Retângulos\nDisponível em um próximo ciclo"
@@ -34,18 +36,22 @@ func _disable_interactions(node: Node) -> void:
 func _show_customer() -> void:
 	if _customer_tween:
 		_customer_tween.kill()
-	var destination: Vector2 = $shop_node.position + Vector2(0, -190)
-	var entrance := destination + Vector2(230, 0)
+	var destination: Vector2 = $shop_node.position + Vector2(0, -65)
+	var entrance: Vector2 = $FactoryLayout/CustomerEntrance.position
 	if cycle.order_item == null:
+		customer.start_walking(entrance)
 		_customer_tween = create_tween()
-		_customer_tween.tween_property(customer, "position", entrance, 0.7)
+		_customer_tween.tween_property(customer, "position", entrance, customer.position.distance_to(entrance) / customer.walk_speed)
+		_customer_tween.tween_callback(customer.stop_walking)
 		_customer_tween.tween_callback(customer.hide)
 		return
 	customer.show()
 	customer.position = entrance
-	customer.modulate = Color.from_hsv(fmod(cycle.customer_number * 0.17, 1.0), 0.25, 1.0)
+	customer.next_appearance()
+	customer.start_walking(destination)
 	_customer_tween = create_tween()
-	_customer_tween.tween_property(customer, "position", destination, 0.7)
+	_customer_tween.tween_property(customer, "position", destination, entrance.distance_to(destination) / customer.walk_speed)
+	_customer_tween.tween_callback(customer.stop_walking)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F11:

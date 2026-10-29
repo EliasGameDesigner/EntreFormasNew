@@ -1,12 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://dd2ts0m5t1afo"]
 
-[ext_resource type="Texture2D" path="res://assets/textures/machines/redesign/triangle.png" id="1"]
-
-[sub_resource type="AtlasTexture" id="frame_0"]
-atlas = ExtResource("1")
-region = Rect2(123, 96, 436, 501)
-margin = Rect2(130.5, 179, 264, 199)
-filter_clip = true
+[ext_resource type="Texture2D" uid="uid://c0ey2vm347kl1" path="res://assets/textures/machines/redesign/triangle.png" id="1"]
 
 [sub_resource type="AtlasTexture" id="frame_1"]
 atlas = ExtResource("1")
@@ -20,6 +14,12 @@ region = Rect2(123, 628, 436, 547)
 margin = Rect2(130.5, 133, 264, 153)
 filter_clip = true
 
+[sub_resource type="AtlasTexture" id="frame_0"]
+atlas = ExtResource("1")
+region = Rect2(123, 96, 436, 501)
+margin = Rect2(130.5, 179, 264, 199)
+filter_clip = true
+
 [sub_resource type="AtlasTexture" id="frame_3"]
 atlas = ExtResource("1")
 region = Rect2(686, 672, 463, 503)
@@ -27,7 +27,31 @@ margin = Rect2(116, 177, 237, 197)
 filter_clip = true
 
 [resource]
-animations = [{"name": &"idle", "speed": 1.0, "loop": false, "frames": [{"duration": 1.0, "texture": SubResource("frame_0")}]},
-{"name": &"funcionando", "speed": 3.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("frame_1")}, {"duration": 1.0, "texture": SubResource("frame_2")}]},
-{"name": &"quebrada", "speed": 1.0, "loop": false, "frames": [{"duration": 1.0, "texture": SubResource("frame_3")}]}]
-
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("frame_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("frame_2")
+}],
+"loop": 1,
+"name": &"funcionando",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("frame_0")
+}],
+"loop": 0,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("frame_3")
+}],
+"loop": 0,
+"name": &"quebrada",
+"speed": 1.0
+}]

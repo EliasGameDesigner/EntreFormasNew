@@ -243,6 +243,17 @@ func click_at(at: Vector2) -> void:
 		await get_tree().process_frame
 
 func walk_to(destination: Vector2) -> bool:
+	# The new partition is crossed through the lower doorway, like a player would.
+	if (player.global_position.x < 2176) != (destination.x < 2176):
+		var left := Vector2(2070, -912)
+		var right := Vector2(2290, -912)
+		var waypoints := [left, right] if player.global_position.x < 2176 else [right, left]
+		for waypoint in waypoints:
+			if not await walk_directly_to(waypoint):
+				return false
+	return await walk_directly_to(destination)
+
+func walk_directly_to(destination: Vector2) -> bool:
 	player.set_physics_process(false)
 	var reached := true
 	for i in range(200):

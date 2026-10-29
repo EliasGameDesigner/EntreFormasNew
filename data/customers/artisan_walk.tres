@@ -1,0 +1,47 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://c3tg3c2tksroy"]
+
+[ext_resource type="Texture2D" uid="uid://sm26j5fsq7ni" path="res://assets/textures/characters/customers/artisan_walk.png" id="1"]
+
+[sub_resource type="AtlasTexture" id="Frame0"]
+atlas = ExtResource("1")
+region = Rect2(81, 53, 382, 692)
+margin = Rect2(47, 1, 51, 1)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame1"]
+atlas = ExtResource("1")
+region = Rect2(583, 53, 301, 693)
+margin = Rect2(55.5, 0, 132, 0)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame2"]
+atlas = ExtResource("1")
+region = Rect2(1061, 53, 389, 693)
+margin = Rect2(35, 0, 44, 0)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame3"]
+atlas = ExtResource("1")
+region = Rect2(1574, 53, 300, 693)
+margin = Rect2(56, 0, 133, 0)
+filter_clip = true
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Frame0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame3")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 10.0
+}]

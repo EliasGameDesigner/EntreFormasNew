@@ -1,81 +1,8 @@
-[gd_resource type="SpriteFrames" load_steps=34 format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bafuuymnxwank"]
 
-[ext_resource type="Texture2D" path="res://assets/textures/characters/character_walk_carry_v2.png" id="1"]
-[ext_resource type="Texture2D" path="res://assets/textures/characters/character_side_v3.png" id="2"]
-
-[ext_resource type="Texture2D" path="res://assets/textures/characters/character_idle.png" id="idle"]
-
-[sub_resource type="AtlasTexture" id="Walk_0"]
-atlas = ExtResource("1")
-region = Rect2(299, 20, 110, 204)
-margin = Rect2(25, 6, 50, 16)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Walk_1"]
-atlas = ExtResource("1")
-region = Rect2(485, 20, 110, 203)
-margin = Rect2(25, 7, 50, 17)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Walk_2"]
-atlas = ExtResource("1")
-region = Rect2(668, 20, 110, 204)
-margin = Rect2(25, 6, 50, 16)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Walk_3"]
-atlas = ExtResource("1")
-region = Rect2(857, 20, 109, 204)
-margin = Rect2(25.5, 6, 51, 16)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Walk_Back_0"]
-atlas = ExtResource("1")
-region = Rect2(299, 235, 111, 199)
-margin = Rect2(24.5, 11, 49, 21)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Walk_Back_1"]
-atlas = ExtResource("1")
-region = Rect2(485, 234, 110, 200)
-margin = Rect2(25, 10, 50, 20)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Walk_Back_2"]
-atlas = ExtResource("1")
-region = Rect2(668, 234, 110, 200)
-margin = Rect2(25, 10, 50, 20)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Walk_Back_3"]
-atlas = ExtResource("1")
-region = Rect2(854, 234, 111, 200)
-margin = Rect2(24.5, 10, 49, 20)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Walk_Right_0"]
-atlas = ExtResource("2")
-region = Rect2(131, 82, 243, 405)
-margin = Rect2(31, 25, 77, 35)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Walk_Right_1"]
-atlas = ExtResource("2")
-region = Rect2(496, 82, 202, 405)
-margin = Rect2(56, 25, 118, 35)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Walk_Right_2"]
-atlas = ExtResource("2")
-region = Rect2(828, 82, 244, 405)
-margin = Rect2(30, 25, 76, 35)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Walk_Right_3"]
-atlas = ExtResource("2")
-region = Rect2(1205, 82, 202, 405)
-margin = Rect2(55, 25, 118, 35)
-filter_clip = true
+[ext_resource type="Texture2D" uid="uid://gfb7wlfe7j3j" path="res://assets/textures/characters/character_walk_carry_v2.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dvgc86cdq27a7" path="res://assets/textures/characters/character_side_v3.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://10pr1078csle" path="res://assets/textures/characters/character_idle.png" id="idle"]
 
 [sub_resource type="AtlasTexture" id="Carry_0"]
 atlas = ExtResource("1")
@@ -125,6 +52,18 @@ region = Rect2(858, 853, 108, 186)
 margin = Rect2(26, 24, 52, 34)
 filter_clip = true
 
+[sub_resource type="AtlasTexture" id="Carry_Back_Rest"]
+atlas = ExtResource("idle")
+region = Rect2(669, 536, 198, 426)
+margin = Rect2(61, 4, 122, 14)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Carry_Rest"]
+atlas = ExtResource("idle")
+region = Rect2(294, 536, 199, 426)
+margin = Rect2(60.5, 4, 121, 14)
+filter_clip = true
+
 [sub_resource type="AtlasTexture" id="Carry_Right_0"]
 atlas = ExtResource("2")
 region = Rect2(125, 552, 256, 400)
@@ -149,10 +88,58 @@ region = Rect2(1203, 553, 211, 400)
 margin = Rect2(53, 30, 109, 40)
 filter_clip = true
 
-[sub_resource type="AtlasTexture" id="Walk_Rest"]
+[sub_resource type="AtlasTexture" id="Carry_Right_Rest"]
 atlas = ExtResource("idle")
-region = Rect2(294, 54, 199, 427)
-margin = Rect2(60.5, 3, 121, 13)
+region = Rect2(1039, 535, 218, 427)
+margin = Rect2(51, 3, 102, 13)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Walk_0"]
+atlas = ExtResource("1")
+region = Rect2(299, 20, 110, 204)
+margin = Rect2(25, 6, 50, 16)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Walk_1"]
+atlas = ExtResource("1")
+region = Rect2(485, 20, 110, 203)
+margin = Rect2(25, 7, 50, 17)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Walk_2"]
+atlas = ExtResource("1")
+region = Rect2(668, 20, 110, 204)
+margin = Rect2(25, 6, 50, 16)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Walk_3"]
+atlas = ExtResource("1")
+region = Rect2(857, 20, 109, 204)
+margin = Rect2(25.5, 6, 51, 16)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Walk_Back_0"]
+atlas = ExtResource("1")
+region = Rect2(299, 235, 111, 199)
+margin = Rect2(24.5, 11, 49, 21)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Walk_Back_1"]
+atlas = ExtResource("1")
+region = Rect2(485, 234, 110, 200)
+margin = Rect2(25, 10, 50, 20)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Walk_Back_2"]
+atlas = ExtResource("1")
+region = Rect2(668, 234, 110, 200)
+margin = Rect2(25, 10, 50, 20)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Walk_Back_3"]
+atlas = ExtResource("1")
+region = Rect2(854, 234, 111, 200)
+margin = Rect2(24.5, 10, 49, 20)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="Walk_Back_Rest"]
@@ -161,40 +148,191 @@ region = Rect2(668, 54, 199, 427)
 margin = Rect2(60.5, 3, 121, 13)
 filter_clip = true
 
+[sub_resource type="AtlasTexture" id="Walk_Rest"]
+atlas = ExtResource("idle")
+region = Rect2(294, 54, 199, 427)
+margin = Rect2(60.5, 3, 121, 13)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Walk_Right_0"]
+atlas = ExtResource("2")
+region = Rect2(131, 82, 243, 405)
+margin = Rect2(31, 25, 77, 35)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Walk_Right_1"]
+atlas = ExtResource("2")
+region = Rect2(496, 82, 202, 405)
+margin = Rect2(56, 25, 118, 35)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Walk_Right_2"]
+atlas = ExtResource("2")
+region = Rect2(828, 82, 244, 405)
+margin = Rect2(30, 25, 76, 35)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Walk_Right_3"]
+atlas = ExtResource("2")
+region = Rect2(1205, 82, 202, 405)
+margin = Rect2(55, 25, 118, 35)
+filter_clip = true
+
 [sub_resource type="AtlasTexture" id="Walk_Right_Rest"]
 atlas = ExtResource("idle")
 region = Rect2(1042, 56, 213, 425)
 margin = Rect2(53.5, 5, 107, 15)
 filter_clip = true
 
-[sub_resource type="AtlasTexture" id="Carry_Rest"]
-atlas = ExtResource("idle")
-region = Rect2(294, 536, 199, 426)
-margin = Rect2(60.5, 4, 121, 14)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Carry_Back_Rest"]
-atlas = ExtResource("idle")
-region = Rect2(669, 536, 198, 426)
-margin = Rect2(61, 4, 122, 14)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Carry_Right_Rest"]
-atlas = ExtResource("idle")
-region = Rect2(1039, 535, 218, 427)
-margin = Rect2(51, 3, 102, 13)
-filter_clip = true
-
 [resource]
-animations = [{"name": &"Walk", "speed": 7.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("Walk_0")}, {"duration": 1.0, "texture": SubResource("Walk_1")}, {"duration": 1.0, "texture": SubResource("Walk_2")}, {"duration": 1.0, "texture": SubResource("Walk_3")}]},
-{"name": &"Walk_Idle", "speed": 1.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("Walk_Rest")}]},
-{"name": &"Walk_Back", "speed": 7.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("Walk_Back_0")}, {"duration": 1.0, "texture": SubResource("Walk_Back_1")}, {"duration": 1.0, "texture": SubResource("Walk_Back_2")}, {"duration": 1.0, "texture": SubResource("Walk_Back_3")}]},
-{"name": &"Walk_Back_Idle", "speed": 1.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("Walk_Back_Rest")}]},
-{"name": &"Walk_Right", "speed": 7.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("Walk_Right_0")}, {"duration": 1.0, "texture": SubResource("Walk_Right_1")}, {"duration": 1.0, "texture": SubResource("Walk_Right_2")}, {"duration": 1.0, "texture": SubResource("Walk_Right_3")}]},
-{"name": &"Walk_Right_Idle", "speed": 1.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("Walk_Right_Rest")}]},
-{"name": &"Carry", "speed": 7.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("Carry_0")}, {"duration": 1.0, "texture": SubResource("Carry_1")}, {"duration": 1.0, "texture": SubResource("Carry_2")}, {"duration": 1.0, "texture": SubResource("Carry_3")}]},
-{"name": &"Carry_Idle", "speed": 1.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("Carry_Rest")}]},
-{"name": &"Carry_Back", "speed": 7.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("Carry_Back_0")}, {"duration": 1.0, "texture": SubResource("Carry_Back_1")}, {"duration": 1.0, "texture": SubResource("Carry_Back_2")}, {"duration": 1.0, "texture": SubResource("Carry_Back_3")}]},
-{"name": &"Carry_Back_Idle", "speed": 1.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("Carry_Back_Rest")}]},
-{"name": &"Carry_Right", "speed": 7.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("Carry_Right_0")}, {"duration": 1.0, "texture": SubResource("Carry_Right_1")}, {"duration": 1.0, "texture": SubResource("Carry_Right_2")}, {"duration": 1.0, "texture": SubResource("Carry_Right_3")}]},
-{"name": &"Carry_Right_Idle", "speed": 1.0, "loop": true, "frames": [{"duration": 1.0, "texture": SubResource("Carry_Right_Rest")}]}]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Carry_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Carry_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Carry_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Carry_3")
+}],
+"loop": 1,
+"name": &"Carry",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Carry_Back_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Carry_Back_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Carry_Back_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Carry_Back_3")
+}],
+"loop": 1,
+"name": &"Carry_Back",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Carry_Back_Rest")
+}],
+"loop": 1,
+"name": &"Carry_Back_Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Carry_Rest")
+}],
+"loop": 1,
+"name": &"Carry_Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Carry_Right_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Carry_Right_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Carry_Right_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Carry_Right_3")
+}],
+"loop": 1,
+"name": &"Carry_Right",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Carry_Right_Rest")
+}],
+"loop": 1,
+"name": &"Carry_Right_Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Walk_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Walk_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Walk_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Walk_3")
+}],
+"loop": 1,
+"name": &"Walk",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Walk_Back_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Walk_Back_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Walk_Back_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Walk_Back_3")
+}],
+"loop": 1,
+"name": &"Walk_Back",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Walk_Back_Rest")
+}],
+"loop": 1,
+"name": &"Walk_Back_Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Walk_Rest")
+}],
+"loop": 1,
+"name": &"Walk_Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Walk_Right_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Walk_Right_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Walk_Right_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Walk_Right_3")
+}],
+"loop": 1,
+"name": &"Walk_Right",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Walk_Right_Rest")
+}],
+"loop": 1,
+"name": &"Walk_Right_Idle",
+"speed": 1.0
+}]

@@ -1,0 +1,15 @@
+[gd_resource type="TileSet" format=3 uid="uid://6ly2ptwok037"]
+
+[ext_resource type="Texture2D" uid="uid://dtnr78pfty147" path="res://assets/textures/props/factory_floor_tiles_v2.png" id="1"]
+
+[sub_resource type="TileSetAtlasSource" id="Wood"]
+texture = ExtResource("1")
+texture_region_size = Vector2i(627, 627)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[resource]
+tile_size = Vector2i(627, 627)
+sources/0 = SubResource("Wood")
