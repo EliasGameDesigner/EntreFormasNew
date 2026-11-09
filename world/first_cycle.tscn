@@ -15,9 +15,8 @@ script = ExtResource("room")
 [node name="CharacterBody2D" parent="." index="0" unique_id=1110913538]
 z_index = 5
 position = Vector2(1552, -1072)
-speed = 300.0
 
-[node name="FollowCamera" type="Camera2D" parent="CharacterBody2D" index="7" unique_id=450868858]
+[node name="FollowCamera" type="Camera2D" parent="CharacterBody2D" unique_id=450868858]
 offset = Vector2(0, -70)
 limit_left = 960
 limit_top = -1792
@@ -26,7 +25,7 @@ limit_bottom = -512
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
-[node name="CarriedMold" type="Node2D" parent="CharacterBody2D" index="8" unique_id=1577193518 node_paths=PackedStringArray("workbench")]
+[node name="CarriedMold" type="Node2D" parent="CharacterBody2D" unique_id=1577193518 node_paths=PackedStringArray("workbench")]
 z_index = 1
 position = Vector2(32, 20)
 script = ExtResource("carried")
@@ -108,7 +107,7 @@ offset_top = -1267.0
 offset_right = 2618.0
 offset_bottom = -1217.0
 text = "BALCÃO DE PEDIDOS
-Mouse1: entregar"
+Mouse1: depositar peça"
 horizontal_alignment = 1
 
 [node name="Customer" type="Sprite2D" parent="." index="63" unique_id=801095029]
@@ -120,12 +119,13 @@ script = ExtResource("customer")
 z_index = 2
 position = Vector2(1568, -1248)
 
-[node name="FirstCycle" type="Node" parent="." index="65" unique_id=1399711941 node_paths=PackedStringArray("triangle_machine", "square_machine", "mold_workbench")]
+[node name="FirstCycle" type="Node" parent="." index="65" unique_id=1399711941 node_paths=PackedStringArray("triangle_machine", "square_machine", "rectangle_machine", "mold_workbench")]
 script = ExtResource("cycle")
 triangle_patience = 50.0
 square_patience = 110.0
 triangle_machine = NodePath("../MaquinaGenerica")
 square_machine = NodePath("../Maquina_quadrados")
+rectangle_machine = NodePath("../MaquinaGenerica2")
 mold_workbench = NodePath("../MoldWorkbench")
 
 [node name="HUD" type="CanvasLayer" parent="." index="66" unique_id=1858142295 node_paths=PackedStringArray("cycle")]

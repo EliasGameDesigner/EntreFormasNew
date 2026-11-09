@@ -25,6 +25,8 @@ func quantity(item: ItemData) -> int:
 
 func run() -> void:
 	room = preload("res://world/first_cycle.tscn").instantiate()
+	# Regression coverage for the optional inventory-based production mode.
+	room.get_node("FirstCycle").physical_transport = false
 	add_child(room)
 	cycle = room.get_node("FirstCycle")
 	triangle = cycle.triangle_machine
@@ -40,7 +42,7 @@ func run() -> void:
 	check(workbench.mold_mode == MoldWorkbench.MoldMode.ALWAYS_ASSEMBLE, "default requires rebuilding every mold")
 	check(not workbench.open_workbench(), "cannot open workbench before round")
 	await screenshot("intro")
-	room.get_node("HUD")._start()
+	room.get_node("HUD")._restart()
 	cycle.set_process(false)
 	check(not triangle.request_manual_production(), "empty hands cannot produce even triangle")
 	check(not square.request_manual_production(), "products are not a substitute for molds")
@@ -54,7 +56,7 @@ func run() -> void:
 	player.position -= Vector2(100, 0)
 	check(await walk_to(workbench.global_position + Vector2(0, 80)), "workbench reachable from spawn")
 	await physics_frames()
-	check(player.current_interactable == workbench.get_node("Interactable"), "proximity selects workbench")
+	check(player.interaction.current_interactable == workbench.get_node("Interactable"), "proximity selects workbench")
 	await click_at(workbench.get_global_transform_with_canvas() * Vector2.ZERO)
 	check(workbench.ui.visible, "world interaction opens mold selection")
 	await screenshot("choices")
@@ -97,8 +99,9 @@ func run() -> void:
 	check(cycle.order_time_left == before - 2.0, "order clock continues during mold assembly")
 	await get_tree().process_frame
 	var hud := room.get_node("HUD")
-	for panel in [hud._stock_panel, hud._order_panel, hud._clock_panel]:
-		check(not workbench.ui.panel.get_global_rect().intersects(panel.get_global_rect()), "HUD remains outside mold board")
+	check(workbench.ui.layer > hud.layer, "workbench renders above HUD")
+	check(get_viewport().get_visible_rect().encloses(workbench.ui.panel.get_global_rect()), "workbench fits viewport")
+	check(not workbench.ui.order_status.text.is_empty(), "workbench retains order clock")
 	await screenshot("assembly")
 	await click_at(workbench.ui.close_button.get_global_rect().get_center())
 	check(not workbench.ui.visible and workbench.carried_mold == &"" and workbench.steps.is_empty(), "GUI cancellation clears preparation without spawning mold")
@@ -135,7 +138,7 @@ func run() -> void:
 	check(not triangle._mold_cycle_active and triangle.production_timer.is_stopped(), "round end stops unfinished manufacturing")
 	check(not workbench.open_workbench() and not triangle.request_manual_production(), "round end blocks workbench and machines")
 	await screenshot("result")
-	room.get_node("HUD")._start()
+	room.get_node("HUD")._restart()
 	cycle.set_process(false)
 	check(cycle.running and cycle.delivered == 0 and cycle.score == 0, "retry resets orders and score")
 	check(workbench.unlocked_molds == [&"triangle"] and workbench.carried_mold == &"", "retry resets discovered and carried molds")

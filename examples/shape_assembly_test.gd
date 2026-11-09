@@ -60,15 +60,16 @@ func test_board() -> void:
 	board.slots[0].definition.allow_removal = false
 	check(not board.begin_drag(first, first.position), "locked slot cannot be removed")
 	second.position = Vector2(550, 170)
-	# Exercise the same GUI/input handlers used by Mouse1 and R.
+	# Exercise the same GUI/input handlers used by Mouse1 and double click.
 	var press := InputEventMouseButton.new()
 	press.button_index = MOUSE_BUTTON_LEFT
 	press.pressed = true
 	press.position = second.position
 	board._gui_input(press)
 	check(board.dragged_piece == second, "Mouse1 picks actual polygon")
-	var rotate := InputEventAction.new()
-	rotate.action = "rotate_piece"
+	var rotate := InputEventMouseButton.new()
+	rotate.button_index = MOUSE_BUTTON_LEFT
+	rotate.double_click = true
 	rotate.pressed = true
 	board._input(rotate)
 	board._input(rotate)
@@ -143,8 +144,9 @@ func test_machine(scene_path: String) -> void:
 		check(board.dragged_piece == piece, "viewport Mouse1 picks piece")
 		var steps := roundi(board.slots[i].definition.target_rotation_degrees / data.rotation_step_degrees)
 		for step in range(steps):
-			var key := InputEventKey.new()
-			key.physical_keycode = KEY_R
+			var key := InputEventMouseButton.new()
+			key.button_index = MOUSE_BUTTON_LEFT
+			key.double_click = true
 			key.pressed = true
 			get_viewport().push_input(key, true)
 		var motion := InputEventMouseMotion.new()

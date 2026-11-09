@@ -31,6 +31,10 @@ func _draw() -> void:
 		for point in definition.polygon:
 			uv.append((region.position + (point - bounds.position) / bounds.size * region.size) / source.get_size())
 		draw_polygon(definition.polygon, PackedColorArray([Color.WHITE]), uv, source)
+		var edge := definition.polygon.duplicate()
+		edge.append(edge[0])
+		draw_polyline(edge, Color("201c19"), 3.0, true)
+		draw_polyline(edge, Color("d7bd85"), 1.0, true)
 		return
 	draw_colored_polygon(definition.polygon, definition.color)
 	var outline := definition.polygon.duplicate()

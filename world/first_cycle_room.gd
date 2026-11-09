@@ -9,6 +9,7 @@ func _ready() -> void:
 	super._ready()
 	cycle.customer_changed.connect(_show_customer)
 	customer.hide()
+	_apply_world_label_contrast(self)
 	# Keep the original scenery, but reserve its side activities for later.
 	for child in get_children():
 		if child is MachinePurchasePoint or child is TaskNode or child is ResourceSpawnPoint:
@@ -18,13 +19,21 @@ func _ready() -> void:
 				child.hide()
 			if child is MachinePurchasePoint:
 				child.label.text = child.machine_data.machine_name + "\nDisponível em um próximo ciclo"
-	$MaquinaGenerica2.status_label.text = "Máquina de Retângulos\nDisponível em um próximo ciclo"
-	$MaquinaGenerica2.modulate = Color(0.6, 0.65, 0.7)
-	_disable_interactions($MaquinaGenerica2)
 	# These bodies are the original map boundaries, not movable props.
 	for child in get_children():
 		if child is RigidBody2D:
 			child.freeze = true
+
+func _apply_world_label_contrast(node: Node) -> void:
+	if node is CanvasLayer:
+		return
+	if node is Label:
+		node.add_theme_color_override("font_outline_color", Color("211c18"))
+		node.add_theme_constant_override("outline_size", 4)
+		node.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.65))
+		node.add_theme_constant_override("shadow_offset_y", 2)
+	for child in node.get_children():
+		_apply_world_label_contrast(child)
 
 func _disable_interactions(node: Node) -> void:
 	if node is Interactable:

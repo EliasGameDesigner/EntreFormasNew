@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShapePieceData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://data/items/shape_piece_data.gd" id="1"]
+[ext_resource type="Resource" path="res://data/items/itemRetangulo.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+shape_id = &"rectangle"
+polygon = PackedVector2Array(-120, -60, 120, -60, 120, 60, -120, 60)
+color = Color(0.38, 0.43, 0.43, 1)
+inventory_item = ExtResource("2")

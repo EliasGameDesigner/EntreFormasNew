@@ -20,7 +20,6 @@ func run() -> void:
 	bench.hide()
 	bench.set_session_active(true)
 	var player = preload("res://entities/player/player.tscn").instantiate()
-	player.get_node("TopDownControler2D").process_mode = Node.PROCESS_MODE_DISABLED
 	var mold := Node2D.new()
 	mold.name = "CarriedMold"
 	mold.set_script(preload("res://entities/player/carried_mold.gd"))
@@ -37,13 +36,13 @@ func run() -> void:
 		bench.carried_mold = &"square" if carry else &""
 		bench.changed.emit()
 		for i in range(4):
-			player.update_animation(directions[i])
-			var sprite: AnimatedSprite2D = player.animated_sprite
+			player.animation.update_animation(directions[i])
+			var sprite: AnimatedSprite2D = player.animation.animated_sprite
 			var expected: String = ("Carry" if carry else "Walk") + suffixes[i]
 			check(sprite.animation == expected, "direction and carrying select correct walk")
 			check(sprite.flip_h == (i == 3), "only left-facing sprite is mirrored")
 			check(sprite.sprite_frames.get_frame_count(sprite.animation) == 4, "four walk frames")
-			player.update_animation(Vector2.ZERO)
+			player.animation.update_animation(Vector2.ZERO)
 			check(sprite.animation == expected + "_Idle", "idle retains facing and carrying pose")
 			var rest := sprite.sprite_frames.get_frame_texture(sprite.animation, 0) as AtlasTexture
 			check(rest.atlas.resource_path.ends_with("character_idle.png"), "idle uses feet-planted artwork instead of a walk frame")
@@ -64,13 +63,13 @@ func run() -> void:
 			title.text = "Idle com molde" if carry else "Idle"
 			title.position = anchor.position + Vector2(-50, 110)
 			add_child(title)
-	player.footstep_player.stop()
+	player.animation.footstep_player.stop()
 	if DisplayServer.get_name() != "headless":
 		await get_tree().create_timer(0.4).timeout
 		await RenderingServer.frame_post_draw
 		get_viewport().get_texture().get_image().save_png("res://worker_preview.tmp.png")
 	check(bench.consume_for(FirstCycle.SQUARE), "inserting square consumes its mold")
-	player.update_animation(Vector2.ZERO)
-	check(player.animated_sprite.animation == &"Walk_Right_Idle" and not mold.visible, "insertion restores empty hands while retaining facing")
+	player.animation.update_animation(Vector2.ZERO)
+	check(player.animation.animated_sprite.animation == &"Walk_Right_Idle" and not mold.visible, "insertion restores empty hands while retaining facing")
 	print("Worker animation checks: %d, failures: %d" % [checks, failures])
 	get_tree().quit(1 if failures else 0)

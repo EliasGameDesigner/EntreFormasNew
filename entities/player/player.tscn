@@ -1,30 +1,31 @@
 [gd_scene format=3 uid="uid://dhgkvfnf4m00e"]
 
-[ext_resource type="Script" uid="uid://dc7kyy8gq2gmx" path="res://entities/player/interactble_player.gd" id="1_1k5v0"]
+[ext_resource type="Script" uid="uid://dc7kyy8gq2gmx" path="res://entities/player/player.gd" id="1_1k5v0"]
 [ext_resource type="Texture2D" uid="uid://d3gdjprjj6rat" path="res://icon.svg" id="1_61obc"]
-[ext_resource type="Script" uid="uid://cjm7t170vvwf" path="res://addons/2d_controls_toolkit/TopDownControler2D.gd" id="2_61obc"]
+[ext_resource type="Script" path="res://entities/player/player_movement.gd" id="movement"]
+[ext_resource type="Script" path="res://entities/player/player_animation.gd" id="animation"]
+[ext_resource type="Script" path="res://entities/player/player_interaction.gd" id="interaction"]
+[ext_resource type="Script" path="res://entities/player/player_hands.gd" id="hands"]
 [ext_resource type="AudioStream" uid="uid://dfg4r6iq5r5k0" path="res://assets/audio/sfx/freesounds123-walking-on-wood-363349.mp3" id="5_sweqy"]
+[ext_resource type="Shader" uid="uid://b35bbje1ykeqp" path="res://entities/player/sprite_alpha.gdshader" id="sprite_alpha"]
+[ext_resource type="SpriteFrames" uid="uid://bafuuymnxwank" path="res://entities/player/worker_frames.tres" id="worker_frames"]
 
-[ext_resource type="SpriteFrames" path="res://entities/player/worker_frames.tres" id="worker_frames"]
-[ext_resource type="Shader" path="res://entities/player/sprite_alpha.gdshader" id="sprite_alpha"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_61obc"]
+radius = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1k5v0"]
+radius = 122.14745
 
 [sub_resource type="ShaderMaterial" id="worker_material"]
 shader = ExtResource("sprite_alpha")
 shader_parameter/idle_breathing = true
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_61obc"]
-radius = 69.050705
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1k5v0"]
-radius = 122.14745
-
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1110913538 groups=["player"]]
+collision_mask = 3
 script = ExtResource("1_1k5v0")
 
-[node name="TopDownControler2D" type="Node2D" parent="." unique_id=1041956317]
-script = ExtResource("2_61obc")
-Rotate = false
-metadata/_custom_type_script = "uid://cjm7t170vvwf"
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("movement")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=307346677]
 shape = SubResource("CircleShape2D_61obc")
@@ -40,15 +41,17 @@ shape = SubResource("CircleShape2D_1k5v0")
 debug_color = Color(0.70196074, 0.40687382, 0.27360618, 0.41960785)
 
 [node name="InteractionLabel" type="Label" parent="." unique_id=1115749515]
-offset_top = 139.0
-offset_right = 40.0
-offset_bottom = 162.0
+offset_left = -170.0
+offset_top = 55.0
+offset_right = 170.0
+offset_bottom = 82.0
+horizontal_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1215855953]
 texture_filter = 1
 material = SubResource("worker_material")
-scale = Vector2(0.19, 0.19)
 position = Vector2(0, -3.9)
+scale = Vector2(0.19, 0.19)
 sprite_frames = ExtResource("worker_frames")
 animation = &"Walk_Idle"
 frame_progress = 0.7453577
@@ -56,5 +59,14 @@ frame_progress = 0.7453577
 [node name="FootstepPlayer" type="AudioStreamPlayer" parent="." unique_id=981291394]
 stream = ExtResource("5_sweqy")
 
-[connection signal="area_entered" from="InteractionRange" to="." method="_on_interaction_range_area_entered"]
-[connection signal="area_exited" from="InteractionRange" to="." method="_on_interaction_range_area_exited"]
+[node name="Animation" type="Node" parent="."]
+script = ExtResource("animation")
+
+[node name="Interaction" type="Node" parent="."]
+script = ExtResource("interaction")
+
+[node name="Hands" type="Node" parent="."]
+script = ExtResource("hands")
+
+[connection signal="area_entered" from="InteractionRange" to="Interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="InteractionRange" to="Interaction" method="_on_area_exited"]
