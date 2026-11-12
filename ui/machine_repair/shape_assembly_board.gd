@@ -156,7 +156,9 @@ func _gui_input(event: InputEvent) -> void:
 		children.reverse()
 		for child in children:
 			if child is ShapePiece and child.contains_point(event.position):
-				begin_drag(child, event.position)
+				if begin_drag(child, event.position) and event.double_click:
+					rotate_drag()
+					end_drag(event.position)
 				accept_event()
 				break
 
@@ -165,7 +167,7 @@ func _input(event: InputEvent) -> void:
 		return
 	if event is InputEventMouseMotion:
 		move_drag(get_global_transform_with_canvas().affine_inverse() * event.position)
-	elif event.is_action_pressed("rotate_piece"):
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and event.double_click:
 		rotate_drag()
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 		end_drag(get_global_transform_with_canvas().affine_inverse() * event.position)

@@ -7,10 +7,16 @@ const SQUARE_TEXTURE = preload("res://data/items/square_mold_texture.tres")
 func _ready() -> void:
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	workbench.changed.connect(_refresh)
+	var hands = get_tree().get_first_node_in_group("player_hands")
+	if hands != null:
+		hands.changed.connect(_refresh)
 	_refresh()
 
 func _refresh() -> void:
 	visible = workbench.carried_mold != &""
+	var hands = get_tree().get_first_node_in_group("player_hands")
+	if hands != null and hands.product != null:
+		visible = true
 	queue_redraw()
 
 func update_pose(facing: Vector2) -> void:
@@ -27,6 +33,14 @@ func update_pose(facing: Vector2) -> void:
 		z_index = 1
 
 func _draw() -> void:
+	var hands = get_tree().get_first_node_in_group("player_hands")
+	if hands != null and hands.product != null:
+		var icon: Texture2D = hands.product.icon
+		var dimensions := icon.get_size()
+		var size := dimensions / maxf(dimensions.x, dimensions.y) * 52.0
+		size.y *= 0.55 / 0.4
+		draw_texture_rect(icon, Rect2(-size / 2, size), false)
+		return
 	if workbench.carried_mold == &"square":
 		draw_texture_rect(SQUARE_TEXTURE, Rect2(-26, -32.4, 52, 64.8), false)
 		return

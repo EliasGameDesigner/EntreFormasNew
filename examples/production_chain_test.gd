@@ -171,8 +171,9 @@ func solve_repair(machine: MachineNode) -> void:
 		# Restore an exact multiple of the configured step, then rotate via input.
 		piece.rotation = 0.0
 		for step in range(roundi(slot.definition.target_rotation_degrees / piece.definition.rotation_step_degrees)):
-			var rotate := InputEventAction.new()
-			rotate.action = "rotate_piece"
+			var rotate := InputEventMouseButton.new()
+			rotate.button_index = MOUSE_BUTTON_LEFT
+			rotate.double_click = true
 			rotate.pressed = true
 			board._input(rotate)
 		var release := InputEventMouseButton.new()

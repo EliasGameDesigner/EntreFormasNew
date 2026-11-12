@@ -19,6 +19,8 @@ const RECIPES = {
 const NAMES = {&"triangle": "Triângulo", &"square": "Quadrado", &"rectangle": "Retângulo"}
 const UI_SCRIPT = preload("res://ui/machine_repair/mold_workbench_ui.gd")
 
+var stored_molds: Dictionary = {}
+
 var session_active: bool = false
 var carried_mold: StringName = &""
 var unlocked_molds: Array[StringName] = [&"triangle"]
@@ -47,6 +49,7 @@ func open_workbench() -> bool:
 
 func reset_session() -> void:
 	set_session_active(false)
+	stored_molds.clear()
 	unlocked_molds.assign([&"triangle"])
 	changed.emit()
 
@@ -62,7 +65,46 @@ func set_session_active(value: bool) -> void:
 func can_take_ready(shape: StringName) -> bool:
 	return shape == &"triangle" or (mold_mode == MoldMode.UNLOCK_READY and unlocked_molds.has(shape))
 
+func can_supply(shape: StringName) -> bool:
+	return session_active and available_shapes.has(shape) and (can_take_ready(shape) or int(stored_molds.get(shape, 0)) > 0)
+
+func supply(shape: StringName) -> bool:
+	if not can_supply(shape):
+		return false
+	if not can_take_ready(shape):
+		stored_molds[shape] = int(stored_molds.get(shape, 0)) - 1
+	changed.emit()
+	return true
+
+func return_mold(shape: StringName) -> void:
+	if not can_take_ready(shape):
+		stored_molds[shape] = int(stored_molds.get(shape, 0)) + 1
+	changed.emit()
+
+func store_assembled(shape: StringName) -> void:
+	if not session_active or not available_shapes.has(shape):
+		return
+	if not unlocked_molds.has(shape):
+		unlocked_molds.append(shape)
+	return_mold(shape)
+
+func take_stored(shape: StringName) -> bool:
+	var hands = get_tree().get_first_node_in_group("player_hands")
+	if carried_mold != &"" or (hands != null and not hands.is_empty()):
+		GameUI.show_notification("Largue ou deposite o objeto que está nas mãos.")
+		return false
+	if not supply(shape):
+		return false
+	carried_mold = shape
+	ui.close_ui()
+	changed.emit()
+	return true
+
 func begin_mold(shape: StringName) -> bool:
+	var hands = get_tree().get_first_node_in_group("player_hands")
+	if hands != null and not hands.is_empty():
+		GameUI.show_notification("Largue ou deposite o objeto que está nas mãos.")
+		return false
 	if not session_active or not available_shapes.has(shape) or not PRODUCTS.has(shape):
 		return false
 	if carried_mold != &"" or not steps.is_empty():
@@ -116,6 +158,11 @@ func cancel_assembly() -> void:
 	target_mold = &""
 
 func discard_carried() -> void:
+	var hands = get_tree().get_first_node_in_group("player_hands")
+	if hands != null and hands.enabled():
+		if hands.drop():
+			ui.close_ui()
+		return
 	if not session_active:
 		return
 	carried_mold = &""

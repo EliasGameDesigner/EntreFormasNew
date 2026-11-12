@@ -7,6 +7,7 @@ func _ready() -> void:
 
 func run() -> void:
 	var room = preload("res://world/first_cycle.tscn").instantiate()
+	room.get_node("FirstCycle").physical_transport = false
 	add_child(room)
 	room.get_node("HUD")._start()
 	var cycle: FirstCycle = room.get_node("FirstCycle")
@@ -25,8 +26,8 @@ func run() -> void:
 		await get_tree().process_frame
 		await get_tree().process_frame
 	var item: ItemData = MoldWorkbench.PRODUCTS[StringName(shape)]
-	player.update_animation(Vector2.DOWN)
-	player.update_animation(Vector2.ZERO)
+	player.animation.update_animation(Vector2.DOWN)
+	player.animation.update_animation(Vector2.ZERO)
 	var product = preload("res://entities/resources/physical_item.tscn").instantiate()
 	product.item_data = item
 	product.position = player.position + Vector2(110, 0)

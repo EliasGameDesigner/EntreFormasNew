@@ -66,7 +66,7 @@ func open_ui(machine: MachineNode, for_production: bool = false) -> void:
 		for piece in assembly_board.pieces:
 			_reserved[piece] = piece.definition.inventory_item
 	machine_title_label.text = ("PRODUZIR 1 • " if for_production else "REPARAR • ") + machine.machine_data.machine_name
-	formula_label.text = recipe.instructions + "\nMouse1: arrastar | R: girar enquanto segura | Esc: cancelar"
+	formula_label.text = recipe.instructions + "\nMouse1: arrastar | Duplo clique: girar | Esc: cancelar"
 	add_to_group("modal_repair_ui")
 	show()
 	$Control/BottomInventoryPanel.visible = not for_production

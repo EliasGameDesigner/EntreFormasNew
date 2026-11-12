@@ -8,4 +8,5 @@ script = ExtResource("1_lvkg5")
 item_name = "Retangulo"
 icon = ExtResource("1_s45kr")
 price = 50
+world_icon_size = 40.0
 metadata/_custom_type_script = "uid://dcgmc1lmiax5g"

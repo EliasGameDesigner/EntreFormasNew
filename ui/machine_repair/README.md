@@ -20,7 +20,7 @@ Para compra, desbloqueio, consumo opcional por ciclo e coleta automática, consu
 - Sem dinheiro suficiente, a montagem concluída aguarda o saldo; cancelar continua devolvendo as peças.
 - A máquina de triângulos inicia funcionando, não possui receita de reparo e ignora tentativas de quebra.
 
-A action nova é `rotate_piece`, vinculada ao R físico. `interact`, WASD e `ui_cancel` continuam usando o Input Map existente.
+As peças giram com duplo clique do botão esquerdo, sem action de teclado. `interact`, WASD e `ui_cancel` continuam usando o Input Map existente.
 O personagem fica parado e não aciona interações de mundo enquanto o reparo está aberto.
 
 ## Arquitetura

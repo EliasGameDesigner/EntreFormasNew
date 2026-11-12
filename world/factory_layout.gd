@@ -27,6 +27,8 @@ func _ready() -> void:
 	floor_layer.position = BOUNDS.position
 	floor_layer.scale = Vector2.ONE * FLOOR_TILE_SIZE / 627.0
 	floor_layer.z_index = -10
+	# Midtone floor: keep the lighter artwork without competing with interactables.
+	floor_layer.self_modulate = Color(0.78, 0.80, 0.83)
 	for y in range(int(BOUNDS.size.y / FLOOR_TILE_SIZE)):
 		for x in range(int(BOUNDS.size.x / FLOOR_TILE_SIZE)):
 			var variant := posmod(x * 17 + y * 31 + x * y * 7, 4)
