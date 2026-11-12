@@ -9,6 +9,11 @@
 [ext_resource type="Script" uid="uid://b711la72le5nv" path="res://world/first_cycle_room.gd" id="room"]
 [ext_resource type="PackedScene" path="res://entities/props/mold_workbench.tscn" id="workbench"]
 
+[ext_resource type="PackedScene" path="res://entities/machines/maquina_generica.tscn" id="para_scene"]
+[ext_resource type="Resource" path="res://data/machines/maquinaParalelogramos.tres" id="para_data"]
+
+[ext_resource type="Resource" path="res://data/machines/maquinaTrapezios.tres" id="trap_data"]
+
 [node name="Cenario" unique_id=22987688 instance=ExtResource("map")]
 script = ExtResource("room")
 
@@ -92,11 +97,13 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="CompraParalelogramos" parent="." index="60"]
+visible = false
 position = Vector2(1584, -768)
 scale = Vector2(0.8, 0.8)
 progression_locked = true
 
 [node name="CompraTrapezios" parent="." index="61"]
+visible = false
 position = Vector2(1904, -768)
 scale = Vector2(0.8, 0.8)
 progression_locked = true
@@ -119,18 +126,40 @@ script = ExtResource("customer")
 z_index = 2
 position = Vector2(1568, -1248)
 
-[node name="FirstCycle" type="Node" parent="." index="65" unique_id=1399711941 node_paths=PackedStringArray("triangle_machine", "square_machine", "rectangle_machine", "mold_workbench")]
+[node name="ParallelogramMachine" parent="." index="65" instance=ExtResource("para_scene")]
+z_index = 2
+position = Vector2(1584, -768)
+scale = Vector2(0.8, 0.8)
+machine_data = ExtResource("para_data")
+current_state = 1
+manual_production = true
+manual_available = false
+requires_mold = true
+
+[node name="TrapezoidMachine" parent="." index="66" instance=ExtResource("para_scene")]
+z_index = 2
+position = Vector2(1904, -768)
+scale = Vector2(0.8, 0.8)
+machine_data = ExtResource("trap_data")
+current_state = 1
+manual_production = true
+manual_available = false
+requires_mold = true
+
+[node name="FirstCycle" type="Node" parent="." index="67" unique_id=1399711941 node_paths=PackedStringArray("trapezoid_machine", "parallelogram_machine", "triangle_machine", "square_machine", "rectangle_machine", "mold_workbench")]
 script = ExtResource("cycle")
 triangle_patience = 50.0
 square_patience = 110.0
+trapezoid_machine = NodePath("../TrapezoidMachine")
+parallelogram_machine = NodePath("../ParallelogramMachine")
 triangle_machine = NodePath("../MaquinaGenerica")
 square_machine = NodePath("../Maquina_quadrados")
 rectangle_machine = NodePath("../MaquinaGenerica2")
 mold_workbench = NodePath("../MoldWorkbench")
 
-[node name="HUD" type="CanvasLayer" parent="." index="66" unique_id=1858142295 node_paths=PackedStringArray("cycle")]
+[node name="HUD" type="CanvasLayer" parent="." index="68" unique_id=1858142295 node_paths=PackedStringArray("cycle")]
 script = ExtResource("hud")
 cycle = NodePath("../FirstCycle")
 
-[node name="FactoryLayout" parent="." index="67" unique_id=1741749843 instance=ExtResource("layout")]
+[node name="FactoryLayout" parent="." index="69" unique_id=1741749843 instance=ExtResource("layout")]
 texture_filter = 1

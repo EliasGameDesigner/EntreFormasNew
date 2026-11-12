@@ -1,7 +1,10 @@
 extends Node2D
 
 @export var workbench: MoldWorkbench
+const RECTANGLE_TEXTURE = preload("res://data/items/rectangle_mold_texture.tres")
 const TRIANGLE_TEXTURE = preload("res://data/items/triangle_mold_texture.tres")
+const TRAPEZOID_TEXTURE = preload("res://data/items/trapezoid_mold_texture.tres")
+const PARALLELOGRAM_TEXTURE = preload("res://data/items/parallelogram_mold_texture.tres")
 const SQUARE_TEXTURE = preload("res://data/items/square_mold_texture.tres")
 
 func _ready() -> void:
@@ -40,6 +43,13 @@ func _draw() -> void:
 		var size := dimensions / maxf(dimensions.x, dimensions.y) * 52.0
 		size.y *= 0.55 / 0.4
 		draw_texture_rect(icon, Rect2(-size / 2, size), false)
+		return
+	if workbench.carried_mold in [&"rectangle", &"parallelogram", &"trapezoid"]:
+		var mold_texture: Texture2D = {&"rectangle": RECTANGLE_TEXTURE, &"parallelogram": PARALLELOGRAM_TEXTURE, &"trapezoid": TRAPEZOID_TEXTURE}[workbench.carried_mold]
+		var dimensions := mold_texture.get_size()
+		var item_size := dimensions / dimensions.x * 52.0
+		item_size.y *= 0.55 / 0.4
+		draw_texture_rect(mold_texture, Rect2(-item_size / 2, item_size), false)
 		return
 	if workbench.carried_mold == &"square":
 		draw_texture_rect(SQUARE_TEXTURE, Rect2(-26, -32.4, 52, 64.8), false)

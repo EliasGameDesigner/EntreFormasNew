@@ -1,23 +1,9 @@
-# Bancada: encaixe visual e interface
+# Bancada de moldes — sprite
 
-O triângulo agora é retângulo isósceles: ângulo reto no canto superior esquerdo e diagonal descendente. O produto usa `triangle_part_v3.png`; o molde, `triangle_mold_v2.png`. Os recortes dos recursos existentes foram atualizados, propagando a mudança ao produto, à bancada e às mãos.
+Arte gerada pela ferramenta integrada image_gen, com o balcão e a máquina de quadrados como referências de materiais, cores e perspectiva. Arquivo final em assets/textures/props/mold_workbench_v1.png. O recorte transparente está em data/props/mold_workbench_texture.tres.
 
-`ShapePieceData.full_shape_art` permite que a arte cubra a geometria inteira. Triângulo e quadrado ativam essa opção. `ShapePiece` mapeia UVs para a textura fonte do atlas e desenha dentro do mesmo polígono utilizado pelo clique e encaixe. A imagem não é mais um emblema sobre uma forma preenchida. A geometria e as receitas permanecem as mesmas.
+O Sprite2D está na cena entities/props/mold_workbench.tscn, com largura de 180 unidades no mapa, filtro nearest e o shader de recorte alpha já usado pelo balcão. Substitui o desenho geométrico anterior no script da bancada. Prévia em docs/images/mold_workbench_world.png.
 
-A bancada usa tema nativo em madeira, ferro e latão, texto claro, botões com estados de foco/hover/desabilitado e cavidades escuras com contorno claro. O tampo tem tábuas e fixadores. O tema é restrito à bancada de moldes; os demais modos mantêm sua interface.
+## Prompt
 
-Verificação: 102 checks do primeiro ciclo, 71 de montagem e `examples/workbench_fit_test.tscn` aprovado. Este último valida a área clicável, as duas peças encaixadas e os dois vértices compartilhados da diagonal. Capturas em `docs/images/workbench_assembly.png`, `workbench_fitted.png` e `workbench_choices.png`.
-
-Arte gerada com a ferramenta integrada de imagens. Interface implementada com controles e desenho nativos do Godot.
-
-## Prompt inicial da peça
-
-Redesign this game part to fit a geometric puzzle. Preserve the reference's worn gray iron, restrained brass corner holes and rustic pixel art, BUT change silhouette to EXACT ISOSCELES RIGHT TRIANGLE: 90-degree corner at TOP LEFT, perfectly HORIZONTAL upper edge, perfectly VERTICAL left edge, equal leg lengths, straight diagonal hypotenuse from TOP RIGHT to BOTTOM LEFT. Orthographic straight top view, absolutely no perspective or extruded thickness outside this exact silhouette. Three small brass-rimmed mounting holes just inside the three vertices. Solid gray iron triangular face with modest rust. Critical exact geometry: half of an axis-aligned square, never an equilateral triangle. Single centered full object, generous transparent padding, transparent alpha outside. Hard pixel-art edges; no shadows glow text or background. Matching Graveyard Keeper-inspired workshop sprite.
-
-## Refinamento da peça
-
-Fix this right-triangle sprite for exact triangular clipping. Keep right angle at top left, horizontal top, vertical left, equal legs, same worn gray iron and brass pixel-art style. Critical change: MOVE ALL THREE brass holes WELL INSIDE the triangle, at normalized bounding-box positions (0.15,0.15), (0.65,0.15), (0.15,0.65). Holes must be small enough to fit fully INSIDE the diagonal line x+y=1. Make an exact clean 45-degree straight hypotenuse from upper right to lower left, without protrusions, extrusion, rounded bulky corners or thickness outside the mathematical triangle. Strict orthographic top view. All decorative details inside the silhouette. No background, fully transparent alpha, no glow, no shadow, no text. One centered sprite.
-
-## Prompt do molde
-
-Create the matching empty casting mold for the RIGHT TRIANGULAR mechanical part in reference1. Reference2 is the mold's style and outer block reference. Preserve reference2 rectangular dark iron mold block with brass corner bolts, but replace cavity with an ISOSCELES RIGHT TRIANGLE with right angle TOP LEFT, horizontal upper edge, vertical left edge, diagonal from top right to bottom left. Three locating steel pins inside cavity near its vertices, matching the part's holes. Empty recessed cavity, no finished part inside. Pixel art, muted rusty gray iron and brass, same chunky pixels as references, near-frontal top-down camera. Single centered mold on fully transparent alpha background, no shadow glow labels or scenery.
+Use case: stylized-concept. Asset type: transparent pixel art world prop for a top-down rustic steampunk crafting game. Create ONE mold assembly WORKBENCH, matching reference order counter's warm worn walnut wood, iron bands, brass rivets and bold dark outlines, same elevated three-quarter top-down camera with horizontal front edge (not isometric). Reference machine image is style/material reference ONLY, no machine and no sprite sheet. A compact sturdy desk, width about twice height overall, four short thick legs, iron-reinforced corners, a small front drawer with brass handle, open lower shelf holding a few dark gray metal mold blanks. Top surface has a dark teal drafting mat with subtle pale triangle and square outlines, two actual small rusty metal molds (triangle and square) with brass bolt corners on the left and center, a small hammer and caliper on right. No tall backboard. Readable chunky pixel art at 180 pixels wide, palette and shading consistent with references, light from upper left. ONE complete isolated centered prop, all legs visible, transparent margins, no floor/shadow/glow, actual transparent background. No text, letters or UI.

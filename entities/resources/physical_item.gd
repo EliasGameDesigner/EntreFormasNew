@@ -24,7 +24,7 @@ func _ready() -> void:
 			sprite.scale = Vector2.ONE * item_data.world_icon_size / maxf(dimensions.x, dimensions.y)
 			sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	if mold_shape != &"":
-		sprite.texture = load("res://data/items/%s_mold_texture.tres" % mold_shape) if mold_shape in [&"triangle", &"square"] else item_data.icon
+		sprite.texture = load("res://data/items/%s_mold_texture.tres" % mold_shape) if mold_shape in [&"triangle", &"square", &"rectangle", &"parallelogram", &"trapezoid"] else item_data.icon
 		sprite.scale = Vector2.ONE * 40.0 / maxf(sprite.texture.get_width(), sprite.texture.get_height())
 	var circle := CircleShape2D.new()
 	circle.radius = pickup_radius

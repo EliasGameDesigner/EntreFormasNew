@@ -8,6 +8,16 @@ var counter_stock: Dictionary = {}
 const TRIANGLE = preload("res://data/items/itemTriangulo.tres")
 const SQUARE = preload("res://data/items/itemQuadrado.tres")
 const RECTANGLE = preload("res://data/items/itemRetangulo.tres")
+const PARALLELOGRAM = preload("res://data/items/itemParalelogramo.tres")
+@export_range(10.0, 600.0) var third_cycle_duration: float = 240.0
+@export_range(1.0, 300.0) var parallelogram_patience: float = 120.0
+@export var parallelogram_reward: int = 45
+@export var parallelogram_machine: MachineNode
+const TRAPEZOID = preload("res://data/items/itemTrapezio.tres")
+@export_range(10.0, 600.0) var fourth_cycle_duration: float = 240.0
+@export_range(1.0, 300.0) var trapezoid_patience: float = 180.0
+@export var trapezoid_reward: int = 70
+@export var trapezoid_machine: MachineNode
 var cycle_number: int = 1
 var cycle_customer_number: int = 0
 @export_range(10.0, 600.0) var second_cycle_duration: float = 240.0
@@ -79,16 +89,16 @@ func _process(delta: float) -> void:
 	advance_time(delta)
 
 func has_next_cycle() -> bool:
-	return finished and cycle_number == 1
+	return finished and cycle_number < 4
 
 func start_next_cycle() -> bool:
 	if running or not has_next_cycle():
 		return false
-	cycle_number = 2
+	cycle_number += 1
 	cycle_customer_number = 0
 	finished = false
 	running = true
-	time_left = second_cycle_duration
+	time_left = {2: second_cycle_duration, 3: third_cycle_duration, 4: fourth_cycle_duration}[cycle_number]
 	_set_machines_available(true)
 	_spawn_order()
 	set_process(true)
@@ -126,14 +136,18 @@ func _spawn_order() -> void:
 	order_time_total *= maxf(1.0, float(order_quantity) / 2.0)
 	order_time_left = minf(order_time_total, time_left)
 	order_reward = order_quantity * (triangle_reward if order_item == TRIANGLE else square_reward)
-	if cycle_number == 2:
+	if cycle_number >= 2:
 		var products := [RECTANGLE, TRIANGLE, SQUARE]
+		if cycle_number >= 3:
+			products = [PARALLELOGRAM, TRIANGLE, SQUARE, RECTANGLE]
+		if cycle_number >= 4:
+			products = [TRAPEZOID, TRIANGLE, SQUARE, RECTANGLE, PARALLELOGRAM]
 		order_item = products[(cycle_customer_number - 1) % products.size()]
 		order_quantity = 1 if cycle_customer_number == 1 else randi_range(1, 2)
-		var patience: float = {TRIANGLE: triangle_patience, SQUARE: square_patience, RECTANGLE: rectangle_patience}[order_item]
+		var patience: float = {TRIANGLE: triangle_patience, SQUARE: square_patience, RECTANGLE: rectangle_patience, PARALLELOGRAM: parallelogram_patience, TRAPEZOID: trapezoid_patience}[order_item]
 		order_time_total = patience * order_quantity
 		order_time_left = minf(order_time_total, time_left)
-		order_reward = order_quantity * int({TRIANGLE: triangle_reward, SQUARE: square_reward, RECTANGLE: rectangle_reward}[order_item])
+		order_reward = order_quantity * int({TRIANGLE: triangle_reward, SQUARE: square_reward, RECTANGLE: rectangle_reward, PARALLELOGRAM: parallelogram_reward, TRAPEZOID: trapezoid_reward}[order_item])
 	customer_changed.emit()
 
 func _clear_order() -> void:
@@ -194,6 +208,10 @@ func finish_round() -> void:
 func _set_machines_available(value: bool) -> void:
 	if is_instance_valid(mold_workbench):
 		mold_workbench.available_shapes.assign([&"triangle", &"square", &"rectangle"] if cycle_number >= 2 else [&"triangle", &"square"])
+		if cycle_number >= 3:
+			mold_workbench.available_shapes.append(&"parallelogram")
+		if cycle_number >= 4:
+			mold_workbench.available_shapes.append(&"trapezoid")
 		mold_workbench.set_session_active(value)
 	for machine in [triangle_machine, square_machine]:
 		if is_instance_valid(machine):
@@ -206,3 +224,21 @@ func _set_machines_available(value: bool) -> void:
 		rectangle_machine.set_manual_available(value and unlocked)
 		if not unlocked:
 			rectangle_machine.status_label.text = "Máquina de Retângulos\nDisponível no ciclo 2"
+
+	if is_instance_valid(parallelogram_machine):
+		var unlocked := cycle_number >= 3
+		parallelogram_machine.interactable.collision_layer = 1 if unlocked and value else 0
+		parallelogram_machine.interactable.collision_mask = 1 if unlocked and value else 0
+		parallelogram_machine.modulate = Color.WHITE if unlocked else Color(0.6, 0.65, 0.7)
+		parallelogram_machine.set_manual_available(value and unlocked)
+		if not unlocked:
+			parallelogram_machine.status_label.text = "Máquina de Paralelogramos\nDisponível no ciclo 3"
+
+	if is_instance_valid(trapezoid_machine):
+		var unlocked := cycle_number >= 4
+		trapezoid_machine.interactable.collision_layer = 1 if unlocked and value else 0
+		trapezoid_machine.interactable.collision_mask = 1 if unlocked and value else 0
+		trapezoid_machine.modulate = Color.WHITE if unlocked else Color(0.6, 0.65, 0.7)
+		trapezoid_machine.set_manual_available(value and unlocked)
+		if not unlocked:
+			trapezoid_machine.status_label.text = "Máquina de Trapézios\nDisponível no ciclo 4"

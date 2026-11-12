@@ -36,7 +36,7 @@ func run() -> void:
 	var hands = player.get_node("Hands")
 	var bench := cycle.mold_workbench
 	var machine := cycle.rectangle_machine
-	hud._start()
+	hud._restart()
 	cycle.set_process(false)
 	check(cycle.cycle_number == 1 and not machine.manual_available, "rectangle machine locked in cycle one")
 	check(not bench.available_shapes.has(&"rectangle"), "rectangle mold locked initially")
@@ -125,8 +125,8 @@ func run() -> void:
 		await RenderingServer.frame_post_draw
 		get_viewport().get_texture().get_image().save_png("res://docs/images/second_cycle.png")
 	cycle.advance_time(cycle.time_left)
-	check(cycle.finished and not cycle.has_next_cycle(), "second cycle ends the current session")
-	hud._start()
+	check(cycle.finished and cycle.has_next_cycle(), "second cycle offers cycle three")
+	hud._restart()
 	cycle.set_process(false)
 	check(cycle.cycle_number == 1 and cycle.counter_stock.is_empty() and cycle.score == 0, "restart resets progression and stock")
 	check(not machine.manual_available and not bench.available_shapes.has(&"rectangle"), "restart relocks rectangle")

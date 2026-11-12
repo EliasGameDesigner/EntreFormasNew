@@ -8,26 +8,45 @@ var hint: AssemblyDefinition
 func try_snap(piece: ShapePiece) -> bool:
 	if not free_mode:
 		return super.try_snap(piece)
+	if not pieces.has(piece):
+		return false
 	for shape in MoldWorkbench.RECIPES:
 		if not available_shapes.has(shape):
 			continue
 		var recipe: AssemblyDefinition = MoldWorkbench.RECIPES[shape]
-		for other in pieces:
-			if other == piece:
-				continue
+		if pieces.size() < recipe.slots.size():
+			continue
+		for anchor_index in range(recipe.slots.size()):
+			var anchor = recipe.slots[anchor_index]
 			for quarter in range(4):
 				var angle := quarter * PI / 2.0
-				var a = recipe.slots[0]
-				var b = recipe.slots[1]
-				if not _matches(piece, a, angle) or not _matches(other, b, angle):
+				if not _matches(piece, anchor, angle):
 					continue
-				var offset: Vector2 = (b.target_position - a.target_position).rotated(angle)
-				if (other.position - piece.position).distance_to(offset) <= 20.0:
-					_remove_piece(other)
-					_remove_piece(piece)
+				var origin: Vector2 = piece.position - anchor.target_position.rotated(angle)
+				var selected: Array[ShapePiece] = [piece]
+				if _match_remaining(recipe, 0, anchor_index, origin, angle, selected):
+					for component in selected:
+						_remove_piece(component)
 					mold_assembled.emit(shape)
 					board_changed.emit()
 					return true
+	return false
+
+## Match every slot to a distinct piece, with the released piece as an anchor.
+func _match_remaining(recipe: AssemblyDefinition, index: int, anchor_index: int, origin: Vector2, angle: float, selected: Array[ShapePiece]) -> bool:
+	if index == recipe.slots.size():
+		return true
+	if index == anchor_index:
+		return _match_remaining(recipe, index + 1, anchor_index, origin, angle, selected)
+	var entry = recipe.slots[index]
+	var target: Vector2 = origin + entry.target_position.rotated(angle)
+	for candidate in pieces:
+		if selected.has(candidate) or candidate.position.distance_to(target) > 20.0 or not _matches(candidate, entry, angle):
+			continue
+		selected.append(candidate)
+		if _match_remaining(recipe, index + 1, anchor_index, origin, angle, selected):
+			return true
+		selected.pop_back()
 	return false
 
 func _matches(piece: ShapePiece, entry: Resource, angle: float) -> bool:

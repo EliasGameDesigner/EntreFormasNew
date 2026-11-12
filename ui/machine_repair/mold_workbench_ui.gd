@@ -15,6 +15,8 @@ var recipe_buttons: Dictionary = {}
 var guide: CheckButton
 var selected_recipe: StringName = &"square"
 const PIECES = {
+	&"trapezoid": preload("res://data/items/shape_trapezoid.tres"),
+	&"parallelogram": preload("res://data/items/shape_parallelogram.tres"),
 	&"triangle": preload("res://data/items/shape_triangle.tres"),
 	&"square": preload("res://data/items/shape_square.tres"),
 	&"rectangle": preload("res://data/items/shape_rectangle.tres"),
@@ -74,10 +76,10 @@ func _ready() -> void:
 	choices.add_child(shelf_title)
 	for shape in workbench.PRODUCTS:
 		var button = preload("res://ui/machine_repair/mold_supply_button.gd").new()
-		button.custom_minimum_size = Vector2(190, 68)
+		button.custom_minimum_size = Vector2(190, 56)
 		button.piece_data = PIECES.get(shape)
-		if shape == &"triangle" or shape == &"square":
-			button.icon = preload("res://data/items/triangle_mold_texture.tres") if shape == &"triangle" else preload("res://data/items/square_mold_texture.tres")
+		if shape in [&"triangle", &"square", &"rectangle", &"parallelogram", &"trapezoid"]:
+			button.icon = load("res://data/items/%s_mold_texture.tres" % shape)
 			button.expand_icon = true
 			button.add_theme_constant_override("icon_max_width", 40)
 			button.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
@@ -103,14 +105,14 @@ func _ready() -> void:
 	board.board_changed.connect(_refresh_progress)
 	board.mold_assembled.connect(workbench.store_assembled)
 	board.supply_requested.connect(_supply_piece)
-	var recipes := HBoxContainer.new()
+	var recipes := HFlowContainer.new()
 	box.add_child(recipes)
 	var recipe_title := Label.new()
 	recipe_title.text = "RECEITAS  "
 	recipes.add_child(recipe_title)
 	for shape in workbench.RECIPES:
 		var button := Button.new()
-		button.text = "2 triângulos → Quadrado" if shape == &"square" else "2 quadrados → Retângulo"
+		button.text = {&"square": "2 triângulos → Quadrado", &"rectangle": "2 quadrados → Retângulo", &"parallelogram": "2 triângulos → Paralelogramo", &"trapezoid": "1 quadrado + 2 triângulos → Trapézio"}[shape]
 		button.pressed.connect(func():
 			selected_recipe = shape
 			guide.button_pressed = true

@@ -11,12 +11,16 @@ const PRODUCTS = {
 	&"triangle": preload("res://data/items/itemTriangulo.tres"),
 	&"square": preload("res://data/items/itemQuadrado.tres"),
 	&"rectangle": preload("res://data/items/itemRetangulo.tres"),
+	&"parallelogram": preload("res://data/items/itemParalelogramo.tres"),
+	&"trapezoid": preload("res://data/items/itemTrapezio.tres"),
 }
 const RECIPES = {
 	&"square": preload("res://data/machines/assembly_square.tres"),
 	&"rectangle": preload("res://data/machines/assembly_rectangle.tres"),
+	&"parallelogram": preload("res://data/machines/assembly_parallelogram.tres"),
+	&"trapezoid": preload("res://data/machines/assembly_trapezoid.tres"),
 }
-const NAMES = {&"triangle": "Triângulo", &"square": "Quadrado", &"rectangle": "Retângulo"}
+const NAMES = {&"trapezoid": "Trapézio", &"parallelogram": "Paralelogramo", &"triangle": "Triângulo", &"square": "Quadrado", &"rectangle": "Retângulo"}
 const UI_SCRIPT = preload("res://ui/machine_repair/mold_workbench_ui.gd")
 
 var stored_molds: Dictionary = {}
@@ -175,10 +179,3 @@ func consume_for(product: ItemData) -> bool:
 	carried_mold = &""
 	changed.emit()
 	return true
-
-func _draw() -> void:
-	draw_rect(Rect2(-80, -35, 160, 80), Color("392c26"))
-	draw_rect(Rect2(-80, -45, 160, 70), Color("986740"))
-	draw_rect(Rect2(-64, -32, 128, 47), Color("183c4c"))
-	draw_polyline(PackedVector2Array([Vector2(-48, 3), Vector2(-30, -22), Vector2(-12, 3), Vector2(-48, 3)]), Color("89e8ee"), 2)
-	draw_rect(Rect2(10, -22, 30, 27), Color("89e8ee"), false, 2)
