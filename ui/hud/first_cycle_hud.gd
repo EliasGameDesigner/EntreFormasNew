@@ -149,6 +149,10 @@ func _refresh() -> void:
 	_clock.text = "CICLO %d • %02d:%02d\nEntregues: %d | Perdidos: %d" % [cycle.cycle_number, floori(seconds / 60.0), seconds % 60, cycle.delivered, cycle.missed]
 	if cycle.cycle_number >= 2:
 		_stock.text = _stock.text.replace("\nMoedas:", "\nRetângulos: %d\nMoedas:" % stock.get(FirstCycle.RECTANGLE, 0))
+	if cycle.cycle_number >= 3:
+		_stock.text = _stock.text.replace("\nMoedas:", "\nParalelogramos: %d\nMoedas:" % stock.get(FirstCycle.PARALLELOGRAM, 0))
+	if cycle.cycle_number >= 4:
+		_stock.text = _stock.text.replace("\nMoedas:", "\nTrapézios: %d\nMoedas:" % stock.get(FirstCycle.TRAPEZOID, 0))
 	_patience.visible = cycle.order_item != null
 	if cycle.order_item:
 		var count: int = stock.get(cycle.order_item, 0)
@@ -169,9 +173,13 @@ func _refresh() -> void:
 			_intro.text = "CICLO %d CONCLUÍDO\n\nTotal de pedidos entregues: %d\nTotal de pedidos não atendidos: %d\nPontuação acumulada: $%d" % [cycle.cycle_number, cycle.delivered, cycle.missed, cycle.score]
 			if cycle.has_next_cycle():
 				_intro.text += "\n\nPRÓXIMO: RETÂNGULOS\nMonte dois moldes quadrados e una-os na bancada.\nA máquina de retângulos será liberada no mesmo mapa.\nMantenha suas peças e pilhas do balcão para o próximo ciclo."
-				_button.text = "Continuar para o ciclo 2"
+				if cycle.cycle_number == 2:
+					_intro.text = _intro.text.left(_intro.text.find("\n\nPRÓXIMO:")) + "\n\nPRÓXIMO: PARALELOGRAMOS\nUna dois triângulos pelas laterais na bancada.\nA nova máquina será liberada no mesmo mapa.\nSeu estoque e moldes continuam disponíveis."
+				if cycle.cycle_number == 3:
+					_intro.text = _intro.text.left(_intro.text.find("\n\nPRÓXIMO:")) + "\n\nPRÓXIMO: TRAPÉZIOS\nUna um quadrado e dois triângulos na bancada.\nA máquina de trapézios será liberada no mesmo mapa.\nSeu estoque e moldes continuam disponíveis."
+				_button.text = "Continuar para o ciclo %d" % (cycle.cycle_number + 1)
 			else:
-				_intro.text += "\n\nOs dois ciclos foram concluídos!"
+				_intro.text += "\n\nOs quatro ciclos foram concluídos!"
 				_button.text = "Recomeçar do ciclo 1"
 		else:
 			_intro.text = "FANTÁSTICA FÁBRICA DE FORMAS\nPrimeiro expediente • %d minutos\n\nVá à bancada de moldes à esquerda das máquinas.\nPegue um molde triangular ou monte um molde de quadrado.\nCarregue-o até a máquina correspondente e use Mouse1 para inserir.\nA máquina consome o molde; aguarde e colete o produto na saída.\nLeve os produtos ao balcão para entregar.\n\nWASD: andar • Mouse1: interagir/arrastar • Duplo clique: girar • Esc: cancelar.\nO tempo continua durante a montagem e o transporte."
