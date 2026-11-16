@@ -14,7 +14,10 @@
 
 [ext_resource type="Resource" path="res://data/machines/maquinaTrapezios.tres" id="trap_data"]
 
+[ext_resource type="Script" path="res://ui/hud/customer_order_bubble.gd" id="order_bubble"]
+
 [node name="Cenario" unique_id=22987688 instance=ExtResource("map")]
+physics_interpolation_mode = 2
 script = ExtResource("room")
 
 [node name="CharacterBody2D" parent="." index="0" unique_id=1110913538]
@@ -27,8 +30,7 @@ limit_left = 960
 limit_top = -1792
 limit_right = 2784
 limit_bottom = -512
-position_smoothing_enabled = true
-position_smoothing_speed = 7.0
+process_callback = 0
 
 [node name="CarriedMold" type="Node2D" parent="CharacterBody2D" unique_id=1577193518 node_paths=PackedStringArray("workbench")]
 z_index = 1
@@ -109,6 +111,7 @@ scale = Vector2(0.8, 0.8)
 progression_locked = true
 
 [node name="CounterLabel" type="Label" parent="." index="62" unique_id=1866269004]
+visible = false
 offset_left = 2298.0
 offset_top = -1267.0
 offset_right = 2618.0
@@ -163,3 +166,8 @@ cycle = NodePath("../FirstCycle")
 
 [node name="FactoryLayout" parent="." index="69" unique_id=1741749843 instance=ExtResource("layout")]
 texture_filter = 1
+
+[node name="CustomerOrderBubble" type="CanvasLayer" parent="." node_paths=PackedStringArray("cycle", "customer")]
+script = ExtResource("order_bubble")
+cycle = NodePath("../FirstCycle")
+customer = NodePath("../Customer")

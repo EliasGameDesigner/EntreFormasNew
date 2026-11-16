@@ -1,12 +1,12 @@
-# Graph Report - FaculProNew  (2026-11-12)
+# Graph Report - FaculProNew  (2026-11-15)
 
 ## Corpus Check
-- 242 files · ~2,182,559 words
+- 249 files · ~2,499,341 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1376 nodes · 3178 edges · 35 communities detected
-- Extraction: 72% EXTRACTED · 28% INFERRED · 0% AMBIGUOUS · INFERRED: 880 edges (avg confidence: 0.8)
+- 1399 nodes · 3223 edges · 35 communities detected
+- Extraction: 72% EXTRACTED · 28% INFERRED · 0% AMBIGUOUS · INFERRED: 889 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -53,104 +53,104 @@
 4. `DialogueManager` - 37 edges
 5. `search()` - 30 edges
 6. `run()` - 30 edges
-7. `_resolve()` - 25 edges
-8. `get_setting()` - 25 edges
+7. `get_setting()` - 26 edges
+8. `_resolve()` - 25 edges
 9. `get_line()` - 23 edges
 10. `run()` - 22 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `_clear_highlighting_cache()` --calls--> `clear()`  [INFERRED]
   addons/dialogue_manager/components/code_edit_syntax_highlighter.gd → ui/machine_repair/shape_assembly_board.gd
+- `_on_text_edit_text_changed()` --calls--> `clear()`  [INFERRED]
+  addons/dialogue_manager/components/search_and_replace.gd → ui/machine_repair/shape_assembly_board.gd
 - `start()` --calls--> `_on_resource_gathered()`  [INFERRED]
   addons/dialogue_manager/views/debugger_view.gd → entities/resources/resource_spawn_point.gd
 - `stop()` --calls--> `stop_ambient()`  [INFERRED]
   addons/dialogue_manager/views/debugger_view.gd → core/audio_manager.gd
 - `is_valid()` --calls--> `is_empty()`  [INFERRED]
   data/items/shape_piece_data.gd → entities/player/player_hands.gd
-- `_process()` --calls--> `move()`  [INFERRED]
-  addons/2d_controls_toolkit/SideScrollingControler2D.gd → entities/player/player_movement.gd
 
 ## Communities
 
 ### Community 0 - "Community 0"
-Cohesion: 0.04
-Nodes (96): _ready(), _refresh(), update_pose(), add_label(), check(), run(), advance_time(), _clear_order() (+88 more)
+Cohesion: 0.03
+Nodes (140): BaseDialogueTestScene, get_files_with_errors(), move_file_path(), DMPlugin, DMSettings, build_menu(), _on_files_list_file_double_clicked(), _on_menu_button_pressed() (+132 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.03
-Nodes (119): BaseDialogueTestScene, insert_text_at_cursor(), get_files_with_errors(), move_file_path(), DMPlugin, DMSettings, prepare(), _init() (+111 more)
+Nodes (109): play_ambient(), check(), run(), add_label(), check(), run(), blocked(), check() (+101 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.04
-Nodes (101): start(), stop(), show_notification(), interaction_stopped(signal), start_interaction(), stop_interaction(), add_item(), get_all_items() (+93 more)
+Nodes (98): is_valid(), has_resolve_method_failed(), is_supported(), resolve_color_property(), resolve_method(), resolve_property(), resolve_vector2_property(), resolve_vector3_property() (+90 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.03
-Nodes (24): CanvasLayer, Container, callv_dotnet(), DialogueLabel, DialogueManagerRuntime, DialogueLine, DialogueManager, DialogueManagerRuntime (+16 more)
+Nodes (23): CanvasLayer, Container, _label(), _pass_through(), _ready(), _refresh(), callv_dotnet(), DialogueLabel (+15 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.04
-Nodes (21): Area2D, AssemblyDefinition, DialogueActionable2D, DialogueManagerRuntime, Interactable, _process(), interaction_progress(signal), interaction_started(signal) (+13 more)
+Cohesion: 0.05
+Nodes (79): start(), stop(), queue_updating_dependencies(), show_notification(), interaction_stopped(signal), start_interaction(), stop_interaction(), add_item() (+71 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.05
-Nodes (85): is_valid(), has_resolve_method_failed(), is_supported(), resolve_color_property(), resolve_method(), resolve_property(), resolve_vector2_property(), resolve_vector3_property() (+77 more)
+Nodes (83): _clear_highlighting_cache(), _get_line_syntax_highlighting(), _highlight_expression(), _highlight_goto(), add_error(), add_reference_to_cue(), build_line_tree(), compile() (+75 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.04
-Nodes (57): apply_filter(), apply_theme(), _on_list_item_clicked(), _on_menu_button_about_to_popup(), _on_menu_button_id_pressed(), _on_theme_changed(), _ready(), select_cue() (+49 more)
+Nodes (21): Area2D, AssemblyDefinition, DialogueActionable2D, DialogueManagerRuntime, Interactable, _process(), interaction_progress(signal), interaction_started(signal) (+13 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.06
-Nodes (67): add_error(), add_reference_to_cue(), build_line_tree(), compile(), extract_condition(), extract_import_path_and_name(), extract_mutation(), extract_static_line_id() (+59 more)
+Cohesion: 0.05
+Nodes (37): _ready(), _refresh(), update_pose(), CharacterBody2D, to_data(), DialogueManagerRuntime, DialogueStateContext, DMCompiledLine (+29 more)
 
 ### Community 8 - "Community 8"
-Cohesion: 0.07
-Nodes (62): _add_character_name_completions(), _add_jump_completions(), _add_mutation_completions(), check_active_cue(), _confirm_code_completion(), delete_current_line(), _drop_data(), _find_definition_in_script() (+54 more)
+Cohesion: 0.06
+Nodes (60): _add_character_name_completions(), _add_jump_completions(), _add_mutation_completions(), check_active_cue(), _confirm_code_completion(), delete_current_line(), _drop_data(), _find_definition_in_script() (+52 more)
 
 ### Community 9 - "Community 9"
-Cohesion: 0.05
-Nodes (41): _get_speed(), _mutate_inline_mutations(), _mutate_remaining_mutations(), _process(), _should_auto_pause(), finished_typing(signal), skipped_typing(signal), spoke(signal) (+33 more)
+Cohesion: 0.06
+Nodes (50): play_sfx(), stop_ambient(), _match_remaining(), _matches(), _remove_piece(), mold_assembled(signal), try_snap(), close_ui() (+42 more)
 
 ### Community 10 - "Community 10"
-Cohesion: 0.06
-Nodes (29): CharacterBody2D, DialogueManagerRuntime, DialogueStateContext, blocked(), check(), run(), Node, can_be_picked_by() (+21 more)
+Cohesion: 0.05
+Nodes (40): _get_speed(), _mutate_inline_mutations(), _mutate_remaining_mutations(), _process(), _should_auto_pause(), finished_typing(signal), skipped_typing(signal), spoke(signal) (+32 more)
 
 ### Community 11 - "Community 11"
 Cohesion: 0.06
-Nodes (36): apply_theme(), _on_banner_image_gui_input(), _on_buy_my_game_pressed(), _on_examples_pressed(), _on_new_button_pressed(), _on_quick_open_pressed(), new_button_pressed(signal), quick_open_button_pressed(signal) (+28 more)
+Nodes (44): apply_theme(), apply_filter(), apply_theme(), _on_list_item_clicked(), _on_menu_button_about_to_popup(), _on_menu_button_id_pressed(), _on_theme_changed(), _ready() (+36 more)
 
 ### Community 12 - "Community 12"
 Cohesion: 0.09
 Nodes (24): Button, Control, _on_download_button_pressed(), _on_http_request_request_completed(), _on_notes_button_pressed(), _ready(), failed(signal), updated(signal) (+16 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.08
-Nodes (19): play_ambient(), play_sfx(), stop_ambient(), _apply_visual(), next_appearance(), _process(), _ready(), _show_walk_frame() (+11 more)
-
-### Community 14 - "Community 14"
 Cohesion: 0.1
 Nodes (26): BaseControler2D, get_direction(), get_speed(), move(), ChangeSpriteDirection(signal), hit_ceiling(signal), EditorPlugin, SideScrollingControler2D (+18 more)
 
+### Community 14 - "Community 14"
+Cohesion: 0.08
+Nodes (19): add_errors_to_file(), add_file(), get_dependent_paths_for_reimport(), _get_dialogue_files_in_filesystem(), get_file_data(), get_files(), get_files_with_dependency(), has_file() (+11 more)
+
 ### Community 15 - "Community 15"
-Cohesion: 0.12
-Nodes (23): check(), press(), run(), SceneTree, begin_drag(), _can_drop_data(), _drop_data(), end_drag() (+15 more)
+Cohesion: 0.13
+Nodes (12): _apply_visual(), next_appearance(), _process(), _ready(), _show_walk_frame(), start_walking(), stop_walking(), check() (+4 more)
 
 ### Community 16 - "Community 16"
-Cohesion: 0.1
-Nodes (21): _clear_highlighting_cache(), _get_line_syntax_highlighting(), _highlight_expression(), _highlight_goto(), compile_string(), extract_mutation(), extract_translatable_string(), get_line_type() (+13 more)
-
-### Community 17 - "Community 17"
 Cohesion: 0.13
 Nodes (17): _capture(), _on_breaked(), _on_started(), _on_stopped(), _setup_session(), add_line(), _get_resource_and_id(), _on_clear_button_pressed() (+9 more)
 
+### Community 17 - "Community 17"
+Cohesion: 0.27
+Nodes (9): _add_exterior_props(), _add_wall_collision(), _draw(), _draw_cutaway_wall(), _draw_wall(), _draw_wall_post(), _draw_wall_tile(), _ready() (+1 more)
+
 ### Community 18 - "Community 18"
-Cohesion: 0.22
-Nodes (15): get_files(), find_in_files(), find_in_line(), get_selection_key(), _on_input_text_submitted(), _on_match_case_button_toggled(), _on_replace_all_button_pressed(), _on_replace_input_text_changed() (+7 more)
+Cohesion: 0.33
+Nodes (8): _on_banner_image_gui_input(), _on_buy_my_game_pressed(), _on_examples_pressed(), _on_new_button_pressed(), _on_quick_open_pressed(), new_button_pressed(signal), quick_open_button_pressed(signal), CenterContainer
 
 ### Community 19 - "Community 19"
-Cohesion: 0.18
-Nodes (12): _add_wall_collision(), _draw(), _draw_beam(), _ready(), _draw(), _match_remaining(), _matches(), _remove_piece() (+4 more)
+Cohesion: 0.31
+Nodes (9): apply_theme(), _on_error_button_pressed(), _on_errors_panel_theme_changed(), _on_next_button_pressed(), _on_previous_button_pressed(), _ready(), show_error_for_line_number(), error_pressed(signal) (+1 more)
 
 ### Community 20 - "Community 20"
 Cohesion: 0.22
@@ -231,12 +231,12 @@ Nodes (1): DMCompilerResult
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `is_empty()` connect `Community 8` to `Community 0`, `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 9`, `Community 10`, `Community 11`, `Community 13`, `Community 15`, `Community 16`, `Community 17`, `Community 21`, `Community 22`?**
-  _High betweenness centrality (0.222) - this node is a cross-community bridge._
-- **Why does `clear()` connect `Community 6` to `Community 0`, `Community 1`, `Community 2`, `Community 3`, `Community 5`, `Community 7`, `Community 8`, `Community 9`, `Community 11`, `Community 15`, `Community 16`, `Community 17`, `Community 18`?**
-  _High betweenness centrality (0.162) - this node is a cross-community bridge._
-- **Why does `translate()` connect `Community 5` to `Community 1`, `Community 3`, `Community 6`, `Community 7`, `Community 8`, `Community 9`, `Community 11`, `Community 12`, `Community 16`, `Community 17`?**
-  _High betweenness centrality (0.097) - this node is a cross-community bridge._
+- **Why does `is_empty()` connect `Community 7` to `Community 0`, `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 8`, `Community 9`, `Community 10`, `Community 11`, `Community 14`, `Community 15`, `Community 16`, `Community 21`, `Community 22`?**
+  _High betweenness centrality (0.219) - this node is a cross-community bridge._
+- **Why does `clear()` connect `Community 1` to `Community 0`, `Community 2`, `Community 3`, `Community 4`, `Community 5`, `Community 8`, `Community 9`, `Community 10`, `Community 11`, `Community 14`, `Community 16`?**
+  _High betweenness centrality (0.166) - this node is a cross-community bridge._
+- **Why does `translate()` connect `Community 2` to `Community 0`, `Community 3`, `Community 5`, `Community 10`, `Community 11`, `Community 12`, `Community 16`?**
+  _High betweenness centrality (0.091) - this node is a cross-community bridge._
 - **Are the 73 inferred relationships involving `is_empty()` (e.g. with `translate()` and `_on_breaked()`) actually correct?**
   _`is_empty()` has 73 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 33 inferred relationships involving `translate()` (e.g. with `_setup_session()` and `refresh()`) actually correct?**

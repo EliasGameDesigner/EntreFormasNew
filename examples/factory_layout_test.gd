@@ -24,6 +24,11 @@ func run() -> void:
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	var layout = room.get_node("FactoryLayout")
+	check(not layout.show_exterior and not layout.get_node("ExteriorTerrain").visible and not layout.get_node("ExteriorProps").visible, "interior hides exterior terrain and props")
+	check(layout.get_node("InteriorBackdrop").color == Color.BLACK, "outside interior is black")
+	layout.show_exterior = true
+	check(layout.get_node("ExteriorTerrain").visible and layout.get_node("ExteriorProps").visible, "exterior remains available for future scenes")
+	layout.show_exterior = false
 	var floor_layer: TileMapLayer = layout.get_node("WoodFloor")
 	check(floor_layer.get_used_cells().size() == 468, "floor covers all 26 by 18 smaller tiles")
 	check(floor_layer.tile_set.get_source(0).get_tiles_count() == 4, "four editable atlas tiles")
@@ -44,9 +49,11 @@ func run() -> void:
 	await get_tree().create_timer(1.8).timeout
 	check(not room.get_node("Customer").walking, "customer reaches counter and stops")
 	room.get_node("HUD").hide()
+	room.get_node("CustomerOrderBubble").hide()
 	GameUI.hide()
 	room.get_node("CharacterBody2D/FollowCamera").enabled = false
 	var overview := Camera2D.new()
+	overview.process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
 	overview.position = Vector2(1872, -1152)
 	overview.zoom = Vector2.ONE * 0.55
 	add_child(overview)

@@ -21,6 +21,7 @@ shader = ExtResource("sprite_alpha")
 shader_parameter/idle_breathing = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1110913538 groups=["player"]]
+physics_interpolation_mode = 1
 collision_mask = 3
 script = ExtResource("1_1k5v0")
 

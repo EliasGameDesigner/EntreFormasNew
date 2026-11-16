@@ -130,6 +130,7 @@ func _restart() -> void:
 func _refresh() -> void:
 	if not is_instance_valid(_order):
 		return
+	_order_panel.visible = get_tree().get_first_node_in_group("customer_order_bubble") == null
 	var stock := InventoryManager.get_all_items()
 	if cycle.physical_transport:
 		stock = cycle.counter_stock
