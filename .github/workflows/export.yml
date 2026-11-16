@@ -1,3 +1,4 @@
+
 name: Release Godot 4.7
 
 on:
@@ -6,17 +7,21 @@ on:
       - "v*"
 
 jobs:
-  export:
+  staging:
+    name: Gerar build de teste
     runs-on: ubuntu-latest
+    environment: staging
+
     permissions:
-      contents: write
+      contents: read
+
     steps:
       - name: Baixar o código-fonte
         uses: actions/checkout@v4
         with:
           lfs: true
 
-      - name: Exportar o Jogo via Godot 4.7 (Standard)
+      - name: Exportar o jogo via Godot 4.7
         uses: firebelley/godot-export@v6.0.0
         with:
           godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.7-stable/Godot_v4.7-stable_linux.x86_64.zip
@@ -26,9 +31,36 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Armazenar build para validação
+        uses: actions/upload-artifact@v4
+        with:
+          name: EntreFormas-Windows
+          path: /home/runner/.local/share/godot/archives/*.zip
+          if-no-files-found: error
+          retention-days: 7
+
+  production:
+    name: Publicar release
+    needs: staging
+    runs-on: ubuntu-latest
+    environment: production
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Recuperar build de staging
+        uses: actions/download-artifact@v4
+        with:
+          name: EntreFormas-Windows
+          path: ./release
+
+      - name: Verificar arquivos
+        run: ls -lh ./release/
+
       - name: Criar Release no GitHub
         uses: softprops/action-gh-release@v2
         with:
-          # Caminho exato onde o log mostrou que o DefaultWindowsEXE.zip foi salvo:
-          files: /home/runner/.local/share/godot/archives/*.zip
+          files: ./release/*.zip
           generate_release_notes: true
+          fail_on_unmatched_files: true
