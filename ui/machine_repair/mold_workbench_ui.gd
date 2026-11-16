@@ -162,14 +162,21 @@ func _return_pieces() -> void:
 	board.queue_redraw()
 
 func _refresh_stock() -> void:
+	var next_shape: StringName = &""
+	for shape in workbench.PRODUCTS:
+		if not workbench.available_shapes.has(shape):
+			next_shape = shape
+			break
 	for shape in shape_buttons:
 		var button: Button = shape_buttons[shape]
+		button.visible = workbench.available_shapes.has(shape) or shape == next_shape
 		button.disabled = not workbench.can_supply(shape)
 		var count := "∞" if workbench.can_take_ready(shape) else str(workbench.stored_molds.get(shape, 0))
 		button.text = workbench.NAMES[shape] + "  × " + count
 		if not workbench.available_shapes.has(shape):
 			button.text += "\nPróximo ciclo"
 	for shape in recipe_buttons:
+		recipe_buttons[shape].visible = workbench.available_shapes.has(shape) or shape == next_shape
 		recipe_buttons[shape].disabled = not workbench.available_shapes.has(shape)
 	discard_button.visible = workbench.carried_mold != &""
 	_refresh_progress()

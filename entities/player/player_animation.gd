@@ -27,7 +27,12 @@ func update_animation(direction: Vector2) -> void:
 	animated_sprite.material.set_shader_parameter("idle_breathing", not moving)
 	if not moving:
 		animation_name += "_Idle"
+	var animation_changed := animated_sprite.animation != animation_name
 	animated_sprite.play(animation_name)
+	if animation_changed:
+		# Atlases use different resolutions. Switch texture and its compensating
+		# transform together, without blending the old scale onto the new texture.
+		animated_sprite.reset_physics_interpolation()
 	if mold != null:
 		mold.update_pose(facing)
 	if moving and not footstep_player.playing:

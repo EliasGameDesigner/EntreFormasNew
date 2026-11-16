@@ -36,3 +36,12 @@ Complementos por variante:
 
 4. Variant: adult woman farmer with fair lightly freckled skin, auburn hair in two short braids, a muted ochre headscarf tied back, cream blouse under moss-green sleeveless tunic, dark brown trousers and sturdy brown boots, simple leather belt. Friendly neutral expression, hands empty, no apron. Same compact adult proportions as reference.
 
+## Balão de pedido
+
+A cena principal inclui CustomerOrderBubble, uma CanvasLayer com painel não interativo que acompanha a cabeça do cliente em coordenadas de tela. O pedido mostra o sprite do produto, a quantidade total, a quantidade já depositada no balcão e o tempo restante. O antigo cartão fixo de pedido e a legenda estática sobre o balcão foram substituídos por essa apresentação.
+
+Quando o cliente está fora do enquadramento, o painel permanece dentro da área útil da tela com uma indicação da direção dele. A camada fica abaixo das telas de montagem e dos menus. O balão desaparece após a entrega, a desistência ou o encerramento do ciclo e é atualizado automaticamente para o próximo pedido.
+
+O Dialogue Manager instalado foi inspecionado em addons/dialogue_manager/example_balloon/example_balloon.gd. Seu exemplo administra falas, avanço de diálogo e opções de resposta. O pedido persistente usa um componente próprio em ui/hud/customer_order_bubble.gd, conectado aos sinais do ciclo, sem abrir conversas nem capturar comandos do jogador.
+
+Teste integrado em examples/customer_order_bubble_test.tscn, com prévia em docs/images/customer_order_bubble.png.

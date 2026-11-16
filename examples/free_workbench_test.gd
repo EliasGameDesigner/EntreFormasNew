@@ -34,6 +34,10 @@ func run() -> void:
 	await get_tree().process_frame
 	check(board.free_mode and board.pieces.is_empty() and board.hint == null, "free empty table with no recipe selected")
 	check(bench.can_supply(&"triangle") and not bench.can_supply(&"square"), "unlimited triangles but no free squares")
+	check(ui.shape_buttons[&"triangle"].visible and ui.shape_buttons[&"square"].visible, "unlocked molds stay visible")
+	check(ui.shape_buttons[&"rectangle"].visible and ui.recipe_buttons[&"rectangle"].visible, "only next unlock is previewed")
+	check(not ui.shape_buttons[&"parallelogram"].visible and not ui.recipe_buttons[&"parallelogram"].visible, "later unlocks are hidden")
+	check(not ui.shape_buttons[&"trapezoid"].visible and not ui.recipe_buttons[&"trapezoid"].visible, "last unlock hidden initially")
 	check(ui.recipe_buttons[&"rectangle"].disabled, "rectangle recipe locked in cycle one")
 	ui._supply_piece(ui.PIECES[&"triangle"], Vector2(200, 150))
 	var piece: ShapePiece = board.pieces[0]
@@ -63,6 +67,8 @@ func run() -> void:
 	cycle.set_process(false)
 	bench.open_workbench()
 	check(bench.stored_molds[&"square"] == 4, "shelf survives cycle transition")
+	check(ui.shape_buttons[&"parallelogram"].visible and ui.recipe_buttons[&"parallelogram"].visible, "next preview advances in cycle two")
+	check(not ui.shape_buttons[&"trapezoid"].visible and not ui.recipe_buttons[&"trapezoid"].visible, "cycle four stays hidden in cycle two")
 	ui._supply_piece(ui.PIECES[&"square"], Vector2(200, 150))
 	ui._supply_piece(ui.PIECES[&"square"], Vector2(320, 150))
 	check(bench.stored_molds[&"square"] == 2 and bench.stored_molds.get(&"rectangle", 0) == 1, "two squares consumed for rectangle without recipe selection")
