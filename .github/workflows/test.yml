@@ -1,0 +1,36 @@
+
+name: Testes Automaticos Godot
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  teste-godot:
+    name: Verificar projeto Godot
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar codigo
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Instalar Godot 4.7
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.7.0
+          use-dotnet: false
+
+      - name: Verificar arquivo do projeto
+        run: test -f project.godot
+
+      - name: Importar recursos do projeto
+        run: godot --headless --path . --import
+
+      - name: Teste concluido
+        run: echo "Verificacao automatica concluida!"
