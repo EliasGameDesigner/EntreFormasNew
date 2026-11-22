@@ -6,15 +6,14 @@
 [ext_resource type="Script" uid="uid://bth3oj7l8vxt7" path="res://ui/hud/first_cycle_hud.gd" id="hud"]
 [ext_resource type="PackedScene" path="res://world/factory_layout.tscn" id="layout"]
 [ext_resource type="PackedScene" uid="uid://bjmjpkifoap2r" path="res://world/cenario.tscn" id="map"]
-[ext_resource type="Script" uid="uid://b711la72le5nv" path="res://world/first_cycle_room.gd" id="room"]
-[ext_resource type="PackedScene" path="res://entities/props/mold_workbench.tscn" id="workbench"]
-
-[ext_resource type="PackedScene" path="res://entities/machines/maquina_generica.tscn" id="para_scene"]
+[ext_resource type="Script" uid="uid://d4a7qxm7dbc0w" path="res://ui/hud/customer_order_bubble.gd" id="order_bubble"]
 [ext_resource type="Resource" path="res://data/machines/maquinaParalelogramos.tres" id="para_data"]
-
+[ext_resource type="PackedScene" uid="uid://i6n1ajayqygp" path="res://entities/machines/maquina_generica.tscn" id="para_scene"]
+[ext_resource type="Script" uid="uid://b711la72le5nv" path="res://world/first_cycle_room.gd" id="room"]
 [ext_resource type="Resource" path="res://data/machines/maquinaTrapezios.tres" id="trap_data"]
-
-[ext_resource type="Script" path="res://ui/hud/customer_order_bubble.gd" id="order_bubble"]
+[ext_resource type="PackedScene" path="res://entities/props/mold_workbench.tscn" id="workbench"]
+[ext_resource type="Script" path="res://core/art_tutorial.gd" id="art_tutorial"]
+[ext_resource type="Script" path="res://ui/hud/art_tutorial_ui.gd" id="art_ui"]
 
 [node name="Cenario" unique_id=22987688 instance=ExtResource("map")]
 physics_interpolation_mode = 2
@@ -24,15 +23,15 @@ script = ExtResource("room")
 z_index = 5
 position = Vector2(1552, -1072)
 
-[node name="FollowCamera" type="Camera2D" parent="CharacterBody2D" unique_id=450868858]
+[node name="FollowCamera" type="Camera2D" parent="CharacterBody2D" index="10" unique_id=450868858]
 offset = Vector2(0, -70)
+process_callback = 0
 limit_left = 960
 limit_top = -1792
 limit_right = 2784
 limit_bottom = -512
-process_callback = 0
 
-[node name="CarriedMold" type="Node2D" parent="CharacterBody2D" unique_id=1577193518 node_paths=PackedStringArray("workbench")]
+[node name="CarriedMold" type="Node2D" parent="CharacterBody2D" index="11" unique_id=1577193518 node_paths=PackedStringArray("workbench")]
 z_index = 1
 position = Vector2(32, 20)
 script = ExtResource("carried")
@@ -129,7 +128,7 @@ script = ExtResource("customer")
 z_index = 2
 position = Vector2(1568, -1248)
 
-[node name="ParallelogramMachine" parent="." index="65" instance=ExtResource("para_scene")]
+[node name="ParallelogramMachine" parent="." index="65" unique_id=1169316684 instance=ExtResource("para_scene")]
 z_index = 2
 position = Vector2(1584, -768)
 scale = Vector2(0.8, 0.8)
@@ -139,7 +138,7 @@ manual_production = true
 manual_available = false
 requires_mold = true
 
-[node name="TrapezoidMachine" parent="." index="66" instance=ExtResource("para_scene")]
+[node name="TrapezoidMachine" parent="." index="66" unique_id=1413130482 instance=ExtResource("para_scene")]
 z_index = 2
 position = Vector2(1904, -768)
 scale = Vector2(0.8, 0.8)
@@ -149,15 +148,15 @@ manual_production = true
 manual_available = false
 requires_mold = true
 
-[node name="FirstCycle" type="Node" parent="." index="67" unique_id=1399711941 node_paths=PackedStringArray("trapezoid_machine", "parallelogram_machine", "triangle_machine", "square_machine", "rectangle_machine", "mold_workbench")]
+[node name="FirstCycle" type="Node" parent="." index="67" unique_id=1399711941 node_paths=PackedStringArray("parallelogram_machine", "trapezoid_machine", "rectangle_machine", "triangle_machine", "square_machine", "mold_workbench")]
 script = ExtResource("cycle")
+parallelogram_machine = NodePath("../ParallelogramMachine")
+trapezoid_machine = NodePath("../TrapezoidMachine")
+rectangle_machine = NodePath("../MaquinaGenerica2")
 triangle_patience = 50.0
 square_patience = 110.0
-trapezoid_machine = NodePath("../TrapezoidMachine")
-parallelogram_machine = NodePath("../ParallelogramMachine")
 triangle_machine = NodePath("../MaquinaGenerica")
 square_machine = NodePath("../Maquina_quadrados")
-rectangle_machine = NodePath("../MaquinaGenerica2")
 mold_workbench = NodePath("../MoldWorkbench")
 
 [node name="HUD" type="CanvasLayer" parent="." index="68" unique_id=1858142295 node_paths=PackedStringArray("cycle")]
@@ -167,7 +166,15 @@ cycle = NodePath("../FirstCycle")
 [node name="FactoryLayout" parent="." index="69" unique_id=1741749843 instance=ExtResource("layout")]
 texture_filter = 1
 
-[node name="CustomerOrderBubble" type="CanvasLayer" parent="." node_paths=PackedStringArray("cycle", "customer")]
+[node name="CustomerOrderBubble" type="CanvasLayer" parent="." index="70" unique_id=743847267 node_paths=PackedStringArray("cycle", "customer")]
 script = ExtResource("order_bubble")
 cycle = NodePath("../FirstCycle")
 customer = NodePath("../Customer")
+
+[node name="ArtTutorial" type="Node" parent="." index="71" node_paths=PackedStringArray("cycle")]
+script = ExtResource("art_tutorial")
+cycle = NodePath("../FirstCycle")
+
+[node name="ArtUI" type="CanvasLayer" parent="ArtTutorial" node_paths=PackedStringArray("tutorial")]
+script = ExtResource("art_ui")
+tutorial = NodePath("..")

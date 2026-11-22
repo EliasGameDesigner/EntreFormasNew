@@ -11,7 +11,7 @@ func bench() -> MoldWorkbench:
 
 func enabled() -> bool:
 	var cycle = get_tree().get_first_node_in_group("first_cycle")
-	return cycle != null and cycle.physical_transport and cycle.running
+	return cycle != null and cycle.physical_transport and cycle.workshop_active()
 
 func is_empty() -> bool:
 	return product == null and (bench() == null or bench().carried_mold == &"")

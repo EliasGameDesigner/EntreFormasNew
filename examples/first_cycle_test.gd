@@ -126,7 +126,7 @@ func run() -> void:
 	cycle.advance_time(cycle.arrival_delay + 0.1)
 	cycle.advance_time(cycle.order_time_left + 0.1)
 	check(cycle.running and cycle.missed == 1 and not cycle.deliver_order(), "expired order cannot deliver, round continues")
-	# One machine runs while another mold is being prepared; expiry cancels both.
+	# Finishing closes assembly while manufacturing continues into preparation.
 	await prepare_mold(&"triangle")
 	triangle.production_time = 60.0
 	check(triangle.request_manual_production(), "machine can work while player prepares another mold")
@@ -135,8 +135,9 @@ func run() -> void:
 	cycle.finish_round()
 	await get_tree().process_frame
 	check(not workbench.ui.visible and workbench.carried_mold == &"", "round end cancels pending completed board")
-	check(not triangle._mold_cycle_active and triangle.production_timer.is_stopped(), "round end stops unfinished manufacturing")
-	check(not workbench.open_workbench() and not triangle.request_manual_production(), "round end blocks workbench and machines")
+	check(triangle._mold_cycle_active and not triangle.production_timer.is_stopped(), "unfinished manufacturing continues during preparation")
+	check(workbench.open_workbench() and cycle.preparing, "intermission permits preparation at workbench")
+	workbench.ui.close_ui()
 	await screenshot("result")
 	room.get_node("HUD")._restart()
 	cycle.set_process(false)

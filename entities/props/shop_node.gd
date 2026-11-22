@@ -2,6 +2,7 @@ extends Node2D
 class_name ShopNode
 
 @export var order_counter: bool = false
+var service_ui: CanvasLayer
 
 @onready var interactable: Interactable = $Interactable
 
@@ -12,6 +13,10 @@ func _ready() -> void:
 func _connect_counter() -> void:
 	var cycle = get_tree().get_first_node_in_group("first_cycle")
 	if order_counter and cycle != null:
+		service_ui = CanvasLayer.new()
+		service_ui.set_script(preload("res://ui/hud/counter_service_ui.gd"))
+		service_ui.cycle = cycle
+		add_child(service_ui)
 		var stacks := Node2D.new()
 		stacks.name = "Stacks"
 		stacks.z_index = 1
@@ -25,6 +30,11 @@ func _on_interaction_started(_body: Node2D) -> void:
 	if order_counter:
 		var service := get_tree().get_first_node_in_group("first_cycle")
 		if service:
+			var carried = _body.get_node_or_null("Hands")
+			if service.preparing and (not service.physical_transport or carried == null or carried.product == null):
+				if service_ui != null:
+					service_ui.open_ui()
+				return
 			if service.physical_transport:
 				var hands = _body.get_node_or_null("Hands")
 				if hands != null and hands.product != null:

@@ -53,7 +53,7 @@ func run() -> void:
 	check(machine.manual_available and machine.interactable.collision_layer == 1, "machine unlocks for interaction")
 	check(cycle.counter_stock[FirstCycle.SQUARE] == 1 and bench.stored_molds[&"square"] == 2, "stock survives transition")
 	check(cycle.order_item == FirstCycle.TRAPEZOID and cycle.order_quantity == 1, "first customer orders new shape")
-	check(hud._stock.text.contains("Trapézios"), "HUD stock includes new product")
+	check(hud._stock.rows[FirstCycle.TRAPEZOID].visible, "HUD stock includes new product")
 	bench.open_workbench()
 	var ui = bench.ui
 	var board = ui.board
@@ -94,7 +94,9 @@ func run() -> void:
 	if product == null:
 		get_tree().quit(1)
 		return
-	await near(product.position + Vector2(0, 55))
+	# Approach from the side: the random output offset can put a point below it
+	# beyond the southern wall, where the pickup ray correctly rejects it.
+	await near(product.position + Vector2(50, 0))
 	click()
 	check(hands.product == FirstCycle.TRAPEZOID, "pick up new product")
 	await near(Vector2(1800, -1072))

@@ -59,7 +59,7 @@ func run() -> void:
 	check(machine.manual_available and machine.interactable.collision_layer != 0, "rectangle machine unlocks physically")
 	check(machine.modulate == Color.WHITE and bench.available_shapes.has(&"rectangle"), "machine visual and workbench unlock")
 	check(cycle.order_item == FirstCycle.RECTANGLE and cycle.order_quantity == 1, "first cycle-two customer requests one rectangle")
-	check(hud._clock.text.contains("CICLO 2") and hud._stock.text.contains("Retângulos"), "HUD shows second cycle and rectangle stock")
+	check(hud._clock.text.contains("CICLO 2") and hud._stock.rows[FirstCycle.RECTANGLE].visible, "HUD shows second cycle and rectangle stock")
 	check(player.movement.speed == 210, "slightly faster walking")
 	await near(Vector2(1552, -1072))
 	player.animation.update_animation(Vector2.DOWN)

@@ -48,7 +48,7 @@ func run() -> void:
 	check(machine.manual_available and machine.interactable.collision_layer == 1, "machine unlocks for interaction")
 	check(cycle.counter_stock[FirstCycle.SQUARE] == 1 and bench.stored_molds[&"square"] == 1, "stock survives transition")
 	check(cycle.order_item == FirstCycle.PARALLELOGRAM and cycle.order_quantity == 1, "first customer orders new shape")
-	check(hud._stock.text.contains("Paralelogramos"), "HUD stock includes new product")
+	check(hud._stock.rows[FirstCycle.PARALLELOGRAM].visible, "HUD stock includes new product")
 	bench.open_workbench()
 	var ui = bench.ui
 	var board = ui.board

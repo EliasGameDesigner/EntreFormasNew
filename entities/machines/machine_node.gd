@@ -2,6 +2,8 @@ extends Node2D
 class_name MachineNode
 
 signal repaired(machine: MachineNode)
+signal production_started(product: ItemData)
+signal product_produced(product: ItemData)
 enum MachineState { BROKEN, WORKING }
 
 @export var machine_data: MachineData
@@ -229,6 +231,7 @@ func _spawn_output() -> void:
 	var parent_2d := get_parent() as Node2D
 	instance.position = parent_2d.to_local(spawn_point.global_position + offset) if parent_2d else spawn_point.global_position + offset
 	get_parent().add_child(instance)
+	product_produced.emit(machine_data.produced_item)
 
 func request_manual_production() -> bool:
 	if not manual_production or not manual_available or current_state != MachineState.WORKING:
@@ -247,6 +250,7 @@ func request_manual_production() -> bool:
 		animated_sprite.play("funcionando")
 		working_audio.play()
 		_update_status()
+		production_started.emit(machine_data.produced_item)
 		return true
 	if machine_data.repair_assembly == null:
 		_spawn_output()
