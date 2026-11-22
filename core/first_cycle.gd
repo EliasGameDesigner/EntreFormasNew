@@ -3,6 +3,9 @@ class_name FirstCycle
 
 signal changed
 signal customer_changed
+signal session_prepared
+signal product_deposited(product: ItemData)
+signal order_delivered(product: ItemData)
 @export var physical_transport: bool = true
 var counter_stock: Dictionary = {}
 const TRIANGLE = preload("res://data/items/itemTriangulo.tres")
@@ -35,6 +38,7 @@ var cycle_customer_number: int = 0
 @export var square_machine: MachineNode
 @export var mold_workbench: MoldWorkbench
 
+var preparing: bool = false
 var running: bool = false
 var finished: bool = false
 var time_left: float = 0.0
@@ -54,7 +58,7 @@ func _ready() -> void:
 	set_process(false)
 	_set_machines_available(false)
 
-func start_round() -> void:
+func prepare_session() -> void:
 	if running:
 		return
 	cycle_number = 1
@@ -77,9 +81,41 @@ func start_round() -> void:
 	missed = 0
 	score = 0
 	customer_number = 0
-	time_left = round_duration
+	time_left = 0.0
 	finished = false
+	preparing = true
+	order_item = null
+	order_quantity = 0
+	order_time_left = 0.0
+	order_time_total = 0.0
+	_set_machines_available(true)
+	set_process(false)
+	customer_changed.emit()
+	changed.emit()
+	session_prepared.emit()
+
+func workshop_active() -> bool:
+	return running or preparing
+
+func pending_cycle_number() -> int:
+	return cycle_number + 1 if has_next_cycle() else cycle_number
+
+func start_prepared_cycle() -> bool:
+	if not preparing or running:
+		return false
+	if has_next_cycle():
+		return start_next_cycle()
+	start_round()
+	return true
+
+func start_round() -> void:
+	if running:
+		return
+	if not preparing or finished:
+		prepare_session()
+	preparing = false
 	running = true
+	time_left = round_duration
 	_set_machines_available(true)
 	_spawn_order()
 	set_process(true)
@@ -94,6 +130,7 @@ func has_next_cycle() -> bool:
 func start_next_cycle() -> bool:
 	if running or not has_next_cycle():
 		return false
+	preparing = false
 	cycle_number += 1
 	cycle_customer_number = 0
 	finished = false
@@ -173,15 +210,17 @@ func deliver_order() -> bool:
 	delivered += 1
 	score += order_reward
 	InventoryManager.money += order_reward
+	order_delivered.emit(order_item)
 	GameUI.show_notification("Pedido entregue! +$%d" % order_reward)
 	_clear_order()
 	changed.emit()
 	return true
 
 func deposit_product(product: ItemData) -> bool:
-	if not running or not physical_transport or product == null:
+	if not workshop_active() or not physical_transport or product == null:
 		return false
 	counter_stock[product] = counter_stock.get(product, 0) + 1
+	product_deposited.emit(product)
 	changed.emit()
 	if order_item == product and counter_stock[product] >= order_quantity:
 		deliver_order()
@@ -197,12 +236,12 @@ func finish_round() -> void:
 	if order_item != null:
 		missed += 1
 	_clear_order()
-	# Closing a pending assembly refunds it before displaying the result.
-	var held_mold: StringName = mold_workbench.carried_mold if is_instance_valid(mold_workbench) else &""
-	_set_machines_available(false)
-	if has_next_cycle() and is_instance_valid(mold_workbench):
-		mold_workbench.carried_mold = held_mold
-		mold_workbench.changed.emit()
+	preparing = has_next_cycle()
+	if is_instance_valid(mold_workbench):
+		mold_workbench.ui.close_ui()
+	_set_machines_available(preparing)
+	if preparing:
+		GameUI.show_notification("Ciclo concluído! Prepare a fábrica e inicie o próximo no balcão de atendimento.", 5.0)
 	changed.emit()
 
 func _set_machines_available(value: bool) -> void:
@@ -213,6 +252,7 @@ func _set_machines_available(value: bool) -> void:
 		if cycle_number >= 4:
 			mold_workbench.available_shapes.append(&"trapezoid")
 		mold_workbench.set_session_active(value)
+		mold_workbench.get_node("Label").text = "BANCADA DE MOLDES\nMouse1: preparar ou pegar"
 	for machine in [triangle_machine, square_machine]:
 		if is_instance_valid(machine):
 			machine.set_manual_available(value)

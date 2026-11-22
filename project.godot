@@ -39,6 +39,10 @@ project/assembly_name="FaculProjetoCodex"
 
 enabled=PackedStringArray("res://addons/2d_controls_toolkit/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
 
+[gui]
+
+theme/custom_font="res://assets/fonts/m5x7.ttf"
+
 [input]
 
 up={
@@ -74,9 +78,8 @@ interact={
 
 [physics]
 
-common/physics_interpolation = true
-
 3d/physics_engine="Jolt Physics"
+common/physics_interpolation=true
 
 [rendering]
 

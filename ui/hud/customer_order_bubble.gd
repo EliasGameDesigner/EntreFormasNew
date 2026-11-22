@@ -46,8 +46,8 @@ func _ready() -> void:
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	row.add_child(icon)
-	quantity = _label(row, 24)
-	progress = _label(column, 12)
+	quantity = _label(row, 32)
+	progress = _label(column, 18)
 	patience = ProgressBar.new()
 	patience.custom_minimum_size = Vector2(0, 7)
 	patience.show_percentage = false
@@ -60,7 +60,7 @@ func _ready() -> void:
 	fill.bg_color = Color("477a65")
 	fill.set_corner_radius_all(3)
 	patience.add_theme_stylebox_override("fill", fill)
-	location = _label(column, 11)
+	location = _label(column, 18)
 	_pass_through(root)
 	cycle.changed.connect(_refresh)
 	cycle.customer_changed.connect(_refresh)
@@ -105,12 +105,15 @@ func _process(_delta: float) -> void:
 			arrow = "↑" if head.y < 0 else "↓"
 		location.text = "Cliente " + arrow
 	panel.size = panel.get_combined_minimum_size()
-	# Keep clear of the stock card, top clock and bottom controls when offscreen.
-	var minimum := Vector2(minf(208, screen.size.x / 3), 116)
+	# Keep clear of the stock card, top clock and screen edges when offscreen.
+	var minimum := Vector2(minf(252, screen.size.x / 3), 132)
 	var maximum := screen.size - panel.size - Vector2(12, 44)
 	maximum = maximum.max(minimum)
 	var desired := head - Vector2(panel.size.x / 2, panel.size.y + 14)
 	panel.position = desired.clamp(minimum, maximum).round()
+	var art = get_tree().get_first_node_in_group("art_tutorial_ui")
+	if art != null and art.visible and art.panel.visible and panel.get_global_rect().intersects(art.panel.get_global_rect()):
+		panel.position.y = maxf(minimum.y, art.panel.position.y - panel.size.y - 12)
 	tail.visible = not pinned
 	var base := panel.position + Vector2(panel.size.x / 2, panel.size.y - 2)
 	var tip := Vector2(clampf(head.x, base.x - 20, base.x + 20), base.y + 13)

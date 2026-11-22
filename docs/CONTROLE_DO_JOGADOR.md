@@ -30,3 +30,11 @@ Referência técnica — [interpolação de física no Godot](https://docs.godot
 As imagens de caminhada e idle usam resoluções diferentes, compensadas pela escala do AnimatedSprite2D. Ao trocar de animação, player_animation.gd reinicia apenas o histórico de interpolação do sprite após aplicar a nova textura, escala e posição. Isso evita que a textura nova apareça com uma escala intermediária da animação anterior, enquanto o movimento do jogador e da câmera continua interpolado.
 
 O teste gráfico examples/worker_transition_test.tscn renderiza 96 amostras em um SubViewport transparente, com física temporariamente em 10 Hz, cobrindo andar, parar, mudar de direção e entrar/sair da pose de carregar. Antes da correção a altura chegou a 168 pixels. Após o ajuste ficou entre 79 e 82 pixels, sem falhas.
+
+## Indicador de interação
+
+InteractionIndicator fica acima da cabeça do jogador, com escala fixa e dois ícones SVG reutilizáveis em assets/textures/ui/interaction_glove.svg e interaction_exclamation.svg. A luva indica coleta de um produto ou molde no chão. A exclamação indica uma estação disponível, incluindo máquinas, bancada de moldes e balcão de atendimento.
+
+O componente Interaction usa o mesmo sensor de coleta e a mesma busca de estação do Mouse1, dando prioridade à coleta quando as mãos estão vazias. O indicador fica oculto quando não há alvo, durante janelas modais e em estações bloqueadas ou máquinas ocupadas. A antiga legenda sob o jogador permanece oculta.
+
+O teste examples/interaction_indicator_test.tscn cobre 20 verificações dos estados do indicador e gera prévias em docs/images/interaction_station.png e interaction_pickup.png quando executado com renderização gráfica.

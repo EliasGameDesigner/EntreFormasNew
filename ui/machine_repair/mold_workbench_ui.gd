@@ -52,10 +52,10 @@ func _ready() -> void:
 	box.add_child(header)
 	title = Label.new()
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	title.add_theme_font_size_override("font_size", 20)
+	title.add_theme_font_size_override("font_size", 28)
 	header.add_child(title)
 	order_status = Label.new()
-	order_status.add_theme_font_size_override("font_size", 14)
+	order_status.add_theme_font_size_override("font_size", 20)
 	header.add_child(order_status)
 	close_button = Button.new()
 	close_button.text = "Fechar"
@@ -145,6 +145,7 @@ func show_choices() -> void:
 	instructions.text = "Arraste moldes da esquerda para montar • Duplo clique: girar\nClique em um molde da lista para levá-lo à máquina."
 	_refresh_stock()
 	_update_hint()
+	_refresh_cycle_controls()
 
 func _supply_piece(data: ShapePieceData, at_position: Vector2) -> void:
 	if not visible or not board.free_mode or not PIECES.values().has(data):
@@ -200,7 +201,8 @@ func _refresh_progress() -> void:
 	if not is_instance_valid(status):
 		return
 	if board.free_mode:
-		status.text = "Moldes prontos voltam à lista • O prazo do pedido continua correndo."
+		var cycle = get_tree().get_first_node_in_group("first_cycle")
+		status.text = "Preparação livre • Monte moldes, fabrique peças e abasteça o balcão." if cycle != null and cycle.preparing else "Moldes prontos voltam à lista • O prazo do pedido continua correndo."
 	elif board.definition != null:
 		status.text = "Encaixes: %d/%d • O prazo do pedido continua correndo." % [board.get_filled_count(), board.get_required_count()]
 
@@ -218,10 +220,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _process(_delta: float) -> void:
-	if not visible:
-		return
+	if visible:
+		_refresh_cycle_controls()
+
+func _refresh_cycle_controls() -> void:
 	var cycle = get_tree().get_first_node_in_group("first_cycle")
 	if cycle == null:
+		return
+	if cycle.preparing:
+		order_status.text = "Preparação livre\nInicie no balcão de atendimento"
 		return
 	order_status.text = "Ciclo %d • %02d:%02d" % [cycle.cycle_number, floori(cycle.time_left / 60), int(cycle.time_left) % 60]
 	if cycle.order_item != null:

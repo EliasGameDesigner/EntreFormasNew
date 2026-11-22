@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @export var cycle: FirstCycle
 var _order: Label
-var _stock: Label
+var _stock: PanelContainer
 var _clock: Label
 var _patience: ProgressBar
 var _overlay: ColorRect
@@ -23,12 +23,14 @@ func _ready() -> void:
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(root)
 	_root = root
-	_stock_panel = _panel(root, Control.PRESET_TOP_LEFT, 16, 188)
+	root.theme = preload("res://ui/machine_repair/workbench_theme.gd").create()
+	_stock = preload("res://ui/hud/counter_notebook.gd").new()
+	root.add_child(_stock)
+	_stock.position = Vector2(12, 16)
+	_stock_panel = _stock
 	_order_panel = _panel(root, Control.PRESET_TOP_RIGHT, -188, -16)
-	_clock_panel = _panel(root, Control.PRESET_CENTER_TOP, -175, 175)
-	_stock = _label(_stock_panel, 16)
-	_stock.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_clock = _label(_clock_panel, 17)
+	_clock_panel = _panel(root, Control.PRESET_CENTER_TOP, -190, 190)
+	_clock = _label(_clock_panel, 28)
 	_clock.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	var order_column := VBoxContainer.new()
 	_order_panel.add_child(order_column)
@@ -38,14 +40,8 @@ func _ready() -> void:
 	_patience.custom_minimum_size = Vector2(0, 12)
 	_patience.show_percentage = false
 	order_column.add_child(_patience)
-	var controls := _label(root, 15)
-	controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
-	controls.offset_top = -30
-	controls.offset_bottom = -8
-	controls.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	controls.text = "WASD: mover • Mouse1: pegar/largar/inserir/depositar • Duplo clique: girar • F11: tela cheia"
 	_overlay = ColorRect.new()
-	_overlay.color = Color(0.025, 0.04, 0.07, 0.94)
+	_overlay.color = Color(0.06, 0.045, 0.03, 0.94)
 	root.add_child(_overlay)
 	_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var center := CenterContainer.new()
@@ -54,16 +50,16 @@ func _ready() -> void:
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 24)
 	center.add_child(box)
-	_intro = _label(box, 22)
+	_intro = _label(box, 28)
 	_intro.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_button = Button.new()
 	_button.custom_minimum_size.y = 52
 	box.add_child(_button)
-	_button.pressed.connect(_start)
+	_button.pressed.connect(_enter_workshop)
 	_restart_button = Button.new()
 	_restart_button.text = "Recomeçar do ciclo 1"
 	box.add_child(_restart_button)
-	_restart_button.pressed.connect(_restart)
+	_restart_button.pressed.connect(_enter_workshop)
 	cycle.changed.connect(_refresh)
 	var hands = get_tree().get_first_node_in_group("player_hands")
 	if hands != null:
@@ -86,11 +82,14 @@ func _panel(parent: Control, preset: Control.LayoutPreset, left: float, right: f
 	panel.offset_left = left
 	panel.offset_right = right
 	panel.offset_top = 16
-	panel.offset_bottom = 90
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.07, 0.12, 0.17, 0.94)
-	style.set_corner_radius_all(8)
-	style.set_content_margin_all(12)
+	panel.offset_bottom = 112
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var style := StyleBoxTexture.new()
+	var plaque := AtlasTexture.new()
+	plaque.atlas = preload("res://assets/textures/ui/shift_plaque_v1.png")
+	plaque.region = Rect2(18, 118, 2140, 484)
+	style.texture = plaque
+	style.set_content_margin_all(20)
 	panel.add_theme_stylebox_override("panel", style)
 	return panel
 
@@ -111,6 +110,9 @@ func _label(parent: Node, font_size: int) -> Label:
 	label.add_theme_font_size_override("font_size", font_size)
 	parent.add_child(label)
 	return label
+
+func _enter_workshop() -> void:
+	cycle.prepare_session()
 
 func _start() -> void:
 	_overlay.hide()
@@ -134,26 +136,12 @@ func _refresh() -> void:
 	var stock := InventoryManager.get_all_items()
 	if cycle.physical_transport:
 		stock = cycle.counter_stock
-	_stock.text = "PRODUTOS\nTriângulos: %d\nQuadrados: %d\nMoedas: $%d" % [stock.get(FirstCycle.TRIANGLE, 0), stock.get(FirstCycle.SQUARE, 0), cycle.score]
-	if is_instance_valid(cycle.mold_workbench):
-		var mold := cycle.mold_workbench.carried_mold
-		_stock.text += "\n\nMOLDE NAS MÃOS\n" + (str(MoldWorkbench.NAMES[mold]) if mold != &"" else "Nenhum")
-	if cycle.physical_transport:
-		var hands = get_tree().get_first_node_in_group("player_hands")
-		var held := "Nada"
-		if hands != null and hands.product != null:
-			held = "Peça: " + hands.product.item_name
-		elif cycle.mold_workbench.carried_mold != &"":
-			held = "Molde: " + str(MoldWorkbench.NAMES[cycle.mold_workbench.carried_mold])
-		_stock.text = "NO BALCÃO\nTriângulos: %d\nQuadrados: %d\nMoedas: $%d\n\nNAS MÃOS\n%s" % [stock.get(FirstCycle.TRIANGLE, 0), stock.get(FirstCycle.SQUARE, 0), cycle.score, held]
+	_stock.refresh(cycle)
 	var seconds := ceili(cycle.time_left)
-	_clock.text = "CICLO %d • %02d:%02d\nEntregues: %d | Perdidos: %d" % [cycle.cycle_number, floori(seconds / 60.0), seconds % 60, cycle.delivered, cycle.missed]
-	if cycle.cycle_number >= 2:
-		_stock.text = _stock.text.replace("\nMoedas:", "\nRetângulos: %d\nMoedas:" % stock.get(FirstCycle.RECTANGLE, 0))
-	if cycle.cycle_number >= 3:
-		_stock.text = _stock.text.replace("\nMoedas:", "\nParalelogramos: %d\nMoedas:" % stock.get(FirstCycle.PARALLELOGRAM, 0))
-	if cycle.cycle_number >= 4:
-		_stock.text = _stock.text.replace("\nMoedas:", "\nTrapézios: %d\nMoedas:" % stock.get(FirstCycle.TRAPEZOID, 0))
+	_clock.text = "CICLO %d   |   %02d:%02d\nEntregues: %d   Perdidos: %d" % [cycle.cycle_number, floori(seconds / 60.0), seconds % 60, cycle.delivered, cycle.missed]
+	if cycle.preparing:
+		_clock.text = "PREPARAÇÃO | CICLO %d\nInicie no balcão de atendimento" % cycle.pending_cycle_number()
+		_button.text = "Iniciar ciclo %d no balcão" % cycle.pending_cycle_number()
 	_patience.visible = cycle.order_item != null
 	if cycle.order_item:
 		var count: int = stock.get(cycle.order_item, 0)
@@ -165,7 +153,7 @@ func _refresh() -> void:
 		_patience.modulate = Color("ff7777") if cycle.order_time_left < 10.0 else Color("74ddc0")
 	else:
 		_order.text = "BALCÃO\nPróximo cliente chegando..." if cycle.running else "BALCÃO\nAtendimento encerrado"
-	if not cycle.running:
+	if not cycle.running and not cycle.preparing:
 		_restart_button.visible = cycle.has_next_cycle()
 		_overlay.show()
 		if not _overlay.is_in_group("modal_repair_ui"):
@@ -183,11 +171,8 @@ func _refresh() -> void:
 				_intro.text += "\n\nOs quatro ciclos foram concluídos!"
 				_button.text = "Recomeçar do ciclo 1"
 		else:
-			_intro.text = "FANTÁSTICA FÁBRICA DE FORMAS\nPrimeiro expediente • %d minutos\n\nVá à bancada de moldes à esquerda das máquinas.\nPegue um molde triangular ou monte um molde de quadrado.\nCarregue-o até a máquina correspondente e use Mouse1 para inserir.\nA máquina consome o molde; aguarde e colete o produto na saída.\nLeve os produtos ao balcão para entregar.\n\nWASD: andar • Mouse1: interagir/arrastar • Duplo clique: girar • Esc: cancelar.\nO tempo continua durante a montagem e o transporte."
-			_intro.text = _intro.text % ceili(cycle.round_duration / 60.0)
-			if cycle.physical_transport:
-				_intro.text = "FANTÁSTICA FÁBRICA DE FORMAS\nPrimeiro expediente • %d minutos\n\nPrepare um molde na bancada e carregue até a máquina.\nMouse1 perto da máquina: inserir o molde.\nMouse1 perto da peça no chão: pegar.\nMouse1 carregando, longe das estações: largar.\nVocê só pode carregar UM objeto por vez.\nMouse1 no balcão: depositar a peça na pilha.\nO pedido é entregue automaticamente quando estiver completo.\nPeças depositadas permanecem se o cliente desistir.\n\nWASD: andar • Duplo clique: girar na montagem • Esc: cancelar montagem." % ceili(cycle.round_duration / 60.0)
-			_button.text = "Abrir a loja"
+			_intro.text = "FANTÁSTICA FÁBRICA DE FORMAS\n\nArt, a cartola, será seu instrutor no primeiro ciclo.\n\nWASD: andar • Botão esquerdo: interagir\nPrepare a fábrica e inicie o atendimento no balcão.\nArt ensinará o restante enquanto você joga."
+			_button.text = "Entrar na fábrica"
 	else:
 		_overlay.hide()
 		if _overlay.is_in_group("modal_repair_ui"):

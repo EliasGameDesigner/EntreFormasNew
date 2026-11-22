@@ -15,7 +15,8 @@ static func box(fill: String, edge: String, width: int = 2) -> StyleBoxFlat:
 
 static func create() -> Theme:
 	var theme := Theme.new()
-	theme.default_font_size = 16
+	theme.default_font = preload("res://assets/fonts/m5x7.ttf")
+	theme.default_font_size = 22
 	theme.set_color("font_color", "Label", Color("f1dfb7"))
 	theme.set_color("font_shadow_color", "Label", Color("201710"))
 	theme.set_constant("shadow_offset_y", "Label", 1)
