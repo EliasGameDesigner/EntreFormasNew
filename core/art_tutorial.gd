@@ -83,6 +83,8 @@ func refresh() -> void:
 	var next := _choose_step() if available() else &""
 	if next != step:
 		step = next
+		if step != &"":
+			dismissed = false
 		changed.emit()
 
 func _process(_delta: float) -> void:
@@ -98,7 +100,7 @@ func _choose_step() -> StringName:
 	if _bench.carried_mold != &"":
 		return StringName("insert_" + str(_bench.carried_mold))
 	if cycle.preparing and not milestones.has("produce_triangle") and not milestones.has("assembled_square") and not _ground_item(&"triangle", true):
-		return &"welcome" if not _bench.ui.visible else &"take_triangle"
+		return &"welcome"
 	var shape: StringName = &"square" if cycle.order_item == FirstCycle.SQUARE or cycle.delivered > 0 or milestones.has("assembled_square") else &"triangle"
 	if cycle.order_item == FirstCycle.TRIANGLE:
 		shape = &"triangle"
@@ -116,7 +118,7 @@ func _choose_step() -> StringName:
 func hint() -> Dictionary:
 	match step:
 		&"welcome":
-			return {"title": "Muito prazer. Sou Art!", "text": "Serei seu instrutor nesta fábrica. Ande com WASD e use o botão esquerdo perto de uma estação. Prepare-se à vontade; quando desejar, inicie o ciclo no balcão de atendimento.", "goal": "Inicie o ciclo no balcão de atendimento."}
+			return {"title": "Muito prazer. Sou Art!", "text": "Antes de montar, começaremos a primeira lição. Vá à sala à direita e procure o balcão marcado. Ande com WASD, use o botão esquerdo perto do balcão e escolha Iniciar tutorial.", "goal": "Siga a seta até o balcão de atendimento."}
 		&"take_triangle":
 			return {"title": "Comecemos pelo triângulo", "text": "O balão do cliente mostra a peça e a quantidade desejadas. Vá à bancada de moldes e clique em Triângulo na lista da esquerda. Esse molde é ilimitado.", "goal": "Pegue um molde triangular na bancada."}
 		&"insert_triangle", &"insert_square":

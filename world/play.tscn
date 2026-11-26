@@ -1,0 +1,4 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="PackedScene" path="res://world/first_cycle.tscn" id="1"]
+[node name="Factory" instance=ExtResource("1")]
+enter_preparation_on_ready = true

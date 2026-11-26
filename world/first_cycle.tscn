@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" path="res://entities/props/mold_workbench.tscn" id="workbench"]
 [ext_resource type="Script" path="res://core/art_tutorial.gd" id="art_tutorial"]
 [ext_resource type="Script" path="res://ui/hud/art_tutorial_ui.gd" id="art_ui"]
+[ext_resource type="Script" path="res://ui/menus/pause_menu.gd" id="pause_menu"]
+[ext_resource type="Script" path="res://ui/hud/tutorial_start_marker.gd" id="tutorial_marker"]
 
 [node name="Cenario" unique_id=22987688 instance=ExtResource("map")]
 physics_interpolation_mode = 2
@@ -178,3 +180,12 @@ cycle = NodePath("../FirstCycle")
 [node name="ArtUI" type="CanvasLayer" parent="ArtTutorial" node_paths=PackedStringArray("tutorial")]
 script = ExtResource("art_ui")
 tutorial = NodePath("..")
+
+[node name="PauseMenu" type="CanvasLayer" parent="." index="72" node_paths=PackedStringArray("cycle")]
+script = ExtResource("pause_menu")
+cycle = NodePath("../FirstCycle")
+
+[node name="TutorialStartMarker" type="CanvasLayer" parent="." index="73" node_paths=PackedStringArray("cycle", "counter")]
+script = ExtResource("tutorial_marker")
+cycle = NodePath("../FirstCycle")
+counter = NodePath("../shop_node")

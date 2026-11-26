@@ -8,6 +8,8 @@ var speech: Label
 var objective: Label
 var dismiss_button: Button
 var resume_button: Button
+var show_text_button: Button
+var typewriter: Node
 var _root: Control
 
 func _ready() -> void:
@@ -64,6 +66,16 @@ func _ready() -> void:
 	objective = _label(column, 22)
 	objective.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	objective.add_theme_color_override("font_color", Color("62431d"))
+	typewriter = preload("res://ui/dialogue/typewriter_text.gd").new()
+	typewriter.label = speech
+	add_child(typewriter)
+	show_text_button = Button.new()
+	show_text_button.text = "Mostrar tudo"
+	show_text_button.add_theme_font_size_override("font_size", 18)
+	show_text_button.size_flags_horizontal = Control.SIZE_SHRINK_END
+	show_text_button.pressed.connect(typewriter.finish)
+	column.add_child(show_text_button)
+	typewriter.finished.connect(func(): show_text_button.disabled = true)
 	resume_button = Button.new()
 	resume_button.text = "Art: mostrar dica"
 	resume_button.add_theme_font_size_override("font_size", 22)
@@ -87,7 +99,9 @@ func _refresh() -> void:
 	resume_button.visible = visible and tutorial.dismissed
 	var hint := tutorial.hint()
 	heading.text = hint.title
-	speech.text = hint.text
+	typewriter.set_message(hint.text, str(tutorial.step))
+	typewriter.set_active(visible and panel.visible)
+	show_text_button.disabled = not typewriter.is_typing()
 	objective.text = hint.goal
 	dismiss_button.text = "Concluir" if tutorial.step == &"complete" else "Dispensar"
 	_layout()

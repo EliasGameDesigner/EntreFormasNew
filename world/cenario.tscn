@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://drnrdu1hmmcme" path="res://entities/machines/maquina_quadrados.tscn" id="10_1tdcj"]
 [ext_resource type="PackedScene" uid="uid://dicxn7w6tp8m4" path="res://entities/tasks/tarefa_conserta_buraco.tscn" id="14_ecuka"]
 [ext_resource type="PackedScene" uid="uid://csxk2rx5cnv6l" path="res://entities/props/Tapete.tscn" id="15_mitsp"]
-[ext_resource type="AudioStream" uid="uid://bspvu5fy41j7w" path="res://assets/audio/music/ncone-soft-piano-loop-192098.mp3" id="17_sp72b"]
+[ext_resource type="AudioStream" path="res://assets/audio/music/xtremefreddy-falselyclaimed-bit-beats-3-168873.mp3" id="17_sp72b"]
 
 [ext_resource type="PackedScene" path="res://entities/machines/machine_purchase_point.tscn" id="purchase_point"]
 [ext_resource type="PackedScene" path="res://entities/machines/maquina_paralelogramos.tscn" id="parallelogram_scene"]
