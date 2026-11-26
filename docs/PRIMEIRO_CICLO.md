@@ -1,9 +1,12 @@
 # Primeiro ciclo de atendimento
 
-Execute o projeto com **F5** (cena principal `world/first_cycle.tscn`).
-A cena principal herda `world/cenario.tscn`: é o **mapa original da fábrica**,
+Execute o projeto com **F5** e clique em **Jogar** no menu inicial.
+O jogo abre `world/play.tscn`, que herda `world/first_cycle.tscn` e
+`world/cenario.tscn`: é o **mapa original da fábrica**,
 com seus objetos, tapetes e disposição. Não há uma arena separada nem troca de
 mapa ao atender clientes. Os espaços das máquinas futuras permanecem no ambiente.
+
+Use **Esc** para pausar. Veja [menus e textos por proximidade](MENUS_E_PROXIMIDADE.md).
 
 O jogo inicia em **tela cheia**; **F11** alterna entre tela cheia e janela.
 A câmera acompanha o jogador pelo mapa, inclusive no percurso até o balcão.
@@ -13,7 +16,8 @@ separadamente da arte para permitir circular e coletar peças.
 
 ## Como jogar
 
-1. Clique em **Abrir a loja**. O relógio começa após essa ação.
+1. Clique em **Jogar**, siga o marcador até o balcão de atendimento na sala à
+   direita e escolha **Iniciar tutorial**. Isso libera a bancada e inicia o relógio.
 2. Ande com **WASD** até a **Bancada de Moldes**, à esquerda das máquinas.
    Aproxime-se e use **Mouse1** para abrir as opções.
 3. **Pegar Triângulo** fornece um molde triangular: essa base é ilimitada.

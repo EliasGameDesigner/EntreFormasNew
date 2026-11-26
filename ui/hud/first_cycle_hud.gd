@@ -142,6 +142,8 @@ func _refresh() -> void:
 	if cycle.preparing:
 		_clock.text = "PREPARAÇÃO | CICLO %d\nInicie no balcão de atendimento" % cycle.pending_cycle_number()
 		_button.text = "Iniciar ciclo %d no balcão" % cycle.pending_cycle_number()
+		if cycle.initial_tutorial_pending():
+			_clock.text = "COMECE O TUTORIAL\nVá ao balcão marcado à direita"
 	_patience.visible = cycle.order_item != null
 	if cycle.order_item:
 		var count: int = stock.get(cycle.order_item, 0)
@@ -171,7 +173,7 @@ func _refresh() -> void:
 				_intro.text += "\n\nOs quatro ciclos foram concluídos!"
 				_button.text = "Recomeçar do ciclo 1"
 		else:
-			_intro.text = "FANTÁSTICA FÁBRICA DE FORMAS\n\nArt, a cartola, será seu instrutor no primeiro ciclo.\n\nWASD: andar • Botão esquerdo: interagir\nPrepare a fábrica e inicie o atendimento no balcão.\nArt ensinará o restante enquanto você joga."
+			_intro.text = "FANTÁSTICA FÁBRICA DE FORMAS\n\nArt, a cartola, será seu instrutor no primeiro ciclo.\n\nWASD: andar • Botão esquerdo: interagir\nVá ao balcão marcado e inicie o tutorial com Art.\nArt ensinará o restante enquanto você joga."
 			_button.text = "Entrar na fábrica"
 	else:
 		_overlay.hide()

@@ -97,6 +97,9 @@ func prepare_session() -> void:
 func workshop_active() -> bool:
 	return running or preparing
 
+func initial_tutorial_pending() -> bool:
+	return preparing and cycle_number == 1 and not finished and customer_number == 0
+
 func pending_cycle_number() -> int:
 	return cycle_number + 1 if has_next_cycle() else cycle_number
 
@@ -245,17 +248,18 @@ func finish_round() -> void:
 	changed.emit()
 
 func _set_machines_available(value: bool) -> void:
+	var production_available := value and not initial_tutorial_pending()
 	if is_instance_valid(mold_workbench):
 		mold_workbench.available_shapes.assign([&"triangle", &"square", &"rectangle"] if cycle_number >= 2 else [&"triangle", &"square"])
 		if cycle_number >= 3:
 			mold_workbench.available_shapes.append(&"parallelogram")
 		if cycle_number >= 4:
 			mold_workbench.available_shapes.append(&"trapezoid")
-		mold_workbench.set_session_active(value)
-		mold_workbench.get_node("Label").text = "BANCADA DE MOLDES\nMouse1: preparar ou pegar"
+		mold_workbench.set_session_active(production_available)
+		mold_workbench.get_node("Label").text = "BANCADA DE MOLDES\nInicie o tutorial no balcão de atendimento" if initial_tutorial_pending() else "BANCADA DE MOLDES\nMouse1: preparar ou pegar"
 	for machine in [triangle_machine, square_machine]:
 		if is_instance_valid(machine):
-			machine.set_manual_available(value)
+			machine.set_manual_available(production_available)
 	if is_instance_valid(rectangle_machine):
 		var unlocked := cycle_number >= 2
 		rectangle_machine.interactable.collision_layer = 1 if unlocked and value else 0

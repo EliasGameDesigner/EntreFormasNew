@@ -44,7 +44,7 @@ func run() -> void:
 	cycle.changed.emit()
 	check(notebook.counts[FirstCycle.SQUARE].text == "× 2", "deposits update quantity")
 	check(notebook.money.text == "Moedas: 135", "money tracks score")
-	check(hud._clock.text.contains("PREPARAÇÃO"), "preparation has its own header")
+	check(hud._clock.text.contains("TUTORIAL"), "initial header directs player to tutorial")
 	await get_tree().process_frame
 	check(get_viewport().get_visible_rect().encloses(notebook.get_global_rect()), "notebook fits viewport")
 	check(get_viewport().get_visible_rect().encloses(hud._clock_panel.get_global_rect()), "top header fits viewport")

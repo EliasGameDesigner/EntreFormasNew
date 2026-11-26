@@ -1,0 +1,4 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://examples/menus_proximity_test.gd" id="1"]
+[node name="MenusProximityTest" type="Node"]
+script = ExtResource("1")

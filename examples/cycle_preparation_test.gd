@@ -25,6 +25,11 @@ func run() -> void:
 	var room = preload("res://world/first_cycle.tscn").instantiate()
 	add_child(room)
 	await get_tree().process_frame
+	if DisplayServer.get_name() != "headless":
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(Vector2i(1152, 720))
+		await get_tree().process_frame
+		await get_tree().process_frame
 	var cycle: FirstCycle = room.get_node("FirstCycle")
 	var hud = room.get_node("HUD")
 	var bench := cycle.mold_workbench
@@ -38,48 +43,40 @@ func run() -> void:
 	hud._button.pressed.emit()
 	check(cycle.preparing and not cycle.running and cycle.order_item == null, "welcome enters preparation without opening orders")
 	check(not hud._overlay.visible and not player.controls_blocked(), "preparation permits free movement")
-	check(hands.enabled() and cycle.triangle_machine.manual_available and bench.session_active, "transport, machines and bench work before first cycle")
+	check(hands.enabled() and not cycle.triangle_machine.manual_available and not bench.session_active, "initial preparation locks molds and production")
+	check(cycle.initial_tutorial_pending(), "first lesson is pending before counter start")
 	cycle.advance_time(10000)
-	check(cycle.time_left == 0 and cycle.customer_number == 0, "preparation has no clock or arrivals")
+	check(cycle.time_left == 0 and cycle.customer_number == 0, "waiting before tutorial has no clock or arrivals")
+	var marker = room.get_node("TutorialStartMarker")
+	await get_tree().process_frame
+	check(marker.visible and marker.pinned, "counter direction is visible when destination is outside camera")
+	check(get_viewport().get_visible_rect().encloses(marker.panel.get_global_rect()), "tutorial marker stays on screen")
+	check(marker.caption.text.contains("INICIAR TUTORIAL"), "marker clearly names the starting action")
 	await near(bench.position + Vector2(0, 80))
 	action()
-	await get_tree().process_frame
-	check(ui.visible and not ui.has_method("_start_cycle"), "mold workbench only handles mold preparation")
-	ui._supply_piece(ui.PIECES[&"triangle"], Vector2(220, 140))
-	ui._supply_piece(ui.PIECES[&"triangle"], Vector2(450, 220))
-	ui.board.pieces[1].position = Vector2(260, 180)
-	ui.board.pieces[1].rotation = PI
-	check(ui.board.try_snap(ui.board.pieces[1]) and bench.stored_molds.get(&"square", 0) == 1, "molds can be assembled in preparation")
-	ui.close_ui()
-	check(bench.take_stored(&"triangle"), "take triangle mold during preparation")
-	cycle.triangle_machine.production_time = 0.05
-	check(cycle.triangle_machine.request_manual_production(), "manufacture during preparation")
-	await get_tree().create_timer(0.15).timeout
-	var product: PhysicalItem
-	for item in get_tree().get_nodes_in_group("ground_carryables"):
-		if item.item_data == FirstCycle.TRIANGLE:
-			product = item
-	check(product != null, "preparation produces physical output")
-	if product == null:
-		get_tree().quit(1)
-		return
-	await near(product.position + Vector2(0, 55))
-	action()
-	check(hands.product == FirstCycle.TRIANGLE, "collect output before first customer")
-	await near(room.get_node("shop_node").position + Vector2(0, 65))
-	action()
-	check(hands.is_empty() and cycle.counter_stock.get(FirstCycle.TRIANGLE, 0) == 1 and cycle.delivered == 0, "stock counter without delivering during preparation")
-	check(bench.take_stored(&"triangle"), "carry a mold before starting")
-	await near(bench.position + Vector2(0, 80))
-	action()
-	await get_tree().process_frame
-	check(ui.visible and bench.carried_mold == &"triangle", "can open bench carrying a mold during preparation")
-	ui.close_ui()
+	check(not ui.visible and not bench.open_workbench(), "interaction and direct opening cannot bypass initial lock")
+	check(not bench.can_supply(&"triangle") and not bench.take_stored(&"triangle"), "unlimited triangle supply is also locked")
+	check(not bench.begin_mold(&"square"), "sequential assembly cannot bypass lock")
+	bench.store_assembled(&"square")
+	check(bench.stored_molds.is_empty() and bench.carried_mold == &"", "blocked assembly cannot create stock or a carried mold")
+	check(GameUI.notification_label.text.contains("balcão de atendimento"), "blocked opening explains where to begin")
+	if DisplayServer.get_name() != "headless":
+		await RenderingServer.frame_post_draw
+		get_viewport().get_texture().get_image().save_png("res://docs/images/tutorial_start_direction.png")
 	await near(counter.position + Vector2(0, 65))
+	await get_tree().process_frame
+	if DisplayServer.get_name() != "headless":
+		# Camera interpolation and screen-space marker settle after the rendered frame.
+		await RenderingServer.frame_post_draw
+	check(not marker.pinned and marker.visible, "marker identifies the actual counter when camera reaches it")
+	if DisplayServer.get_name() != "headless":
+		await RenderingServer.frame_post_draw
+		get_viewport().get_texture().get_image().save_png("res://docs/images/tutorial_start_counter.png")
 	action()
-	check(service_ui.visible and service_ui.start_cycle_button.text == "Iniciar ciclo 1", "counter opens start dialog while carrying a mold")
+	check(service_ui.visible and service_ui.start_cycle_button.text == "Iniciar tutorial", "counter explicitly offers tutorial start")
+	check(service_ui.explanation.text.contains("bancada será liberada"), "start dialog explains assembly unlock")
 	service_ui.close_ui()
-	check(cycle.preparing and not player.controls_blocked(), "can return from counter to continue preparing")
+	check(cycle.initial_tutorial_pending() and not bench.session_active, "closing start dialog keeps assembly locked")
 	action()
 	if DisplayServer.get_name() != "headless":
 		GameUI.notification_label.hide()
@@ -87,9 +84,18 @@ func run() -> void:
 		get_viewport().get_texture().get_image().save_png("res://docs/images/cycle_preparation_counter.png")
 	service_ui.start_cycle_button.pressed.emit()
 	cycle.set_process(false)
-	check(cycle.running and not cycle.preparing and cycle.cycle_number == 1 and cycle.time_left == cycle.round_duration, "counter starts first timed cycle")
-	check(not service_ui.visible and not player.controls_blocked() and cycle.order_item == FirstCycle.TRIANGLE, "starting closes bench and admits first customer")
-	check(bench.stored_molds.get(&"square", 0) == 1 and bench.carried_mold == &"triangle" and cycle.counter_stock[FirstCycle.TRIANGLE] == 1, "starting preserves prepared stock and held mold")
+	check(cycle.running and not cycle.preparing and cycle.time_left == cycle.round_duration, "counter begins tutorial and timed cycle")
+	check(not cycle.initial_tutorial_pending() and not marker.visible, "starting removes tutorial destination marker")
+	check(not service_ui.visible and bench.session_active and cycle.triangle_machine.manual_available, "starting unlocks bench and production")
+	check(bench.open_workbench(), "free assembly becomes available after tutorial starts")
+	ui._supply_piece(ui.PIECES[&"triangle"], Vector2(220, 140))
+	ui._supply_piece(ui.PIECES[&"triangle"], Vector2(450, 220))
+	ui.board.pieces[1].position = Vector2(260, 180)
+	ui.board.pieces[1].rotation = PI
+	check(ui.board.try_snap(ui.board.pieces[1]) and bench.stored_molds.get(&"square", 0) == 1, "assembly works after unlock")
+	ui.close_ui()
+	check(bench.take_stored(&"triangle"), "triangle mold can be taken after unlock")
+	cycle.deposit_product(FirstCycle.TRIANGLE)
 	service_ui.start_cycle_button.pressed.emit()
 	check(cycle.customer_number == 1 and cycle.cycle_number == 1, "duplicate start cannot reset or skip cycle")
 	cycle.triangle_machine.production_time = 0.15
@@ -97,7 +103,8 @@ func run() -> void:
 	bench.open_workbench()
 	ui._supply_piece(ui.PIECES[&"square"], Vector2(200, 140))
 	cycle.finish_round()
-	check(cycle.preparing and cycle.finished and not cycle.running and not hud._overlay.visible, "intermission returns to free preparation")
+	check(cycle.preparing and cycle.finished and not cycle.running and not hud._overlay.visible and bench.session_active, "later preparation remains free after first cycle")
+	check(not marker.visible and not cycle.initial_tutorial_pending(), "tutorial start marker stays off between cycles")
 	check(not ui.visible and bench.stored_molds[&"square"] == 1, "intermission returns loose table molds")
 	check(cycle.triangle_machine._mold_cycle_active, "manufacturing survives boundary")
 	await get_tree().create_timer(0.25).timeout
@@ -117,6 +124,7 @@ func run() -> void:
 	check(cycle.finished and not cycle.preparing and not cycle.workshop_active() and hud._overlay.visible, "last cycle displays final result")
 	hud._button.pressed.emit()
 	check(cycle.preparing and cycle.cycle_number == 1 and cycle.counter_stock.is_empty() and bench.stored_molds.is_empty(), "new session returns to clean preparation")
+	check(cycle.initial_tutorial_pending() and not bench.session_active and marker.visible, "restart restores initial lock and counter marker")
 	print("CYCLE PREPARATION: %d checks, %d failures" % [checks, failures])
 	await get_tree().process_frame
 	get_tree().quit(1 if failures else 0)

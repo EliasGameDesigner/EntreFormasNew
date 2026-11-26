@@ -6,8 +6,14 @@ A fonte usada é a m5x7 fornecida pelo usuário.
 
 ## Fluxo
 
-Na preparação inicial, Art se apresenta e indica como andar, interagir e começar
-o atendimento no balcão. Durante o primeiro ciclo, ele ensina:
+Na entrada inicial, Art se apresenta e indica como andar e chegar ao balcão de
+atendimento na sala à direita. A bancada de moldes e a fabricação permanecem
+bloqueadas até clicar em **Iniciar tutorial** nesse balcão. Um marcador com seta
+indica a direção mesmo fora da câmera e identifica o balcão quando ele aparece.
+O cabeçalho e a mensagem de bancada bloqueada reforçam a orientação. Ao iniciar,
+o marcador desaparece e o primeiro ciclo libera montagem e produção.
+Nos intervalos posteriores, a preparação continua livre. Durante o primeiro ciclo,
+Art ensina:
 
 1. Ler os ícones e quantidades do balão do cliente.
 2. Pegar o molde triangular ilimitado na bancada.
@@ -28,6 +34,28 @@ Não há pausa, bloqueio de movimento ou alteração dos prazos. O botão **Disp
 oculta a fala; **Art: mostrar dica** reabre a orientação atual. Na bancada, o
 painel fica no canto superior direito da área de montagem, deixando a lista,
 as receitas e o fechamento acessíveis. O balão do cliente evita cobrir a dica.
+
+### Falas animadas e som
+
+O corpo das falas aparece letra por letra, a 40 caracteres por segundo, com
+pequenas pausas na pontuação. Título e objetivo aparecem imediatamente. O botão
+**Mostrar tudo** revela a mensagem completa e interrompe os bipes. A fala mantém
+o tamanho e a quebra de linhas durante a animação; usa
+`TextServer.VC_CHARS_AFTER_SHAPING`, conforme a
+[documentação do Godot](https://docs.godotengine.org/en/stable/classes/class_textserver.html).
+
+Os bipes são curtos e suaves, com pequenas variações de tom, limitados a um a
+cada 70 ms. Espaços e pontuação não emitem som. Ocultar a fala, terminar a mensagem
+ou encerrar o tutorial interrompe o áudio; pausar o jogo congela a revelação.
+
+Ao mudar de etapa, o balão reaparece automaticamente, mesmo se foi dispensado,
+e inicia a nova fala. Atualizações da mesma etapa respeitam a escolha de ocultar
+e não reiniciam a animação. Reabrir manualmente continua a fala atual.
+
+O componente é `ui/dialogue/typewriter_text.gd`. O som original
+`assets/audio/sfx/art_dialogue_blip.wav` foi sintetizado localmente: PCM mono
+de 16 bits, 22050 Hz, 36 ms, tom de 560 Hz com harmônico de 1120 Hz e envelope
+suave. O player usa volume de −18 dB.
 
 A ajuda termina com o primeiro ciclo e reinicia em uma nova sessão. Para
 desativá-la pelo editor, desmarque **enabled** no nó **ArtTutorial** da cena
@@ -54,6 +82,12 @@ Prompt final:
 
 ## Validação
 
+`examples/art_dialogue_test.tscn`: 24 verificações de revelação gradual,
+acentos, bipes, silêncio na pontuação, pausas de leitura, conclusão instantânea,
+ocultação, reabertura automática, substituição de fala, layout estável e pausa
+do jogo. Revisão gráfica em 1152 × 720, com captura em
+`docs/images/art_dialogue_typing.png`.
+
 `examples/art_tutorial_test.tscn`: 60 verificações do fluxo real de moldes,
 produção, coleta física, depósitos, entregas, recuperação, posição na bancada,
 dispensa/reabertura, relógio, fim do ciclo e reinício. Execução gráfica revisada
@@ -64,7 +98,13 @@ em 1152 × 720, com capturas:
 - `docs/images/art_tutorial_workbench.png`
 
 Também passaram as verificações de HUD (34), quatro ciclos (99, 39, 28 e 92),
-preparação (38), bancada (28), balão do cliente (21) e transporte (40).
+preparação (45), bancada (28), balão do cliente (21) e transporte (40).
+
+As 45 verificações de preparação incluem bloqueio de abertura e retirada de
+moldes antes da lição, marcador dentro/fora da câmera, liberação pelo botão
+**Iniciar tutorial**, manutenção da preparação livre entre ciclos e bloqueio
+restaurado ao reiniciar. Capturas: `docs/images/tutorial_start_direction.png`
+e `docs/images/tutorial_start_counter.png`.
 O teste do quarto ciclo passa a aproximar-se da saída da máquina pelo lado:
 o deslocamento aleatório do produto podia colocar a aproximação inferior
 fora da parede sul, invalidando corretamente a coleta.

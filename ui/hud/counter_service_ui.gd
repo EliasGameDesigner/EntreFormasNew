@@ -3,6 +3,8 @@ extends CanvasLayer
 var cycle: FirstCycle
 var start_cycle_button: Button
 var title: Label
+var explanation: Label
+var close_button: Button
 
 func _ready() -> void:
 	layer = 50
@@ -34,7 +36,7 @@ func _ready() -> void:
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", 22)
 	column.add_child(title)
-	var explanation := Label.new()
+	explanation = Label.new()
 	explanation.text = "Os clientes chegam quando você iniciar.\nVocê pode voltar e continuar se preparando."
 	explanation.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	column.add_child(explanation)
@@ -42,7 +44,7 @@ func _ready() -> void:
 	start_cycle_button.custom_minimum_size.y = 48
 	start_cycle_button.pressed.connect(_start_cycle)
 	column.add_child(start_cycle_button)
-	var close_button := Button.new()
+	close_button = Button.new()
 	close_button.text = "Continuar preparando"
 	close_button.pressed.connect(close_ui)
 	column.add_child(close_button)
@@ -53,6 +55,14 @@ func open_ui() -> void:
 		return
 	title.text = "BALCÃO DE ATENDIMENTO"
 	start_cycle_button.text = "Iniciar ciclo %d" % cycle.pending_cycle_number()
+	if cycle.initial_tutorial_pending():
+		title.text = "COMEÇAR COM ART"
+		start_cycle_button.text = "Iniciar tutorial"
+		explanation.text = "Art ensinará a montar, fabricar e entregar.\nA bancada será liberada ao iniciar o tutorial."
+		close_button.text = "Voltar"
+	else:
+		explanation.text = "Os clientes chegam quando você iniciar.\nVocê pode voltar e continuar se preparando."
+		close_button.text = "Continuar preparando"
 	add_to_group("modal_repair_ui")
 	show()
 

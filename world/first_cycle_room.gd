@@ -1,5 +1,6 @@
 extends "res://world/tocarMusica.gd"
 ## The service loop uses the original map. Future unlocks stay in this scene.
+@export var enter_preparation_on_ready: bool = false
 
 @onready var cycle: FirstCycle = $FirstCycle
 @onready var customer: Sprite2D = $Customer
@@ -7,6 +8,9 @@ var _customer_tween: Tween
 
 func _ready() -> void:
 	super._ready()
+	GameUI.show()
+	if enter_preparation_on_ready:
+		$HUD._enter_workshop.call_deferred()
 	cycle.customer_changed.connect(_show_customer)
 	customer.hide()
 	_apply_world_label_contrast(self)

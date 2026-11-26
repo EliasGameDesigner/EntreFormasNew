@@ -46,6 +46,10 @@ func _on_interaction(_body: Node2D) -> void:
 	open_workbench()
 
 func open_workbench() -> bool:
+	var cycle = get_tree().get_first_node_in_group("first_cycle")
+	if cycle != null and cycle.initial_tutorial_pending():
+		GameUI.show_notification("Inicie o tutorial no balcão de atendimento, na sala à direita.")
+		return false
 	if not session_active or get_tree().get_first_node_in_group("modal_repair_ui") != null:
 		return false
 	ui.open_ui()
